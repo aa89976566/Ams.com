@@ -307,12 +307,12 @@
                     <div class="form-group">
                         <label>Academic Level</label>
                         <select id="calc-level" onchange="updatePrice()">
-                          Copy<option value="undergraduate">Undergraduate - £0.08/word</option>
-<option value="postgraduate">Postgraduate/Master's - £0.10/word</option>
-<option value="phd-proposal">PhD Proposal - £0.18/word</option>
-<option value="phd-literature">PhD Literature Review - £0.20/word</option>
-<option value="phd-full">PhD Full Dissertation - £0.28/word</option>
-<option value="phd-editing">PhD Editing/Proofreading - £0.06/word</option>
+                            <option value="undergraduate">Undergraduate - £80/1000 words</option>
+                            <option value="postgraduate">Postgraduate/Master's - £100/1000 words</option>
+                            <option value="phd-proposal">PhD Proposal - £180/1000 words</option>
+                            <option value="phd-full">PhD Full Dissertation - £280/1000 words</option>
+                            <option value="phd-editing">PhD Editing/Proofreading - £60/1000 words</option>
+                            <option value="scientific">Scientific Publications - £380/1000 words</option>
                         </select>
                     </div>
 
@@ -327,10 +327,15 @@
                     <div class="form-group">
                         <label>Deadline</label>
                         <select id="calc-deadline" onchange="updatePrice()">
-                            <option value="standard">Standard (No Rush)</option>
-                            <option value="1week">1 Week (+25%)</option>
-                            <option value="48hours">48 Hours (+50%)</option>
-                            <option value="24hours">24 Hours (+100%)</option>
+                            <option value="5days">Standard Delivery (5+ days) - No Rush Fee</option>
+                            <option value="4days">4 Days (+£15/1000 words)</option>
+                            <option value="3days">3 Days (+£30/1000 words)</option>
+                            <option value="2days">2 Days (+£50/1000 words)</option>
+                            <option value="24hours">24 Hours (+£80/1000 words)</option>
+                            <option value="12hours">12 Hours (+£120/1000 words)</option>
+                            <option value="6hours">6 Hours (+£180/1000 words)</option>
+                            <option value="3hours">3 Hours (+£250/1000 words)</option>
+                            <option value="1hour">1 Hour (+£400/1000 words)</option>
                         </select>
                     </div>
 
