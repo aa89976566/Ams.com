@@ -217,15 +217,31 @@ function updatePrice() {
     const words = parseInt(document.getElementById('calc-words').value) || 0;
     const deadline = document.getElementById('calc-deadline').value;
     
-    // Get base price per word
-    let pricePerWord = getBasePrice(level);
+    // Determine service type for PhD options
+    let serviceType = null;
+    if (level === 'phd-proposal') {
+        serviceType = 'proposal';
+    } else if (level === 'phd-editing') {
+        serviceType = 'editing';
+    } else if (level === 'phd-full') {
+        serviceType = 'full';
+    }
     
-    // Calculate base price
-    let basePrice = words * pricePerWord;
+    // Get level key for config.js
+    let levelKey = level;
+    if (level.startsWith('phd-')) {
+        levelKey = 'phd';
+    }
     
-    // Calculate rush fee
-    let rushMultiplier = getRushFeeMultiplier(deadline);
-    let rushFee = basePrice * rushMultiplier;
+    // Get base price per 1000 words
+    let pricePer1000 = getBasePrice(levelKey, serviceType);
+    
+    // Calculate base price: (words / 1000) * price per 1000
+    let basePrice = (words / 1000) * pricePer1000;
+    
+    // Calculate rush fee based on deadline (flat fee per 1000 words)
+    let rushFeePer1000 = getRushFee(deadline);
+    let rushFee = (words / 1000) * rushFeePer1000;
     
     // Calculate additional services
     let addonPrice = 0;
