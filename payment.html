@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - AMS Academic Services</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/payment.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/ams-logo.png" alt="AMS Logo">
+                <div class="logo-text">
+                    <span class="logo-main">AMS</span>
+                    <span class="logo-full">Academic Masterpiece Studio</span>
+                </div>
+            </a>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html">Home</a>
+                <a href="index.html#services">Services</a>
+                <a href="diagnostic.html">Smart Diagnostic</a>
+                <a href="order.html">Place Order</a>
+            </div>
+            
+            <div class="mobile-menu-btn" id="mobileMenuBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="payment-main">
+        <!-- Hero Section -->
+        <section class="payment-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <i class="fas fa-lock"></i> Secure Payment
+                    </div>
+                    <h1>Complete Your Order</h1>
+                    <p class="hero-subtitle">Choose your preferred payment method to proceed with your academic project</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Payment Section -->
+        <section class="payment-section">
+            <div class="container">
+                <div class="payment-layout">
+                    <!-- Order Summary -->
+                    <div class="order-summary-card">
+                        <h2><i class="fas fa-file-invoice"></i> Order Summary</h2>
+                        
+                        <div class="summary-content" id="orderSummary">
+                            <!-- Dynamic order summary will be inserted here -->
+                            <div class="summary-placeholder">
+                                <i class="fas fa-info-circle"></i>
+                                <p>Your order details will appear here after you complete the order form.</p>
+                                <a href="order.html" class="btn-link">Go to Order Form</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Price Breakdown -->
+                        <div class="price-breakdown" id="priceBreakdown" style="display: none;">
+                            <div class="breakdown-row">
+                                <span>Base Price:</span>
+                                <span id="basePrice">£0</span>
+                            </div>
+                            <div class="breakdown-row">
+                                <span>Field Multiplier:</span>
+                                <span id="fieldMultiplier">1.0x</span>
+                            </div>
+                            <div class="breakdown-row">
+                                <span>Urgent Fee:</span>
+                                <span id="urgentFee">£0</span>
+                            </div>
+                            <div class="breakdown-row discount" id="discountRow" style="display: none;">
+                                <span>First Order Discount (30%):</span>
+                                <span id="discountAmount">-£0</span>
+                            </div>
+                            <div class="breakdown-row total">
+                                <span>Total Amount:</span>
+                                <span id="totalAmount">£0</span>
+                            </div>
+                        </div>
+
+                        <!-- Payment Plans -->
+                        <div class="payment-plans" id="paymentPlans" style="display: none;">
+                            <h3>Select Payment Plan</h3>
+                            <div class="plan-options">
+                                <label class="plan-option">
+                                    <input type="radio" name="payment-plan" value="full" checked>
+                                    <div class="plan-card">
+                                        <div class="plan-icon"><i class="fas fa-check-circle"></i></div>
+                                        <h4>Pay Full Amount</h4>
+                                        <p class="plan-amount" id="fullAmount">£0</p>
+                                        <p class="plan-desc">Complete payment now</p>
+                                        <span class="plan-badge">Best Value</span>
+                                    </div>
+                                </label>
+                                
+                                <label class="plan-option">
+                                    <input type="radio" name="payment-plan" value="deposit">
+                                    <div class="plan-card">
+                                        <div class="plan-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                                        <h4>Pay Deposit</h4>
+                                        <p class="plan-amount" id="depositAmount">£0</p>
+                                        <p class="plan-desc" id="depositDesc">50% now, 50% before delivery</p>
+                                        <span class="plan-badge recommended">Recommended</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Order Reference -->
+                        <div class="order-reference" id="orderReference" style="display: none;">
+                            <p><strong>Order Reference:</strong> <span id="referenceNumber"></span></p>
+                            <small>Please include this reference in your payment</small>
+                        </div>
+                    </div>
+
+                    <!-- Payment Methods -->
+                    <div class="payment-methods-card">
+                        <h2><i class="fas fa-credit-card"></i> Payment Methods</h2>
+                        <p class="methods-intro">Choose your preferred secure payment method</p>
+
+                        <!-- PayPal Payment -->
+                        <div class="payment-method">
+                            <div class="method-header">
+                                <div class="method-logo paypal">
+                                    <i class="fab fa-paypal"></i>
+                                    <span>PayPal</span>
+                                </div>
+                                <div class="method-badges">
+                                    <span class="badge instant">Instant</span>
+                                    <span class="badge secure">Secure</span>
+                                </div>
+                            </div>
+                            
+                            <div class="method-content">
+                                <p class="method-description">
+                                    <i class="fas fa-shield-alt"></i> 
+                                    Fast and secure payment with buyer protection. Supports credit cards, debit cards, and PayPal balance.
+                                </p>
+                                
+                                <!-- PayPal Button Container -->
+                                <div class="payment-button-container">
+                                    <div id="paypal-button-container">
+                                        <!-- PayPal button will be rendered here -->
+                                    </div>
+                                    
+                                    <!-- Manual PayPal Link (fallback) -->
+                                    <div class="manual-payment-option">
+                                        <p><strong>Or pay manually via PayPal.me:</strong></p>
+                                        <div class="payment-link-box">
+                                            <input type="text" id="paypalLink" readonly value="https://paypal.me/YOURUSERNAME" class="payment-link-input">
+                                            <button onclick="copyPayPalLink()" class="btn-copy">
+                                                <i class="fas fa-copy"></i> Copy
+                                            </button>
+                                        </div>
+                                        <small>
+                                            <i class="fas fa-info-circle"></i>
+                                            Copy this link and open in your browser. Please include order reference: <span id="paypalReference"></span>
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <!-- PayPal Instructions -->
+                                <div class="payment-instructions">
+                                    <h4>How to pay with PayPal:</h4>
+                                    <ol>
+                                        <li>Select your payment plan above (Full or Deposit)</li>
+                                        <li>Click the PayPal button or use the PayPal.me link</li>
+                                        <li>Complete payment on PayPal's secure site</li>
+                                        <li>You'll be redirected to confirmation page</li>
+                                        <li>We'll start your project immediately</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Wise Payment -->
+                        <div class="payment-method">
+                            <div class="method-header">
+                                <div class="method-logo wise">
+                                    <i class="fas fa-globe"></i>
+                                    <span>Wise</span>
+                                </div>
+                                <div class="method-badges">
+                                    <span class="badge international">International</span>
+                                    <span class="badge low-fee">Low Fees</span>
+                                </div>
+                            </div>
+                            
+                            <div class="method-content">
+                                <p class="method-description">
+                                    <i class="fas fa-globe-americas"></i>
+                                    Best for international transfers with low fees. Perfect for students outside the UK.
+                                </p>
+
+                                <!-- Wise Payment Details -->
+                                <div class="wise-details">
+                                    <div class="detail-box">
+                                        <h4><i class="fas fa-university"></i> Bank Transfer Details</h4>
+                                        <div class="detail-grid">
+                                            <div class="detail-item">
+                                                <label>Account Name:</label>
+                                                <div class="detail-value">
+                                                    <input type="text" readonly value="Academic Masterpiece Studio" id="wiseName">
+                                                    <button onclick="copyToClipboard('wiseName')" class="btn-copy-small">
+                                                        <i class="fas fa-copy"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="detail-item">
+                                                <label>Email:</label>
+                                                <div class="detail-value">
+                                                    <input type="text" readonly value="your-wise-email@example.com" id="wiseEmail">
+                                                    <button onclick="copyToClipboard('wiseEmail')" class="btn-copy-small">
+                                                        <i class="fas fa-copy"></i>
+                                                    </button>
+                                                </div>
+                                                <small>Use this email to send via Wise</small>
+                                            </div>
+                                            
+                                            <div class="detail-item">
+                                                <label>Amount to Send:</label>
+                                                <div class="detail-value amount-display">
+                                                    <input type="text" readonly value="£0.00" id="wiseAmount">
+                                                    <button onclick="copyToClipboard('wiseAmount')" class="btn-copy-small">
+                                                        <i class="fas fa-copy"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="detail-item full-width">
+                                                <label>Payment Reference (IMPORTANT):</label>
+                                                <div class="detail-value reference-highlight">
+                                                    <input type="text" readonly value="AMS-ORDER-REF" id="wiseReference">
+                                                    <button onclick="copyToClipboard('wiseReference')" class="btn-copy-small">
+                                                        <i class="fas fa-copy"></i>
+                                                    </button>
+                                                </div>
+                                                <small class="warning-text">
+                                                    <i class="fas fa-exclamation-triangle"></i>
+                                                    Please include this reference in your transfer so we can identify your payment
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Alternative: Wise Account Link -->
+                                    <div class="wise-link-box">
+                                        <p><strong>Or send via Wise app:</strong></p>
+                                        <a href="https://wise.com/send" target="_blank" class="btn-wise">
+                                            <i class="fas fa-external-link-alt"></i>
+                                            Open Wise
+                                        </a>
+                                        <small>Login to Wise and send to: <strong>your-wise-email@example.com</strong></small>
+                                    </div>
+                                </div>
+
+                                <!-- Wise Instructions -->
+                                <div class="payment-instructions">
+                                    <h4>How to pay with Wise:</h4>
+                                    <ol>
+                                        <li>Login to your Wise account or create one at <a href="https://wise.com" target="_blank">Wise.com</a></li>
+                                        <li>Select "Send money" and choose GBP (£) as currency</li>
+                                        <li>Enter the amount shown above</li>
+                                        <li>Enter recipient email: <strong>your-wise-email@example.com</strong></li>
+                                        <li><strong>IMPORTANT:</strong> Add order reference in the message/notes field</li>
+                                        <li>Complete the transfer</li>
+                                        <li>Send us confirmation via WhatsApp or email</li>
+                                    </ol>
+                                    
+                                    <div class="notification-box info">
+                                        <i class="fas fa-clock"></i>
+                                        <p><strong>Processing Time:</strong> Wise transfers typically complete within 1-2 business days. We'll start your project as soon as payment is confirmed.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Security & Support -->
+                        <div class="security-info">
+                            <h3><i class="fas fa-shield-alt"></i> Payment Security</h3>
+                            <div class="security-grid">
+                                <div class="security-item">
+                                    <i class="fas fa-lock"></i>
+                                    <h4>256-bit SSL Encryption</h4>
+                                    <p>Your payment data is encrypted and secure</p>
+                                </div>
+                                <div class="security-item">
+                                    <i class="fas fa-user-shield"></i>
+                                    <h4>Buyer Protection</h4>
+                                    <p>PayPal and Wise offer buyer protection</p>
+                                </div>
+                                <div class="security-item">
+                                    <i class="fas fa-undo"></i>
+                                    <h4>Money-Back Guarantee</h4>
+                                    <p>Full refund if we cannot complete your project</p>
+                                </div>
+                                <div class="security-item">
+                                    <i class="fas fa-headset"></i>
+                                    <h4>24/7 Support</h4>
+                                    <p>Contact us anytime via WhatsApp or chat</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Payment Confirmation -->
+                        <div class="confirmation-box">
+                            <h3><i class="fas fa-check-circle"></i> After Payment</h3>
+                            <p>Once payment is confirmed:</p>
+                            <ul>
+                                <li><i class="fas fa-envelope"></i> You'll receive email confirmation</li>
+                                <li><i class="fas fa-user-tie"></i> We'll assign your expert tutor within 2 hours</li>
+                                <li><i class="fas fa-comments"></i> Your tutor will contact you to discuss project details</li>
+                                <li><i class="fas fa-calendar-check"></i> Work begins immediately</li>
+                            </ul>
+                        </div>
+
+                        <!-- Contact Support -->
+                        <div class="support-box">
+                            <h3>Need Help with Payment?</h3>
+                            <p>Our team is here to assist you</p>
+                            <div class="support-buttons">
+                                <a href="https://wa.me/447481747436?text=Hi,%20I%20need%20help%20with%20payment%20for%20order%20reference:%20" 
+                                   class="btn-support whatsapp" target="_blank">
+                                    <i class="fab fa-whatsapp"></i> WhatsApp Support
+                                </a>
+                                <a href="mailto:aa89976566@gmail.com?subject=Payment%20Inquiry" class="btn-support email">
+                                    <i class="fas fa-envelope"></i> Email Support
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <img src="images/ams-logo.png" alt="AMS Logo">
+                        <h3>Academic Masterpiece Studio</h3>
+                    </div>
+                    <p>Turning Academic Stress into Success Stories Since 2009</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="diagnostic.html">Smart Diagnostic</a></li>
+                        <li><a href="order.html">Place Order</a></li>
+                        <li><a href="payment.html">Payment</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fab fa-whatsapp"></i> +44 7481 747436</li>
+                        <li><i class="fas fa-envelope"></i> aa89976566@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2009-2025 Academic Masterpiece Studio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/payment.js"></script>
+    
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/69342c34f66a4c198b42833e/1jbpspbrq';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+</body>
+</html>

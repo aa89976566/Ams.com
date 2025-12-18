@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Your Order | Academic Masterpiece Studio</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/order.css">
+    
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+        })();
+    </script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <img src="images/ams-logo.png" alt="AMS Logo">
+                    <div class="logo-text">
+                        <span class="logo-full">Academic Masterpiece Studio</span>
+                        <span class="logo-abbr">AMS</span>
+                    </div>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">← Back to Home</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Order Form Section -->
+    <section class="order-form-section">
+        <div class="container">
+            <div class="order-header">
+                <h1>Place Your Order</h1>
+                <p class="tagline">Turning Academic Stress into Success Stories Since 2009</p>
+                <p>Complete the form below and we'll get back to you within 24 hours with a detailed quote</p>
+            </div>
+
+            <!-- Progress Indicator -->
+            <div class="progress-indicator">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-steps">
+                    <div class="step active" data-step="1">
+                        <div class="step-circle">1</div>
+                        <span>Basic Info</span>
+                    </div>
+                    <div class="step" data-step="2">
+                        <div class="step-circle">2</div>
+                        <span>Academic</span>
+                    </div>
+                    <div class="step" data-step="3">
+                        <div class="step-circle">3</div>
+                        <span>Requirements</span>
+                    </div>
+                    <div class="step" data-step="4">
+                        <div class="step-circle">4</div>
+                        <span>Files</span>
+                    </div>
+                    <div class="step" data-step="5">
+                        <div class="step-circle">5</div>
+                        <span>Journal</span>
+                    </div>
+                    <div class="step" data-step="6">
+                        <div class="step-circle">6</div>
+                        <span>Budget</span>
+                    </div>
+                    <div class="step" data-step="7">
+                        <div class="step-circle">7</div>
+                        <span>Review</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Form -->
+            <form id="orderForm" class="order-form">
+                
+                <!-- Step 1: Basic Information -->
+                <div class="form-step active" id="step1">
+                    <h2>Step 1: Basic Information</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Full Name *</label>
+                            <input type="text" name="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address *</label>
+                            <input type="email" name="email" required>
+                            <small>We'll send your quote and updates here</small>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number (with country code) *</label>
+                            <input type="tel" name="phone" required placeholder="+44 7481 747436">
+                        </div>
+                        <div class="form-group">
+                            <label>Country/Region *</label>
+                            <select name="country" required>
+                                <option value="">Select...</option>
+                                <option value="UK">United Kingdom</option>
+                                <option value="US">United States</option>
+                                <option value="CA">Canada</option>
+                                <option value="AU">Australia</option>
+                                <option value="CN">China</option>
+                                <option value="IN">India</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">Next Step →</button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Academic Background -->
+                <div class="form-step" id="step2">
+                    <h2>Step 2: Academic Background</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Academic Level *</label>
+                            <select name="academicLevel" required onchange="updateServiceOptions()">
+                                <option value="">Select...</option>
+                                <option value="undergraduate">Undergraduate</option>
+                                <option value="postgraduate">Postgraduate/Master's</option>
+                                <option value="phd">PhD/Doctorate</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>University/Institution *</label>
+                            <input type="text" name="university" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Academic Field *</label>
+                            <select name="academicField" required>
+                                <option value="">Select...</option>
+                                <optgroup label="Sciences & Engineering">
+                                    <option value="biomedical-engineering">Biomedical Engineering</option>
+                                    <option value="aerospace-engineering">Aerospace Engineering</option>
+                                    <option value="chemical-engineering">Chemical Engineering</option>
+                                    <option value="civil-engineering">Civil Engineering</option>
+                                    <option value="electrical-engineering">Electrical Engineering</option>
+                                    <option value="mechanical-engineering">Mechanical Engineering</option>
+                                    <option value="computer-science">Computer Science</option>
+                                    <option value="mathematics">Mathematics & Statistics</option>
+                                    <option value="physics">Physics</option>
+                                    <option value="chemistry">Chemistry</option>
+                                    <option value="biology">Biology</option>
+                                </optgroup>
+                                <optgroup label="Social Sciences & Business">
+                                    <option value="education">Education</option>
+                                    <option value="psychology">Psychology</option>
+                                    <option value="sociology">Sociology</option>
+                                    <option value="business">Business Administration</option>
+                                    <option value="economics">Economics</option>
+                                    <option value="criminology">Criminology</option>
+                                </optgroup>
+                                <optgroup label="Health Sciences">
+                                    <option value="nursing">Nursing</option>
+                                    <option value="public-health">Public Health</option>
+                                    <option value="medicine">Medicine</option>
+                                    <option value="pharmacy">Pharmacy</option>
+                                </optgroup>
+                                <optgroup label="Humanities">
+                                    <option value="literature">Literature</option>
+                                    <option value="history">History</option>
+                                    <option value="philosophy">Philosophy</option>
+                                    <option value="linguistics">Linguistics</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Specific Area/Specialization</label>
+                            <input type="text" name="specialization" placeholder="e.g., Cognitive Psychology, Renewable Energy">
+                        </div>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep()">← Previous</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">Next Step →</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Project Requirements -->
+                <div class="form-step" id="step3">
+                    <h2>Step 3: Detailed Requirements</h2>
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label>Type of Service *</label>
+                            <select name="serviceType" required id="serviceType">
+                                <option value="">Select...</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Project Title/Research Topic *</label>
+                            <input type="text" name="projectTitle" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Current Progress *</label>
+                            <select name="currentProgress" required>
+                                <option value="">Select...</option>
+                                <option value="0">Not Started (0%)</option>
+                                <option value="25">25% Complete</option>
+                                <option value="50">50% Complete</option>
+                                <option value="75">75% Complete</option>
+                                <option value="90">Nearly Done (90%)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Target Word Count *</label>
+                            <select name="wordCount" required>
+                                <option value="">Select...</option>
+                                <option value="1000-2000">1,000 - 2,000 words</option>
+                                <option value="2000-5000">2,000 - 5,000 words</option>
+                                <option value="5000-10000">5,000 - 10,000 words</option>
+                                <option value="10000-20000">10,000 - 20,000 words</option>
+                                <option value="20000-30000">20,000 - 30,000 words</option>
+                                <option value="30000-50000">30,000 - 50,000 words</option>
+                                <option value="50000+">50,000+ words</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Deadline *</label>
+                            <input type="date" name="deadline" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Citation Format *</label>
+                            <select name="citationFormat" required>
+                                <option value="">Select...</option>
+                                <option value="APA">APA 7th</option>
+                                <option value="MLA">MLA 9th</option>
+                                <option value="Chicago">Chicago</option>
+                                <option value="Harvard">Harvard</option>
+                                <option value="Vancouver">Vancouver</option>
+                                <option value="IEEE">IEEE</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Research Methodology</label>
+                            <select name="methodology">
+                                <option value="">Select...</option>
+                                <option value="Quantitative">Quantitative</option>
+                                <option value="Qualitative">Qualitative</option>
+                                <option value="Mixed Methods">Mixed Methods</option>
+                                <option value="Not Applicable">Not Applicable</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Detailed Description of Requirements *</label>
+                            <textarea name="requirements" rows="6" required placeholder="Please describe your project requirements, any specific instructions from your supervisor, chapters needed, etc."></textarea>
+                        </div>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep()">← Previous</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">Next Step →</button>
+                    </div>
+                </div>
+
+                <!-- Step 4: File Upload -->
+                <div class="form-step" id="step4">
+                    <h2>Step 4: Upload Files (Optional)</h2>
+                    <p class="step-description">Upload any relevant documents that will help us understand your requirements better</p>
+                    
+                    <div class="upload-area">
+                        <div class="upload-box" id="uploadBox">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <h3>Drag & Drop Files Here</h3>
+                            <p>or click to browse</p>
+                            <input type="file" id="fileInput" multiple accept=".pdf,.doc,.docx,.txt,.xls,.xlsx,.ppt,.pptx">
+                            <small>Max 10 files, 5MB each | PDF, Word, Excel, PowerPoint, Text</small>
+                        </div>
+                        <div id="fileList" class="file-list"></div>
+                    </div>
+
+                    <div class="file-examples">
+                        <h4>You can upload:</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Current draft or work in progress</li>
+                            <li><i class="fas fa-check"></i> Assignment brief/guidelines</li>
+                            <li><i class="fas fa-check"></i> Reference materials</li>
+                            <li><i class="fas fa-check"></i> Research data or datasets</li>
+                            <li><i class="fas fa-check"></i> Supervisor feedback or comments</li>
+                            <li><i class="fas fa-check"></i> Previous related work</li>
+                        </ul>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep()">← Previous</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">Next Step →</button>
+                    </div>
+                </div>
+
+                <!-- Step 5: Study Journal & Specific Needs -->
+                <div class="form-step" id="step5">
+                    <h2>Step 5: Learning Progress & Specific Challenges</h2>
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label>Learning Progress Journal</label>
+                            <textarea name="learningJournal" rows="4" placeholder="Tell us about your learning journey so far, what you've accomplished, and where you are now..."></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Specific Difficulties You're Facing</label>
+                            <textarea name="difficulties" rows="4" placeholder="What specific challenges are you encountering? (e.g., methodology design, literature review, data analysis, writing structure...)"></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Supervisor/Tutor Feedback</label>
+                            <textarea name="supervisorFeedback" rows="4" placeholder="Any feedback or comments from your supervisor that we should be aware of?"></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Your Research Goals</label>
+                            <textarea name="researchGoals" rows="4" placeholder="What do you hope to achieve with this research? What are your academic and professional goals?"></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Special Requirements or Instructions</label>
+                            <textarea name="specialRequirements" rows="4" placeholder="Any other specific requirements, preferences, or instructions we should know about?"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep()">← Previous</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">Next Step →</button>
+                    </div>
+                </div>
+
+                <!-- Step 6: Budget & Timeline -->
+                <div class="form-step" id="step6">
+                    <h2>Step 6: Budget & Timeline</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Budget Range *</label>
+                            <select name="budget" required>
+                                <option value="">Select...</option>
+                                <option value="under-500">Under £500</option>
+                                <option value="500-1000">£500 - £1,000</option>
+                                <option value="1000-2000">£1,000 - £2,000</option>
+                                <option value="2000-5000">£2,000 - £5,000</option>
+                                <option value="5000-10000">£5,000 - £10,000</option>
+                                <option value="10000+">Over £10,000</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Preferred Start Date</label>
+                            <input type="date" name="startDate">
+                        </div>
+                        <div class="form-group">
+                            <label>Rush Service Needed?</label>
+                            <select name="rushService">
+                                <option value="no">No Rush (Standard)</option>
+                                <option value="1week">1 Week (+25%)</option>
+                                <option value="48hours">48 Hours (+50%)</option>
+                                <option value="24hours">24 Hours (+100%)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Preferred Contact Time</label>
+                            <div class="checkbox-list">
+                                <label><input type="checkbox" name="contactTime" value="morning"> Morning (9AM-12PM)</label>
+                                <label><input type="checkbox" name="contactTime" value="afternoon"> Afternoon (12PM-5PM)</label>
+                                <label><input type="checkbox" name="contactTime" value="evening"> Evening (5PM-9PM)</label>
+                                <label><input type="checkbox" name="contactTime" value="weekend"> Weekend</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>How did you hear about us?</label>
+                            <select name="referralSource">
+                                <option value="">Select...</option>
+                                <option value="google">Google Search</option>
+                                <option value="friend">Friend/Colleague Referral</option>
+                                <option value="social">Social Media</option>
+                                <option value="forum">Academic Forum</option>
+                                <option value="university">University Notice Board</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep()">← Previous</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">Review Order →</button>
+                    </div>
+                </div>
+
+                <!-- Step 7: Review & Submit -->
+                <div class="form-step" id="step7">
+                    <h2>Step 7: Review & Submit</h2>
+                    <div class="review-section" id="reviewContent">
+                        <!-- Content will be populated by JavaScript -->
+                    </div>
+
+                    <div class="terms-section">
+                        <h3>Privacy & Terms</h3>
+                        <div class="terms-box">
+                            <h4>Data Storage & Privacy</h4>
+                            <p>Your data will be securely stored on Amazon AWS / Microsoft Azure servers with TLS 1.3 encryption. We retain work files for 1 year and personal data for 2 years after service completion as per GDPR, CCPA, and PIPEDA compliance.</p>
+                            
+                            <h4>Service Terms</h4>
+                            <p>We provide academic guidance and tutoring services. All work is original and plagiarism-free. This is not a ghostwriting service - we help you develop your own academic skills.</p>
+                            
+                            <h4>Payment Structure</h4>
+                            <p><strong>Undergraduate/Postgraduate:</strong> 50% deposit, 50% before submission</p>
+                            <p><strong>PhD:</strong> 33% deposit, 34% at 1/3 completion, 33% before submission</p>
+                        </div>
+
+                        <div class="agreement-checkboxes">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="agreePrivacy" required>
+                                <span>I have read and agree to the <a href="privacy-policy.html" target="_blank">Privacy Policy</a></span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="agreeTerms" required>
+                                <span>I have read and agree to the <a href="terms-of-service.html" target="_blank">Terms of Service</a></span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="agreeAcademic" required>
+                                <span>I understand this is an academic tutoring service and I will use the guidance ethically</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="agreeData" required>
+                                <span>I consent to the processing of my data as described in the Privacy Policy</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep()">← Previous</button>
+                        <button type="submit" class="btn btn-primary btn-large">
+                            <i class="fas fa-paper-plane"></i> Submit Order
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </section>
+
+    <!-- Tawk.to Integration -->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/69342c34f66a4c198b42833e/1jbpspbrq';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+
+    <!-- Custom JavaScript -->
+    <script src="js/config.js"></script>
+    <script src="js/order.js"></script>
+
+</body>
+</html>
