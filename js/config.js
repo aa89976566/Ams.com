@@ -121,6 +121,8 @@ function getBasePrice(level, serviceType = null) {
             return PRICING_CONFIG.basePrice.phd.proposal;
         } else if (serviceType === 'editing') {
             return PRICING_CONFIG.basePrice.phd.editing;
+        } else if (serviceType === 'full') {
+            return PRICING_CONFIG.basePrice.phd.dissertation;
         } else {
             return PRICING_CONFIG.basePrice.phd.dissertation; // default to full dissertation
         }
@@ -178,6 +180,51 @@ function calculatePrice(level, wordCount, deadline = '5days', field = 'standard'
 // Helper function to format price
 function formatPrice(amount) {
     return `${PRICING_CONFIG.currency}${Math.round(amount)}`;
+}
+
+// Additional services pricing (used in price calculator)
+const ADDON_PRICES = {
+    // Data Analysis
+    spss: 350,
+    stata: 400,
+    r: 450,
+    python: 525,
+    nvivo: 400,
+    atlas: 400,
+    excel: 225,
+    
+    // Charts & Visualization
+    charts: 50,  // per chart
+    infographic: 150,
+    visualization: 300,
+    presentation: 225,
+    
+    // Professional Analysis Tools
+    swot: 150,
+    pestel: 150,
+    porter: 180,
+    canvas: 200,
+    financial: 600,
+    regression: 375,
+    factor: 300,
+    sem: 650,
+    
+    // Literature & Citations
+    systematic: 750,
+    meta: 900,
+    bibliography: 100,
+    citation: 80,
+    
+    // Editing & Quality Check
+    plagiarism: 50,
+    turnitin: 50,
+    abstract: 100,
+    executive: 150
+};
+
+// Helper function to get addon price
+function getAddonPrice(addonName) {
+    return ADDON_PRICES[addonName] || 0;
 }
 
 // Export for use in other scripts
