@@ -149,8 +149,14 @@ section { padding: 6rem 0; }
 }
 
 .logo img {
-    height: 52px;
+    height: 72px;
     width: auto;
+}
+
+@media (max-width: 768px) {
+    .logo img {
+        height: 56px;
+    }
 }
 
 .logo-text {
@@ -1147,7 +1153,7 @@ section { padding: 6rem 0; }
 }
 
 .footer-brand img {
-    height: 56px;
+    height: 80px;
     width: auto;
     margin-bottom: 1rem;
 }

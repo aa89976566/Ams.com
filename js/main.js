@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initMobileMenu();
     initHeroVideo();
     initCounters();
-    await initInstagramStoryFeed();
+    await initTrainingFeed();
     initReviewsCarousel();
     initEnquireForm();
 });
@@ -18,14 +18,14 @@ function escapeHtml(text) {
     return div.innerHTML;
 }
 
-async function initInstagramStoryFeed() {
+async function initTrainingFeed() {
     const hero = document.getElementById('storyHero');
     const feed = document.getElementById('storyFeed');
     if (!feed) return;
 
     let data;
     try {
-        data = await InstagramAPI.getFeed();
+        data = await TrainingFeed.getFeed();
     } catch (err) {
         console.warn(err);
         feed.innerHTML = '<p class="story-error">Videos could not be loaded. Please refresh the page.</p>';
@@ -122,6 +122,11 @@ function initVideoModal() {
 function initNavigation() {
     const navbar = document.getElementById('navbar');
     const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+    const logoImg = document.querySelector('.logo img');
+
+    if (logoImg && typeof COACH_CONFIG !== 'undefined' && COACH_CONFIG.logo) {
+        logoImg.src = COACH_CONFIG.logo;
+    }
 
     window.addEventListener('scroll', () => {
         navbar.classList.toggle('scrolled', window.scrollY > 50);
