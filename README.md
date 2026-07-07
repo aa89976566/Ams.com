@@ -1,6 +1,8 @@
 # Coach Kings — Boxing Coach Website
 
-Premium boxing coaching website for **Simon "Kingsley" Bent** (@coach_kings2), inspired by [Ultimate Performance](https://ultimateperformance.com/).
+**Live site:** [https://aa89976566.github.io/Ams.com/](https://aa89976566.github.io/Ams.com/)
+
+Premium boxing coaching website for **Simon "Kingsley" Bent**, inspired by [Ultimate Performance](https://ultimateperformance.com/).
 
 ## Features
 

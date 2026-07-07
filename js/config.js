@@ -4,7 +4,8 @@
 const COACH_CONFIG = {
   name: 'Simon "Kingsley" Bent',
   brand: 'Coach Kings',
-  tagline: 'World-Class Boxing Coaching',
+  siteUrl: 'https://aa89976566.github.io/Ams.com/',
+  tagline: 'World Class Boxing Coaching',
   instagram: 'https://www.instagram.com/coach_kings2/',
   instagramHandle: '@coach_kings2',
   instagramData: 'data/instagram-videos.json',
