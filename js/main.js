@@ -28,39 +28,32 @@ async function initInstagramStoryFeed() {
         data = await InstagramAPI.getFeed();
     } catch (err) {
         console.warn(err);
-        feed.innerHTML = '<p class="story-error">Instagram videos loading… <a href="https://www.instagram.com/coach_kings2/" target="_blank" rel="noopener">Watch on Instagram</a></p>';
+        feed.innerHTML = '<p class="story-error">Videos could not be loaded. Please refresh the page.</p>';
         return;
     }
 
     const videos = data.videos || [];
     if (!videos.length) return;
 
-    const embedBlock = (url) => `
-        <blockquote
-            class="instagram-media"
-            data-instgrm-permalink="${url}"
-            data-instgrm-version="14"
-            style="background:#FFF;border:0;border-radius:4px;margin:0 auto;max-width:540px;min-width:280px;width:100%;">
-        </blockquote>
-    `;
-
     const renderStory = (video, featured = false) => {
         const tags = (video.hashtags || []).slice(0, 5).map(t => `#${escapeHtml(t)}`).join(' ');
+        const videoSrc = video.video || '';
         return `
         <article class="story-item${featured ? ' story-item--featured' : ''}">
-            <div class="story-embed">${embedBlock(video.url)}</div>
+            <button type="button" class="story-video-trigger" data-video="${escapeHtml(videoSrc)}" data-title="${escapeHtml(video.title)}" data-story="${escapeHtml(video.story || video.caption || '')}" aria-label="Play ${escapeHtml(video.title)}">
+                <img src="${video.thumbnail}" alt="${escapeHtml(video.title)}" loading="lazy">
+                <span class="story-play" aria-hidden="true"><i class="fas fa-play"></i></span>
+                <span class="story-video-badge">${escapeHtml(video.tag)}</span>
+                ${video.duration ? `<span class="story-video-duration">${escapeHtml(video.duration)}</span>` : ''}
+            </button>
             <div class="story-content">
                 <div class="story-meta">
                     <span class="story-tag">${escapeHtml(video.tag)}</span>
                     ${video.postedAt ? `<span class="story-date">${escapeHtml(video.postedAt)}</span>` : ''}
-                    ${video.duration ? `<span class="story-duration">${escapeHtml(video.duration)}</span>` : ''}
                 </div>
                 <h3>${escapeHtml(video.title)}</h3>
                 <p class="story-narrative">${escapeHtml(video.story || video.caption || video.description || '')}</p>
                 ${tags ? `<p class="story-hashtags">${tags}</p>` : ''}
-                <a href="${video.url}" class="story-link" target="_blank" rel="noopener">
-                    <i class="fab fa-instagram"></i> Open on Instagram
-                </a>
             </div>
         </article>`;
     };
@@ -73,7 +66,7 @@ async function initInstagramStoryFeed() {
                     <p class="story-profile-handle"><i class="fab fa-instagram"></i> @${escapeHtml(data.username)}</p>
                     <h3>${escapeHtml(data.fullName)}</h3>
                     <p class="story-profile-bio">${escapeHtml(data.bio)}</p>
-                    <p class="story-profile-count">${videos.length} training reels collected</p>
+                    <p class="story-profile-count">${videos.length} training videos — tap to play</p>
                 </div>
             </div>
             ${renderStory(featured, true)}
@@ -81,7 +74,51 @@ async function initInstagramStoryFeed() {
     }
 
     feed.innerHTML = videos.slice(hero ? 1 : 0).map(v => renderStory(v)).join('');
-    InstagramAPI.processEmbeds();
+    initVideoModal();
+}
+
+function initVideoModal() {
+    const modal = document.getElementById('videoModal');
+    const player = document.getElementById('modalVideo');
+    const info = document.getElementById('modalInfo');
+    const backdrop = document.getElementById('videoModalBackdrop');
+    const closeBtn = document.getElementById('videoModalClose');
+    if (!modal || !player) return;
+
+    const open = (src, title, story) => {
+        if (!src) return;
+        player.src = src;
+        player.currentTime = 0;
+        info.innerHTML = `
+            <h3>${escapeHtml(title)}</h3>
+            ${story ? `<p>${escapeHtml(story)}</p>` : ''}
+        `;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        player.play().catch(() => {});
+    };
+
+    const close = () => {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        player.pause();
+        player.removeAttribute('src');
+        player.load();
+    };
+
+    document.querySelectorAll('.story-video-trigger').forEach(btn => {
+        btn.addEventListener('click', () => {
+            open(btn.dataset.video, btn.dataset.title, btn.dataset.story);
+        });
+    });
+
+    backdrop?.addEventListener('click', close);
+    closeBtn?.addEventListener('click', close);
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+    });
 }
 
 function initNavigation() {
