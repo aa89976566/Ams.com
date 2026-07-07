@@ -398,97 +398,111 @@ section { padding: 6rem 0; }
 
 .pillar-link:hover { color: var(--accent-gold-light); }
 
-/* Training / Video Gallery */
+/* Training / Instagram Story Feed */
 .training { background: var(--bg-dark); }
 
-.video-featured {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-}
-
-.video-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+.story-hero {
     margin-bottom: 3rem;
 }
 
-.video-card {
-    display: block;
+.story-profile {
     background: var(--bg-card);
     border: 1px solid var(--border);
-    overflow: hidden;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.story-profile-handle {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    margin-bottom: 0.75rem;
+}
+
+.story-profile-handle i { margin-right: 0.5rem; }
+
+.story-profile-text h3 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    letter-spacing: 0.03em;
+    margin-bottom: 0.75rem;
+}
+
+.story-profile-bio {
+    color: var(--text-muted);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    max-width: 640px;
+}
+
+.story-profile-count {
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+}
+
+.story-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.story-item {
+    display: grid;
+    grid-template-columns: minmax(280px, 400px) 1fr;
+    gap: 2rem;
+    align-items: start;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 1.5rem;
     transition: var(--transition);
 }
 
-.video-card:hover {
+.story-item:hover {
+    border-color: rgba(220, 38, 38, 0.35);
+}
+
+.story-item--featured {
     border-color: rgba(220, 38, 38, 0.5);
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
-.video-thumb {
-    position: relative;
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
+.story-embed {
+    min-height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: #000;
+    border-radius: 4px;
+    overflow: hidden;
 }
 
-.video-card--featured .video-thumb {
-    aspect-ratio: 9 / 14;
+.story-embed .instagram-media {
+    margin: 0 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: unset !important;
 }
 
-.video-thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
+.story-content {
+    padding: 0.5rem 0;
 }
 
-.video-card:hover .video-thumb img {
-    transform: scale(1.06);
-}
-
-.video-play {
-    position: absolute;
-    inset: 0;
+.story-meta {
     display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
     align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.25);
-    transition: var(--transition);
+    margin-bottom: 1rem;
 }
 
-.video-card:hover .video-play {
-    background: rgba(0, 0, 0, 0.4);
-}
-
-.video-play-icon {
-    width: 64px;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--accent-red);
-    border-radius: 50%;
-    color: var(--white);
-    font-size: 1.25rem;
-    padding-left: 4px;
-    box-shadow: 0 8px 32px rgba(220, 38, 38, 0.5);
-    transition: var(--transition);
-}
-
-.video-card:hover .video-play-icon {
-    transform: scale(1.1);
-    background: var(--accent-red-hover);
-}
-
-.video-badge {
-    position: absolute;
-    top: 0.75rem;
-    left: 0.75rem;
+.story-tag {
     font-size: 0.625rem;
     font-weight: 700;
     letter-spacing: 0.12em;
@@ -498,66 +512,55 @@ section { padding: 6rem 0; }
     padding: 0.35rem 0.65rem;
 }
 
-.video-duration {
-    position: absolute;
-    bottom: 0.75rem;
-    right: 0.75rem;
+.story-date,
+.story-duration {
     font-size: 0.75rem;
-    font-weight: 600;
-    background: rgba(0, 0, 0, 0.75);
-    color: var(--white);
-    padding: 0.25rem 0.5rem;
-    border-radius: 2px;
+    color: var(--text-dim);
+    font-weight: 500;
 }
 
-.video-info {
-    padding: 1.25rem 1.5rem 1.5rem;
-}
-
-.video-info h3 {
+.story-content h3 {
     font-family: var(--font-display);
-    font-size: 1.25rem;
-    letter-spacing: 0.03em;
-    margin-bottom: 0.5rem;
+    font-size: 1.75rem;
+    letter-spacing: 0.02em;
     line-height: 1.2;
+    margin-bottom: 1rem;
 }
 
-.video-card--featured .video-info h3 {
-    font-size: 1.375rem;
-}
-
-.video-info p {
-    font-size: 0.875rem;
+.story-narrative {
+    font-size: 1rem;
     color: var(--text-muted);
-    margin-bottom: 0.75rem;
-    line-height: 1.5;
+    line-height: 1.7;
+    margin-bottom: 1rem;
 }
 
-.video-watch {
+.story-hashtags {
+    font-size: 0.8125rem;
+    color: var(--accent-gold);
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+}
+
+.story-link {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.6875rem;
+    font-size: 0.75rem;
     font-weight: 600;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--accent-gold);
 }
 
-.instagram-embeds {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 3rem;
+.story-link:hover { color: var(--accent-gold-light); }
+
+.story-error {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 3rem;
 }
 
-.instagram-embeds:empty { display: none; }
-
-.instagram-embeds .instagram-media {
-    margin: 0 auto !important;
-    min-width: unset !important;
-    width: 100% !important;
-}
+.story-error a { color: var(--accent-gold); }
 
 .instagram-cta {
     display: flex;
@@ -1072,8 +1075,8 @@ section { padding: 6rem 0; }
     .about-grid,
     .enquire-grid { grid-template-columns: 1fr; }
 
-    .video-featured,
-    .video-grid { grid-template-columns: repeat(2, 1fr); }
+    .story-item { grid-template-columns: 1fr; }
+    .story-embed { min-height: 400px; }
     .goals-grid { grid-template-columns: repeat(2, 1fr); }
     .results-grid { grid-template-columns: 1fr; }
     .locations-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1110,12 +1113,8 @@ section { padding: 6rem 0; }
 
     .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
     .pillars-grid { grid-template-columns: 1fr; }
-    .video-featured,
-    .video-grid { grid-template-columns: 1fr; }
-
-    .video-card--featured .video-thumb {
-        aspect-ratio: 16 / 9;
-    }
+    .story-item { grid-template-columns: 1fr; }
+    .story-embed { min-height: 360px; }
     .goals-grid { grid-template-columns: 1fr; }
     .locations-grid { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; }
