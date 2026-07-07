@@ -382,8 +382,151 @@ section { padding: 6rem 0; }
 
 .pillar-link:hover { color: var(--accent-gold-light); }
 
-/* Training / Instagram */
+/* Training / Video Gallery */
 .training { background: var(--bg-dark); }
+
+.video-featured {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.video-card {
+    display: block;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.video-card:hover {
+    border-color: rgba(220, 38, 38, 0.5);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.video-thumb {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #000;
+}
+
+.video-card--featured .video-thumb {
+    aspect-ratio: 9 / 14;
+}
+
+.video-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.video-card:hover .video-thumb img {
+    transform: scale(1.06);
+}
+
+.video-play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.25);
+    transition: var(--transition);
+}
+
+.video-card:hover .video-play {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.video-play-icon {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-red);
+    border-radius: 50%;
+    color: var(--white);
+    font-size: 1.25rem;
+    padding-left: 4px;
+    box-shadow: 0 8px 32px rgba(220, 38, 38, 0.5);
+    transition: var(--transition);
+}
+
+.video-card:hover .video-play-icon {
+    transform: scale(1.1);
+    background: var(--accent-red-hover);
+}
+
+.video-badge {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: var(--accent-red);
+    color: var(--white);
+    padding: 0.35rem 0.65rem;
+}
+
+.video-duration {
+    position: absolute;
+    bottom: 0.75rem;
+    right: 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: rgba(0, 0, 0, 0.75);
+    color: var(--white);
+    padding: 0.25rem 0.5rem;
+    border-radius: 2px;
+}
+
+.video-info {
+    padding: 1.25rem 1.5rem 1.5rem;
+}
+
+.video-info h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    letter-spacing: 0.03em;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.video-card--featured .video-info h3 {
+    font-size: 1.375rem;
+}
+
+.video-info p {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+}
+
+.video-watch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+}
 
 .instagram-embeds {
     display: grid;
@@ -398,79 +541,6 @@ section { padding: 6rem 0; }
     margin: 0 auto !important;
     min-width: unset !important;
     width: 100% !important;
-}
-
-.training-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-bottom: 3rem;
-}
-
-.training-card {
-    position: relative;
-    border-radius: 4px;
-    overflow: hidden;
-    aspect-ratio: 4/5;
-    cursor: pointer;
-    group: training;
-}
-
-.training-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease;
-}
-
-.training-card:hover img { transform: scale(1.08); }
-
-.training-card-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 1.5rem;
-    transition: var(--transition);
-}
-
-.training-card:hover .training-card-overlay {
-    background: linear-gradient(to top, rgba(220,38,38,0.85) 0%, rgba(0,0,0,0.4) 100%);
-}
-
-.training-tag {
-    display: inline-block;
-    font-size: 0.6875rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent-gold);
-    margin-bottom: 0.5rem;
-}
-
-.training-card h3 {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    letter-spacing: 0.03em;
-    margin-bottom: 0.5rem;
-}
-
-.training-card p {
-    font-size: 0.875rem;
-    color: rgba(255,255,255,0.8);
-    margin-bottom: 1rem;
-}
-
-.training-watch {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
 }
 
 .instagram-cta {
@@ -986,7 +1056,8 @@ section { padding: 6rem 0; }
     .about-grid,
     .enquire-grid { grid-template-columns: 1fr; }
 
-    .training-grid { grid-template-columns: repeat(2, 1fr); }
+    .video-featured,
+    .video-grid { grid-template-columns: repeat(2, 1fr); }
     .goals-grid { grid-template-columns: repeat(2, 1fr); }
     .results-grid { grid-template-columns: 1fr; }
     .locations-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1023,7 +1094,12 @@ section { padding: 6rem 0; }
 
     .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
     .pillars-grid { grid-template-columns: 1fr; }
-    .training-grid { grid-template-columns: 1fr; }
+    .video-featured,
+    .video-grid { grid-template-columns: 1fr; }
+
+    .video-card--featured .video-thumb {
+        aspect-ratio: 16 / 9;
+    }
     .goals-grid { grid-template-columns: 1fr; }
     .locations-grid { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; }
