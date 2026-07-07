@@ -13,47 +13,56 @@ const COACH_CONFIG = {
   phone: '+44 7943 785333',
   location: 'London, UK',
 
-  // Paste reel or post URLs from @coach_kings2 — they will auto-embed on the site.
-  instagramPosts: [
-    // Example: 'https://www.instagram.com/reel/XXXXXXXXX/'
-  ],
+  instagramPosts: [],
 
-  trainingCategories: [
-  {
-    title: 'Fundamentals & Stance',
-    description: 'Master your guard, footwork, and the building blocks of real boxing.',
-    image: 'https://images.unsplash.com/photo-1599058945522-28d584b6f53f?w=800&q=80',
-    tag: 'Technique'
-  },
-  {
-    title: 'Punch Combinations',
-    description: 'Jab, cross, hook, and uppercut — drilled with precision and purpose.',
-    image: 'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=800&q=80',
-    tag: 'Combinations'
-  },
-  {
-    title: 'Pad Work & Mitt Drills',
-    description: 'Sports-specific drills that develop timing, power, and fight IQ.',
-    image: 'https://images.unsplash.com/photo-1517438476312-10d79c0771a8?w=800&q=80',
-    tag: 'Pad Work'
-  },
-  {
-    title: 'Defence & Head Movement',
-    description: 'Slip, roll, block, and counter — stay safe while staying dangerous.',
-    image: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80',
-    tag: 'Defence'
-  },
-  {
-    title: 'Strength & Conditioning',
-    description: '20+ years of S&C expertise to build explosive, durable athletes.',
-    image: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80',
-    tag: 'S&C'
-  },
-  {
-    title: 'Sparring & Competition Prep',
-    description: 'From white collar to elite amateur — coached for the ring.',
-    image: 'https://images.unsplash.com/photo-1555597673-b21d5c935865?w=800&q=80',
-    tag: 'Competition'
-  }
+  trainingVideos: [
+    {
+      title: 'Online Boxing Drills',
+      description: 'Follow-along technique drills you can practice anywhere.',
+      thumbnail: 'images/videos/reel-1.png',
+      url: 'https://www.instagram.com/coach_kings2/',
+      tag: 'Reel',
+      duration: '0:60'
+    },
+    {
+      title: 'Pad Work Session',
+      description: 'Real mitt work — timing, power, and combination flow.',
+      thumbnail: 'images/videos/reel-2.png',
+      url: 'https://www.instagram.com/coach_kings2/',
+      tag: 'Pad Work',
+      duration: '0:45'
+    },
+    {
+      title: 'Strength & Boxing Combo',
+      description: 'Blend boxing skills with strength training for full-body results.',
+      thumbnail: 'images/videos/reel-3.png',
+      url: 'https://www.instagram.com/coach_kings2/',
+      tag: 'S&C',
+      duration: '1:00'
+    },
+    {
+      title: '1-to-1 Boxing Coaching',
+      description: 'Personalised sessions tailored to your level and goals.',
+      thumbnail: 'images/videos/boxing-121.jpg',
+      url: 'https://www.instagram.com/coach_kings2/',
+      tag: '1-to-1',
+      duration: '2:30'
+    },
+    {
+      title: 'Mitt Drills & Technique',
+      description: 'Sports-specific pad drills that develop fight IQ and precision.',
+      thumbnail: 'images/videos/pad-work.jpg',
+      url: 'https://www.instagram.com/coach_kings2/',
+      tag: 'Technique',
+      duration: '1:15'
+    },
+    {
+      title: 'Junior Boxing Programme',
+      description: 'Safe, structured boxing for young athletes — DBS certified coaching.',
+      thumbnail: 'images/videos/junior-boxing.jpg',
+      url: 'https://www.instagram.com/coach_kings2/',
+      tag: 'Juniors',
+      duration: '1:30'
+    }
   ]
 };

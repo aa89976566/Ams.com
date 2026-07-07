@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initNavigation();
     initMobileMenu();
     initCounters();
-    initTrainingGrid();
+    initVideoGallery();
     initInstagramEmbeds();
     initReviewsCarousel();
     initEnquireForm();
@@ -82,23 +82,40 @@ function animateCounter(el) {
     requestAnimationFrame(update);
 }
 
-function initTrainingGrid() {
-    const grid = document.getElementById('trainingGrid');
+function initVideoGallery() {
+    const featured = document.getElementById('videoFeatured');
+    const grid = document.getElementById('videoGrid');
     if (!grid || typeof COACH_CONFIG === 'undefined') return;
 
-    const instagram = COACH_CONFIG.instagram;
+    const videos = COACH_CONFIG.trainingVideos || [];
+    if (!videos.length) return;
 
-    grid.innerHTML = COACH_CONFIG.trainingCategories.map(cat => `
-        <a href="${instagram}" class="training-card" target="_blank" rel="noopener" aria-label="Watch ${cat.title} on Instagram">
-            <img src="${cat.image}" alt="${cat.title}" loading="lazy">
-            <div class="training-card-overlay">
-                <span class="training-tag">${cat.tag}</span>
-                <h3>${cat.title}</h3>
-                <p>${cat.description}</p>
-                <span class="training-watch"><i class="fab fa-instagram"></i> Watch on Instagram</span>
+    const renderCard = (video, featuredCard = false) => `
+        <a href="${video.url}" class="video-card${featuredCard ? ' video-card--featured' : ''}" target="_blank" rel="noopener" aria-label="Watch ${video.title} on Instagram">
+            <div class="video-thumb">
+                <img src="${video.thumbnail}" alt="${video.title}" loading="lazy">
+                <div class="video-play" aria-hidden="true">
+                    <span class="video-play-icon"><i class="fas fa-play"></i></span>
+                </div>
+                <span class="video-badge">${video.tag}</span>
+                ${video.duration ? `<span class="video-duration">${video.duration}</span>` : ''}
+            </div>
+            <div class="video-info">
+                <h3>${video.title}</h3>
+                <p>${video.description}</p>
+                <span class="video-watch"><i class="fab fa-instagram"></i> Watch on Instagram</span>
             </div>
         </a>
-    `).join('');
+    `;
+
+    if (featured) {
+        featured.innerHTML = videos.slice(0, 3).map(v => renderCard(v, true)).join('');
+    }
+
+    const remaining = featured ? videos.slice(3) : videos;
+    grid.innerHTML = remaining.length
+        ? remaining.map(v => renderCard(v)).join('')
+        : videos.map(v => renderCard(v)).join('');
 }
 
 function initInstagramEmbeds() {
