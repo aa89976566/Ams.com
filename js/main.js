@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     initMobileMenu();
     initHeroVideo();
     initCounters();
+    initVideoModal();
     await initTrainingFeed();
     initReviewsCarousel();
     initEnquireForm();
@@ -34,6 +35,8 @@ async function initTrainingFeed() {
 
     const videos = data.videos || [];
     if (!videos.length) return;
+
+    initMethodPillars(data, videos);
 
     const renderStory = (video, featured = false) => {
         const videoSrc = video.video || '';
@@ -72,7 +75,47 @@ async function initTrainingFeed() {
     }
 
     feed.innerHTML = videos.slice(hero ? 1 : 0).map(v => renderStory(v)).join('');
-    initVideoModal();
+}
+
+function initMethodPillars(data, videos) {
+    const grid = document.getElementById('methodPillars');
+    const pillars = data.methodPillars || [];
+    if (!grid || !pillars.length) return;
+
+    const byShortcode = Object.fromEntries(videos.map(v => [v.shortcode, v]));
+
+    const renderPillarVideo = (video) => `
+        <button type="button" class="pillar-video-trigger story-video-trigger"
+            data-video="${escapeHtml(video.video || '')}"
+            data-title="${escapeHtml(video.title)}"
+            data-story="${escapeHtml(video.story || '')}"
+            aria-label="Play ${escapeHtml(video.title)}">
+            <img src="${video.thumbnail}" alt="${escapeHtml(video.title)}" loading="lazy">
+            <span class="pillar-video-play" aria-hidden="true"><i class="fas fa-play"></i></span>
+            <span class="pillar-video-label">${escapeHtml(video.tag)}</span>
+        </button>`;
+
+    grid.innerHTML = pillars.map((pillar, index) => {
+        const pillarVideos = (pillar.videos || [])
+            .map(code => byShortcode[code])
+            .filter(Boolean)
+            .slice(0, 3);
+
+        return `
+        <article class="pillar-card" data-aos="fade-up" data-aos-delay="${index * 100}">
+            <div class="pillar-icon"><i class="fas ${escapeHtml(pillar.icon)}"></i></div>
+            <h3>${escapeHtml(pillar.title)}</h3>
+            <p>${escapeHtml(pillar.intro)}</p>
+            ${pillarVideos.length ? `
+            <div class="pillar-videos">
+                <p class="pillar-videos-label">From the film room</p>
+                <div class="pillar-videos-grid">
+                    ${pillarVideos.map(renderPillarVideo).join('')}
+                </div>
+            </div>` : ''}
+            <a href="#training" class="pillar-link">Watch full sessions <i class="fas fa-arrow-right"></i></a>
+        </article>`;
+    }).join('');
 }
 
 function initVideoModal() {
@@ -106,10 +149,10 @@ function initVideoModal() {
         player.load();
     };
 
-    document.querySelectorAll('.story-video-trigger').forEach(btn => {
-        btn.addEventListener('click', () => {
-            open(btn.dataset.video, btn.dataset.title, btn.dataset.story);
-        });
+    document.addEventListener('click', e => {
+        const btn = e.target.closest('.story-video-trigger');
+        if (!btn) return;
+        open(btn.dataset.video, btn.dataset.title, btn.dataset.story);
     });
 
     backdrop?.addEventListener('click', close);
