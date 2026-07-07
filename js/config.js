@@ -13,5 +13,7 @@ const COACH_CONFIG = {
   phone: '+44 7943 785333',
   location: 'London, UK',
   heroVideo: 'images/videos/hero-boxing.mp4',
-  heroPoster: 'images/instagram/DaAPU-YopXN.jpg'
+  heroPoster: 'images/instagram/DaAPU-YopXN.jpg',
+  logo: 'images/coach-kings-logo.png',
+  favicon: 'images/coach-kings-favicon.png'
 };

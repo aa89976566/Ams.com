@@ -148,7 +148,10 @@ section { padding: 6rem 0; }
     gap: 0.75rem;
 }
 
-.logo img { width: 44px; height: 44px; }
+.logo img {
+    height: 52px;
+    width: auto;
+}
 
 .logo-text {
     font-family: var(--font-display);
@@ -1143,7 +1146,11 @@ section { padding: 6rem 0; }
     margin-bottom: 3rem;
 }
 
-.footer-brand img { width: 48px; margin-bottom: 1rem; }
+.footer-brand img {
+    height: 56px;
+    width: auto;
+    margin-bottom: 1rem;
+}
 
 .footer-brand p {
     font-size: 0.9375rem;
