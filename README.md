@@ -22,18 +22,17 @@ python3 -m http.server 8080
 
 Then visit `http://localhost:8080`
 
-## Add Instagram Videos
+## Instagram Videos
 
-Edit `js/config.js` and add reel/post URLs:
+The site automatically loads reels from [@coach_kings2](https://www.instagram.com/coach_kings2/) via `data/instagram-videos.json`.
 
-```javascript
-instagramPosts: [
-  'https://www.instagram.com/reel/YOUR_REEL_ID/',
-  'https://www.instagram.com/p/YOUR_POST_ID/',
-]
+To refresh videos and thumbnails from Instagram:
+
+```bash
+python3 scripts/fetch-instagram.py
 ```
 
-Videos will auto-embed using Instagram's official embed script.
+This fetches the latest reels, downloads thumbnails to `images/instagram/`, and updates the JSON catalog.
 
 ## Coach Details
 
