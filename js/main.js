@@ -1,17 +1,34 @@
 // Coach Kings — Main JavaScript
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 80 });
 
     initNavigation();
     initMobileMenu();
     initHeroVideo();
     initCounters();
-    initVideoGallery();
-    initInstagramEmbeds();
+    await initVideoGallery();
     initReviewsCarousel();
     initEnquireForm();
 });
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+async function loadInstagramVideos() {
+    const dataPath = COACH_CONFIG?.instagramData || 'data/instagram-videos.json';
+    try {
+        const res = await fetch(dataPath);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return await res.json();
+    } catch (err) {
+        console.warn('Could not load Instagram videos:', err);
+        return null;
+    }
+}
 
 function initNavigation() {
     const navbar = document.getElementById('navbar');
@@ -100,27 +117,29 @@ function animateCounter(el) {
     requestAnimationFrame(update);
 }
 
-function initVideoGallery() {
+async function initVideoGallery() {
     const featured = document.getElementById('videoFeatured');
     const grid = document.getElementById('videoGrid');
-    if (!grid || typeof COACH_CONFIG === 'undefined') return;
+    const embeds = document.getElementById('instagramEmbeds');
+    if (!grid) return;
 
-    const videos = COACH_CONFIG.trainingVideos || [];
+    const data = await loadInstagramVideos();
+    const videos = data?.videos || COACH_CONFIG?.trainingVideos || [];
     if (!videos.length) return;
 
     const renderCard = (video, featuredCard = false) => `
-        <a href="${video.url}" class="video-card${featuredCard ? ' video-card--featured' : ''}" target="_blank" rel="noopener" aria-label="Watch ${video.title} on Instagram">
+        <a href="${video.url}" class="video-card${featuredCard ? ' video-card--featured' : ''}" target="_blank" rel="noopener" aria-label="Watch ${escapeHtml(video.title)} on Instagram">
             <div class="video-thumb">
-                <img src="${video.thumbnail}" alt="${video.title}" loading="lazy">
+                <img src="${video.thumbnail}" alt="${escapeHtml(video.title)}" loading="lazy">
                 <div class="video-play" aria-hidden="true">
                     <span class="video-play-icon"><i class="fas fa-play"></i></span>
                 </div>
-                <span class="video-badge">${video.tag}</span>
-                ${video.duration ? `<span class="video-duration">${video.duration}</span>` : ''}
+                <span class="video-badge">${escapeHtml(video.tag)}</span>
+                <span class="video-duration"><i class="fab fa-instagram"></i> Reel</span>
             </div>
             <div class="video-info">
-                <h3>${video.title}</h3>
-                <p>${video.description}</p>
+                <h3>${escapeHtml(video.title)}</h3>
+                <p>${escapeHtml(video.description)}</p>
                 <span class="video-watch"><i class="fab fa-instagram"></i> Watch on Instagram</span>
             </div>
         </a>
@@ -134,34 +153,28 @@ function initVideoGallery() {
     grid.innerHTML = remaining.length
         ? remaining.map(v => renderCard(v)).join('')
         : videos.map(v => renderCard(v)).join('');
-}
 
-function initInstagramEmbeds() {
-    const container = document.getElementById('instagramEmbeds');
-    if (!container || typeof COACH_CONFIG === 'undefined') return;
+    if (embeds && videos.length) {
+        embeds.innerHTML = videos.slice(0, 3).map(v => `
+            <blockquote
+                class="instagram-media"
+                data-instgrm-permalink="${v.url}"
+                data-instgrm-version="14"
+                style="background:#FFF;border:0;border-radius:4px;margin:0;max-width:100%;min-width:280px;padding:0;width:100%;">
+            </blockquote>
+        `).join('');
 
-    const posts = COACH_CONFIG.instagramPosts.filter(Boolean);
-    if (!posts.length) return;
-
-    container.innerHTML = posts.map(url => `
-        <blockquote
-            class="instagram-media"
-            data-instgrm-permalink="${url}"
-            data-instgrm-version="14"
-            style="background:#FFF;border:0;border-radius:4px;margin:0;max-width:100%;min-width:280px;padding:0;width:100%;">
-        </blockquote>
-    `).join('');
-
-    if (window.instgrm) {
-        window.instgrm.Embeds.process();
-    } else {
-        const check = setInterval(() => {
-            if (window.instgrm) {
-                window.instgrm.Embeds.process();
-                clearInterval(check);
-            }
-        }, 200);
-        setTimeout(() => clearInterval(check), 10000);
+        const processEmbeds = () => window.instgrm?.Embeds?.process();
+        processEmbeds();
+        if (!window.instgrm) {
+            const check = setInterval(() => {
+                if (window.instgrm) {
+                    processEmbeds();
+                    clearInterval(check);
+                }
+            }, 200);
+            setTimeout(() => clearInterval(check), 10000);
+        }
     }
 }
 
