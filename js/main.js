@@ -36,7 +36,6 @@ async function initInstagramStoryFeed() {
     if (!videos.length) return;
 
     const renderStory = (video, featured = false) => {
-        const tags = (video.hashtags || []).slice(0, 5).map(t => `#${escapeHtml(t)}`).join(' ');
         const videoSrc = video.video || '';
         return `
         <article class="story-item${featured ? ' story-item--featured' : ''}">
@@ -53,7 +52,6 @@ async function initInstagramStoryFeed() {
                 </div>
                 <h3>${escapeHtml(video.title)}</h3>
                 <p class="story-narrative">${escapeHtml(video.story || video.caption || video.description || '')}</p>
-                ${tags ? `<p class="story-hashtags">${tags}</p>` : ''}
             </div>
         </article>`;
     };
@@ -63,10 +61,10 @@ async function initInstagramStoryFeed() {
         hero.innerHTML = `
             <div class="story-profile">
                 <div class="story-profile-text">
-                    <p class="story-profile-handle"><i class="fab fa-instagram"></i> @${escapeHtml(data.username)}</p>
+                    <p class="story-profile-eyebrow">Coach's Film Room</p>
                     <h3>${escapeHtml(data.fullName)}</h3>
                     <p class="story-profile-bio">${escapeHtml(data.bio)}</p>
-                    <p class="story-profile-count">${videos.length} training videos — tap to play</p>
+                    <p class="story-profile-count">${videos.length} sessions on film. Select any clip to play.</p>
                 </div>
             </div>
             ${renderStory(featured, true)}
