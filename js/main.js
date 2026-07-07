@@ -80,7 +80,7 @@ async function initTrainingFeed() {
 function initMethodPillars(data, videos) {
     const grid = document.getElementById('methodPillars');
     const pillars = data.methodPillars || [];
-    if (!grid || !pillars.length) return;
+    if (!grid || !pillars.length || grid.children.length) return;
 
     const byShortcode = Object.fromEntries(videos.map(v => [v.shortcode, v]));
 
@@ -108,7 +108,7 @@ function initMethodPillars(data, videos) {
             <p>${escapeHtml(pillar.intro)}</p>
             ${pillarVideos.length ? `
             <div class="pillar-videos">
-                <p class="pillar-videos-label">From the film room</p>
+                <p class="pillar-videos-label">Coach Kings sessions on film</p>
                 <div class="pillar-videos-grid">
                     ${pillarVideos.map(renderPillarVideo).join('')}
                 </div>

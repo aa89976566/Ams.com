@@ -366,6 +366,21 @@ section { padding: 6rem 0; }
     border: 1px solid var(--border);
     padding: 2.5rem;
     transition: var(--transition);
+    overflow: hidden;
+}
+
+.pillar-featured {
+    margin: -2.5rem -2.5rem 1.5rem;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+}
+
+.pillar-featured img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .pillar-card:hover {
@@ -1357,6 +1372,10 @@ section { padding: 6rem 0; }
     .reviews-header { flex-direction: column; align-items: flex-start; }
     .form-row { grid-template-columns: 1fr; }
     .goal-checkboxes { grid-template-columns: 1fr; }
+
+    .pillar-card { padding: 1.5rem; }
+    .pillar-featured { margin: -1.5rem -1.5rem 1.25rem; }
+    .pillar-videos-grid { grid-template-columns: repeat(3, 1fr); gap: 0.4rem; }
 
     .hero-scroll { display: none; }
 }
