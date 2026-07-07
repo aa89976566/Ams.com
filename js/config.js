@@ -5,7 +5,7 @@ const COACH_CONFIG = {
   name: 'Simon "Kingsley" Bent',
   brand: 'Coach Kings',
   siteUrl: 'https://aa89976566.github.io/Ams.com/',
-  assetVersion: '20260707f',
+  assetVersion: '20260707g',
   tagline: 'World Class Boxing Coaching',
   trainingData: 'data/instagram-videos.json',
   siteContent: 'data/site-content.json',
@@ -18,6 +18,6 @@ const COACH_CONFIG = {
   location: 'London, UK',
   heroVideo: 'images/videos/hero-boxing.mp4',
   heroPoster: 'images/instagram/DaAPU-YopXN.jpg',
-  logo: 'images/coach-kings-logo.png?v=20260707f',
-  favicon: 'images/coach-kings-favicon.png?v=20260707f'
+  logo: 'images/coach-kings-logo.png?v=20260707g',
+  favicon: 'images/coach-kings-favicon.png?v=20260707g'
 };
