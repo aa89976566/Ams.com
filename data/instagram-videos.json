@@ -5,6 +5,36 @@
   "bio": "England Boxing certified coach. Structured syllabus from fundamentals through to competition preparation.",
   "profileUrl": "https://www.instagram.com/coach_kings2/",
   "videoCount": 12,
+  "methodPillars": [
+    {
+      "id": "technique",
+      "icon": "fa-fist-raised",
+      "title": "Precision Boxing Technique",
+      "intro": "From the film room: progressive focus mitt combinations, pad rounds at fight pace, defensive rolling off the line, and controlled technical sparring. Every session builds ringcraft through layered combinations, head movement, and reactive footwork.",
+      "videos": ["DaYnaKtsocf", "DaAPU-YopXN", "DZ5uF8VMrZq", "DZeyixEMiJE"]
+    },
+    {
+      "id": "conditioning",
+      "icon": "fa-dumbbell",
+      "title": "Strength and Conditioning",
+      "intro": "Boxing specific strength built in the gym: anti rotation core holds, medicine ball rotational throws, goblet squat leg drive, and posterior chain work at 120 kilograms. Accessory drills that transfer hip power and trunk stiffness directly into punching force.",
+      "videos": ["DaXkCnZsFMo", "DaGatO2sSzG", "DZf6G8YsXIt", "DZKVe73MRlm"]
+    },
+    {
+      "id": "coaching",
+      "icon": "fa-user-check",
+      "title": "Expert Coaching and Accountability",
+      "intro": "One to one technical sessions, group pad classes at Bronx LDN, youth development at Regenerate, and unstable surface mitt work that builds balance under fatigue. Coaching that meets you at your level and raises the standard every week.",
+      "videos": ["DaQlEZdMI5J", "DZZ6SDPskkS", "DZ2aFJXMwxg"]
+    },
+    {
+      "id": "progress",
+      "icon": "fa-chart-line",
+      "title": "Data Driven Progress",
+      "intro": "Structured syllabus with measurable milestones. Film every phase from technical one to one work to competition pace pad rounds and sparring progression. Progress you can review, repeat, and build on session after session.",
+      "videos": ["DZvMQc5Mr9I", "DaAPU-YopXN", "DZeyixEMiJE"]
+    }
+  ],
   "videos": [
     {
       "shortcode": "DZKVe73MRlm",
