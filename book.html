@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book Coach Kings boxing coaching with Simon Kingsley Bent. Private sessions, consultations, and group classes in London.">
+    <title>Book a Session | Coach Kings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css?v=20260707f">
+    <link rel="icon" href="images/coach-kings-favicon.png?v=20260707f" type="image/png">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <img src="images/coach-kings-logo.png?v=20260707f" alt="Coach Kings">
+                </a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html#method" class="nav-link">The Method</a></li>
+                    <li><a href="index.html#training" class="nav-link">Film Room</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                    <li><a href="schedule.html" class="nav-link">Schedule</a></li>
+                    <li><a href="book.html" class="nav-link cta-button active">Book Now</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="page-hero">
+        <div class="container" data-aos="fade-up">
+            <p class="breadcrumb"><a href="index.html">Home</a> / Book</p>
+            <p class="section-eyebrow">Start your coaching journey</p>
+            <h1 class="section-title">Book with Coach Kings</h1>
+            <p class="section-subtitle">Send your booking request below. Simon personally reviews every enquiry and responds within 24 hours with availability and next steps.</p>
+        </div>
+    </header>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="steps-grid" data-aos="fade-up">
+                <article class="step-card">
+                    <div class="step-number">01</div>
+                    <h3>Choose your pathway</h3>
+                    <p>Select private coaching, group pad class, competition prep, youth development, or online coaching.</p>
+                </article>
+                <article class="step-card">
+                    <div class="step-number">02</div>
+                    <h3>Share your goals</h3>
+                    <p>Tell us your experience level, preferred locations, and availability. Simon responds within 24 hours.</p>
+                </article>
+                <article class="step-card">
+                    <div class="step-number">03</div>
+                    <h3>Confirm your session</h3>
+                    <p>Receive a personalised plan, session time, and location details. Free consultation available for new clients.</p>
+                </article>
+            </div>
+
+            <div class="book-layout">
+                <aside class="book-sidebar" data-aos="fade-right">
+                    <p class="section-eyebrow">Direct contact</p>
+                    <h2 class="section-title" style="font-size: 2rem; margin-bottom: 1rem;">Prefer to speak first?</h2>
+                    <p>Call or email Simon directly. New clients can book a free 60 minute consultation to map out the right coaching pathway before committing to a block.</p>
+                    <div class="contact-details">
+                        <a href="tel:+447943785333">+44 7943 785333</a>
+                        <a href="mailto:simon@stacksfit.co.uk">simon@stacksfit.co.uk</a>
+                    </div>
+                    <p style="margin-top: 2rem; font-size: 0.875rem; color: var(--text-dim);">Private coaching from £50 per hour · Group pad classes from £22.50 · Free consultation available</p>
+                    <p style="margin-top: 1rem;"><a href="pricing.html" style="color: var(--accent-gold);">View full pricing</a> · <a href="schedule.html" style="color: var(--accent-gold);">View schedule</a></p>
+                </aside>
+
+                <form class="enquire-form" id="bookingForm" data-aos="fade-left">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service</label>
+                        <select id="service" name="service" required>
+                            <option value="">Select a service</option>
+                            <option value="Free Consultation">Free Consultation</option>
+                            <option value="Private One to One Boxing">Private One to One Boxing</option>
+                            <option value="Competition Preparation">Competition Preparation</option>
+                            <option value="Group Pad Class">Group Pad Class</option>
+                            <option value="Strength and Conditioning">Strength and Conditioning</option>
+                            <option value="Youth Boxing Development">Youth Boxing Development</option>
+                            <option value="Online One to One Coaching">Online One to One Coaching</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Preferred location</label>
+                        <select id="location" name="location">
+                            <option value="">Select a location</option>
+                            <option value="GYMBOX Victoria">GYMBOX Victoria</option>
+                            <option value="GYMBOX Farringdon">GYMBOX Farringdon</option>
+                            <option value="GYMBOX Old Street">GYMBOX Old Street</option>
+                            <option value="GYMBOX Holborn">GYMBOX Holborn</option>
+                            <option value="GYMBOX Bank">GYMBOX Bank</option>
+                            <option value="GYMBOX Elephant and Castle">GYMBOX Elephant and Castle</option>
+                            <option value="Bronx LDN">Bronx LDN</option>
+                            <option value="White Collar Fight Club">White Collar Fight Club</option>
+                            <option value="Online">Online</option>
+                            <option value="No preference">No preference</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="preferredTime">Preferred day or time</label>
+                            <input type="text" id="preferredTime" name="preferredTime" placeholder="e.g. Tuesday evenings">
+                        </div>
+                        <div class="form-group">
+                            <label for="experience">Experience level</label>
+                            <select id="experience" name="experience">
+                                <option value="">Select level</option>
+                                <option value="Complete beginner">Complete beginner</option>
+                                <option value="Some boxing experience">Some boxing experience</option>
+                                <option value="Regular trainer">Regular trainer</option>
+                                <option value="Competition athlete">Competition athlete</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Goals and notes</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Tell Simon about your goals, injuries, or anything relevant..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Send booking request</button>
+                    <p class="form-note">Submitting opens your email app with your request addressed to Simon. He will confirm your session personally.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="images/coach-kings-logo.png?v=20260707f" alt="Coach Kings">
+                    <p>World class boxing coaching by Simon Kingsley Bent. London, UK.</p>
+                    <div class="footer-social">
+                        <a href="book.html">Book</a>
+                        <a href="mailto:simon@stacksfit.co.uk">Email</a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="services.html">Services</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="schedule.html">Schedule</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Book</h4>
+                    <a href="book.html">One to One Session</a>
+                    <a href="book.html">Free Consultation</a>
+                    <a href="schedule.html">Group Classes</a>
+                    <a href="book.html">Online Coaching</a>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <a href="tel:+447943785333">+44 7943 785333</a>
+                    <a href="mailto:simon@stacksfit.co.uk">simon@stacksfit.co.uk</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Coach Kings · Simon Kingsley Bent. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/config.js?v=20260707f"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/main.js?v=20260707f"></script>
+    <script src="js/book.js?v=20260707f"></script>
+</body>
+</html>

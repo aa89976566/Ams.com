@@ -10,7 +10,7 @@ Premium boxing coaching website for **Simon "Kingsley" Bent**, inspired by [Ulti
 - **Training Academy** section linking to [@coach_kings2](https://www.instagram.com/coach_kings2/) Instagram teaching videos
 - Instagram embed support — add reel URLs to `js/config.js` → `instagramPosts`
 - Client reviews from stacksFit (5.0 · 44 reviews)
-- Online booking via [stacksfit.setmore.com](https://stacksfit.setmore.com/)
+- On site booking via **book.html** with services, pricing, and schedule pages
 - Contact enquiry form (mailto)
 - Fully responsive mobile design
 
@@ -53,7 +53,7 @@ GitHub Actions runs every Monday (`.github/workflows/update-instagram.yml`) to p
 
 - **Name:** Simon "Kingsley" Bent
 - **Instagram:** [@coach_kings2](https://www.instagram.com/coach_kings2/)
-- **Booking:** [stacksfit.setmore.com](https://stacksfit.setmore.com/)
+- **Booking:** [book.html](book.html) on site
 - **Email:** simon@stacksfit.co.uk
 - **Phone:** +44 7943 785333
 - **Location:** London, UK
