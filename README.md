@@ -27,9 +27,11 @@ Then visit `http://localhost:8080`
 Reels are collected from [@coach_kings2](https://www.instagram.com/coach_kings2/) via Instagram's public profile API and saved to `data/instagram-videos.json`.
 
 Each reel includes:
-- **Embedded Instagram player** (playable on-site)
+- **On-site video player** — tap thumbnail to play in a modal (stays on your website)
 - **Story narrative** (full caption text)
 - **Hashtags, category tag, and post date**
+
+Videos are downloaded to `videos/instagram/` during collection for self-hosted playback.
 
 ### Refresh videos manually
 

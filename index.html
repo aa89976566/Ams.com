@@ -394,10 +394,18 @@
         </div>
     </footer>
 
+    <div class="video-modal" id="videoModal" aria-hidden="true">
+        <div class="video-modal-backdrop" id="videoModalBackdrop"></div>
+        <div class="video-modal-dialog" role="dialog" aria-modal="true" aria-label="Training video player">
+            <button type="button" class="video-modal-close" id="videoModalClose" aria-label="Close video">&times;</button>
+            <video id="modalVideo" class="video-modal-player" controls playsinline preload="metadata"></video>
+            <div class="video-modal-info" id="modalInfo"></div>
+        </div>
+    </div>
+
     <script src="js/config.js"></script>
     <script src="js/instagram-api.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script async src="//www.instagram.com/embed.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

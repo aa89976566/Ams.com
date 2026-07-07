@@ -3,6 +3,7 @@
 
 import json
 import re
+import subprocess
 import time
 import urllib.error
 import urllib.request
@@ -12,6 +13,7 @@ from pathlib import Path
 USERNAME = 'coach_kings2'
 ROOT = Path(__file__).resolve().parents[1]
 THUMB_DIR = ROOT / 'images' / 'instagram'
+VIDEO_DIR = ROOT / 'videos' / 'instagram'
 DATA_FILE = ROOT / 'data' / 'instagram-videos.json'
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
@@ -71,12 +73,21 @@ def tag_from(caption: str) -> str:
 
 def download(url: str, path: Path) -> None:
     req = urllib.request.Request(url, headers={**HEADERS, 'Referer': 'https://www.instagram.com/'})
-    with urllib.request.urlopen(req, timeout=60) as resp:
+    with urllib.request.urlopen(req, timeout=120) as resp:
         path.write_bytes(resp.read())
+
+
+def compress_video(src: Path, dest: Path) -> None:
+    subprocess.run([
+        'ffmpeg', '-y', '-loglevel', 'error', '-i', str(src),
+        '-c:v', 'libx264', '-crf', '28', '-preset', 'fast',
+        '-movflags', '+faststart', '-an', str(dest),
+    ], check=True)
 
 
 def main() -> None:
     THUMB_DIR.mkdir(parents=True, exist_ok=True)
+    VIDEO_DIR.mkdir(parents=True, exist_ok=True)
     DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
 
     user = fetch_profile(USERNAME)
@@ -98,6 +109,21 @@ def main() -> None:
         if thumb_url:
             download(thumb_url, thumb_path)
 
+        video_file = None
+        video_url = node.get('video_url')
+        if video_url:
+            raw_path = VIDEO_DIR / f'{shortcode}-raw.mp4'
+            dest_path = VIDEO_DIR / f'{shortcode}.mp4'
+            try:
+                download(video_url, raw_path)
+                compress_video(raw_path, dest_path)
+                raw_path.unlink(missing_ok=True)
+                video_file = f'videos/instagram/{shortcode}.mp4'
+            except Exception as exc:
+                print(f'Warning: could not download video {shortcode}: {exc}')
+                if dest_path.exists():
+                    video_file = f'videos/instagram/{shortcode}.mp4'
+
         ts = node.get('taken_at_timestamp')
         posted = datetime.fromtimestamp(ts, tz=timezone.utc).strftime('%d %b %Y') if ts else ''
         duration = node.get('video_duration')
@@ -110,8 +136,8 @@ def main() -> None:
             'caption': caption,
             'hashtags': hashtags(caption),
             'thumbnail': f'images/instagram/{shortcode}.jpg',
+            'video': video_file,
             'url': f'https://www.instagram.com/reel/{shortcode}/',
-            'embedUrl': f'https://www.instagram.com/reel/{shortcode}/embed',
             'tag': tag_from(caption),
             'postedAt': posted,
             'duration': f'0:{int(duration):02d}' if duration else None,

@@ -16,19 +16,5 @@ const InstagramAPI = {
     if (!res.ok) throw new Error(`Instagram feed unavailable (${res.status})`);
     this.cache = await res.json();
     return this.cache;
-  },
-
-  processEmbeds() {
-    const run = () => window.instgrm?.Embeds?.process();
-    run();
-    if (!window.instgrm) {
-      const check = setInterval(() => {
-        if (window.instgrm) {
-          run();
-          clearInterval(check);
-        }
-      }, 200);
-      setTimeout(() => clearInterval(check), 12000);
-    }
   }
 };
