@@ -44,7 +44,7 @@ async function initTrainingFeed() {
         <article class="story-item${featured ? ' story-item--featured' : ''}">
             <button type="button" class="story-video-trigger" data-video="${escapeHtml(videoSrc)}" data-title="${escapeHtml(video.title)}" data-story="${escapeHtml(video.story || video.caption || '')}" aria-label="Play ${escapeHtml(video.title)}">
                 <img src="${video.thumbnail}" alt="${escapeHtml(video.title)}" loading="lazy">
-                <span class="story-play" aria-hidden="true"><i class="fas fa-play"></i></span>
+                <span class="story-play" aria-hidden="true"></span>
                 <span class="story-video-badge">${escapeHtml(video.tag)}</span>
                 ${video.duration ? `<span class="story-video-duration">${escapeHtml(video.duration)}</span>` : ''}
             </button>
@@ -91,7 +91,7 @@ function initMethodPillars(data, videos) {
             data-story="${escapeHtml(video.story || '')}"
             aria-label="Play ${escapeHtml(video.title)}">
             <img src="${video.thumbnail}" alt="${escapeHtml(video.title)}" loading="lazy">
-            <span class="pillar-video-play" aria-hidden="true"><i class="fas fa-play"></i></span>
+            <span class="pillar-video-play" aria-hidden="true"></span>
             <span class="pillar-video-label">${escapeHtml(video.tag)}</span>
         </button>`;
 
@@ -103,7 +103,6 @@ function initMethodPillars(data, videos) {
 
         return `
         <article class="pillar-card" data-aos="fade-up" data-aos-delay="${index * 100}">
-            <div class="pillar-icon"><i class="fas ${escapeHtml(pillar.icon)}"></i></div>
             <h3>${escapeHtml(pillar.title)}</h3>
             <p>${escapeHtml(pillar.intro)}</p>
             ${pillarVideos.length ? `
@@ -113,7 +112,7 @@ function initMethodPillars(data, videos) {
                     ${pillarVideos.map(renderPillarVideo).join('')}
                 </div>
             </div>` : ''}
-            <a href="#training" class="pillar-link">Watch full sessions <i class="fas fa-arrow-right"></i></a>
+            <a href="#training" class="pillar-link">Watch full sessions</a>
         </article>`;
     }).join('');
 }

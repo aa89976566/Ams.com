@@ -388,18 +388,6 @@ section { padding: 6rem 0; }
     transform: translateY(-4px);
 }
 
-.pillar-icon {
-    width: 56px;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(220, 38, 38, 0.1);
-    color: var(--accent-red);
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
 .pillar-card h3 {
     font-family: var(--font-display);
     font-size: 1.75rem;
@@ -465,17 +453,14 @@ section { padding: 6rem 0; }
     background: rgba(0, 0, 0, 0.35);
 }
 
-.pillar-video-play i {
+.pillar-video-play::after {
+    content: '';
     width: 36px;
     height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
     background: var(--accent-red);
     border-radius: 50%;
-    color: var(--white);
-    font-size: 0.75rem;
-    padding-left: 2px;
+    clip-path: polygon(38% 30%, 38% 70%, 68% 50%);
 }
 
 .pillar-video-label {
@@ -612,18 +597,15 @@ section { padding: 6rem 0; }
     background: rgba(0, 0, 0, 0.5);
 }
 
-.story-play i {
+.story-play::after {
+    content: '';
     width: 64px;
     height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: block;
     background: var(--accent-red);
     border-radius: 50%;
-    color: var(--white);
-    font-size: 1.25rem;
-    padding-left: 4px;
     box-shadow: 0 8px 32px rgba(220, 38, 38, 0.5);
+    clip-path: polygon(38% 30%, 38% 70%, 68% 50%);
 }
 
 .story-video-badge {
@@ -813,11 +795,6 @@ section { padding: 6rem 0; }
     gap: 1.5rem;
 }
 
-.training-cta-content > i {
-    font-size: 3rem;
-    color: var(--white);
-}
-
 .training-cta h3 {
     font-family: var(--font-display);
     font-size: 1.5rem;
@@ -861,12 +838,6 @@ section { padding: 6rem 0; }
 .goal-card:hover {
     border-color: var(--accent-red);
     transform: translateY(-4px);
-}
-
-.goal-card > i {
-    font-size: 2rem;
-    color: var(--accent-red);
-    margin-bottom: 1.5rem;
 }
 
 .goal-card h3 {
@@ -959,7 +930,9 @@ section { padding: 6rem 0; }
 
 .reviews-score .stars {
     color: var(--accent-gold);
-    font-size: 1.25rem;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    letter-spacing: 0.05em;
     margin-bottom: 0.25rem;
 }
 
@@ -1005,8 +978,9 @@ section { padding: 6rem 0; }
 }
 
 .review-btn {
-    width: 48px;
+    min-width: 48px;
     height: 48px;
+    padding: 0 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1015,6 +989,10 @@ section { padding: 6rem 0; }
     color: var(--white);
     cursor: pointer;
     transition: var(--transition);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .review-btn:hover {
@@ -1041,8 +1019,6 @@ section { padding: 6rem 0; }
     font-size: 0.9375rem;
     transition: var(--transition);
 }
-
-.location-item i { color: var(--accent-red); }
 
 .location-item:hover {
     border-color: rgba(220, 38, 38, 0.3);
@@ -1110,15 +1086,11 @@ section { padding: 6rem 0; }
 }
 
 .credentials li {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
+    display: block;
     padding: 0.5rem 0;
     font-size: 0.9375rem;
     color: var(--text-muted);
 }
-
-.credentials i { color: var(--accent-gold); font-size: 0.875rem; }
 
 .about-buttons {
     display: flex;
@@ -1159,7 +1131,6 @@ section { padding: 6rem 0; }
 }
 
 .contact-details a:hover { color: var(--accent-gold); }
-.contact-details i { color: var(--accent-red); width: 20px; }
 
 .enquire-form {
     background: var(--bg-card);
@@ -1265,15 +1236,18 @@ section { padding: 6rem 0; }
 }
 
 .footer-social a {
-    width: 40px;
-    height: 40px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    padding: 0.5rem 1rem;
     background: var(--bg-elevated);
     border: 1px solid var(--border);
     color: var(--text-muted);
     transition: var(--transition);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .footer-social a:hover {
