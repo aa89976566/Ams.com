@@ -1,372 +1,196 @@
-// ===========================
-// AMS - Academic Masterpiece Studio
-// Main JavaScript
-// ===========================
+// Coach Kings — Main JavaScript
 
-// === Initialization ===
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize AOS animations
-    AOS.init({
-        duration: 800,
-        easing: 'ease-in-out',
-        once: true,
-        offset: 100
-    });
+document.addEventListener('DOMContentLoaded', () => {
+    AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 80 });
 
-    // Initialize all functions
     initNavigation();
-    initHeroParallax();
-    initCounters();
-    initServiceTabs();
-    initScrollButtons();
     initMobileMenu();
-    initPriceCalculator();
+    initCounters();
+    initTrainingGrid();
+    initInstagramEmbeds();
+    initReviewsCarousel();
+    initEnquireForm();
 });
 
-// === Navigation ===
 function initNavigation() {
     const navbar = document.getElementById('navbar');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    // Add shadow on scroll
+    const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
     });
-    
-    // Smooth scroll to anchors
+
     navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
+        link.addEventListener('click', e => {
             const href = link.getAttribute('href');
-            if (href.startsWith('#')) {
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                    const offset = 80;
-                    const targetPosition = target.offsetTop - offset;
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu
-                    const navMenu = document.getElementById('navMenu');
-                    if (navMenu.classList.contains('active')) {
-                        navMenu.classList.remove('active');
-                    }
-                }
-            }
+            const target = document.querySelector(href);
+            if (!target) return;
+
+            e.preventDefault();
+            const offset = 80;
+            window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
+
+            document.getElementById('navMenu')?.classList.remove('active');
         });
     });
 }
 
-// === Mobile Menu ===
 function initMobileMenu() {
-    const mobileToggle = document.getElementById('mobileToggle');
-    const navMenu = document.getElementById('navMenu');
-    
-    if (mobileToggle) {
-        mobileToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            
-            // Animate hamburger icon
-            const spans = mobileToggle.querySelectorAll('span');
-            spans[0].style.transform = navMenu.classList.contains('active') ? 
-                'rotate(45deg) translateY(8px)' : 'none';
-            spans[1].style.opacity = navMenu.classList.contains('active') ? 
-                '0' : '1';
-            spans[2].style.transform = navMenu.classList.contains('active') ? 
-                'rotate(-45deg) translateY(-8px)' : 'none';
-        });
-    }
+    const toggle = document.getElementById('mobileToggle');
+    const menu = document.getElementById('navMenu');
+    if (!toggle || !menu) return;
+
+    toggle.addEventListener('click', () => {
+        menu.classList.toggle('active');
+        const spans = toggle.querySelectorAll('span');
+        const open = menu.classList.contains('active');
+        spans[0].style.transform = open ? 'rotate(45deg) translateY(7px)' : '';
+        spans[1].style.opacity = open ? '0' : '1';
+        spans[2].style.transform = open ? 'rotate(-45deg) translateY(-7px)' : '';
+    });
 }
 
-// === Hero Parallax Effect ===
-function initHeroParallax() {
-    const heroBackground = document.querySelector('.hero-background');
-    
-    if (heroBackground) {
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
-        });
-    }
-}
-
-// === Animated Counters ===
 function initCounters() {
     const counters = document.querySelectorAll('.stat-number');
-    let animated = false;
-    
-    const animateCounters = () => {
-        if (animated) return;
-        
-        counters.forEach(counter => {
-            const target = parseFloat(counter.getAttribute('data-target'));
-            const duration = 2000;
-            const increment = target / (duration / 16);
-            let current = 0;
-            
-            const updateCounter = () => {
-                current += increment;
-                if (current < target) {
-                    counter.textContent = Math.floor(current);
-                    requestAnimationFrame(updateCounter);
-                } else {
-                    counter.textContent = target % 1 === 0 ? target : target.toFixed(1);
-                }
-            };
-            
-            updateCounter();
-        });
-        
-        animated = true;
-    };
-    
-    // Use Intersection Observer to trigger animation
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCounters();
-            }
+            if (!entry.isIntersecting) return;
+            animateCounter(entry.target);
+            observer.unobserve(entry.target);
         });
     }, { threshold: 0.5 });
-    
-    const heroStats = document.querySelector('.hero-stats');
-    if (heroStats) {
-        observer.observe(heroStats);
+
+    counters.forEach(counter => observer.observe(counter));
+}
+
+function animateCounter(el) {
+    const target = parseFloat(el.dataset.target);
+    const isDecimal = el.dataset.decimal === 'true';
+    const duration = 2000;
+    const start = performance.now();
+
+    function update(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = target * eased;
+
+        el.textContent = isDecimal ? value.toFixed(1) : Math.floor(value);
+
+        if (progress < 1) requestAnimationFrame(update);
+    }
+
+    requestAnimationFrame(update);
+}
+
+function initTrainingGrid() {
+    const grid = document.getElementById('trainingGrid');
+    if (!grid || typeof COACH_CONFIG === 'undefined') return;
+
+    const instagram = COACH_CONFIG.instagram;
+
+    grid.innerHTML = COACH_CONFIG.trainingCategories.map(cat => `
+        <a href="${instagram}" class="training-card" target="_blank" rel="noopener" aria-label="Watch ${cat.title} on Instagram">
+            <img src="${cat.image}" alt="${cat.title}" loading="lazy">
+            <div class="training-card-overlay">
+                <span class="training-tag">${cat.tag}</span>
+                <h3>${cat.title}</h3>
+                <p>${cat.description}</p>
+                <span class="training-watch"><i class="fab fa-instagram"></i> Watch on Instagram</span>
+            </div>
+        </a>
+    `).join('');
+}
+
+function initInstagramEmbeds() {
+    const container = document.getElementById('instagramEmbeds');
+    if (!container || typeof COACH_CONFIG === 'undefined') return;
+
+    const posts = COACH_CONFIG.instagramPosts.filter(Boolean);
+    if (!posts.length) return;
+
+    container.innerHTML = posts.map(url => `
+        <blockquote
+            class="instagram-media"
+            data-instgrm-permalink="${url}"
+            data-instgrm-version="14"
+            style="background:#FFF;border:0;border-radius:4px;margin:0;max-width:100%;min-width:280px;padding:0;width:100%;">
+        </blockquote>
+    `).join('');
+
+    if (window.instgrm) {
+        window.instgrm.Embeds.process();
+    } else {
+        const check = setInterval(() => {
+            if (window.instgrm) {
+                window.instgrm.Embeds.process();
+                clearInterval(check);
+            }
+        }, 200);
+        setTimeout(() => clearInterval(check), 10000);
     }
 }
 
-// === Service Tabs ===
-function initServiceTabs() {
-    const tabButtons = document.querySelectorAll('.tab-button');
-    const tabContents = document.querySelectorAll('.tab-content');
-    
-    tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const targetTab = button.getAttribute('data-tab');
-            
-            // Remove all active classes
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            tabContents.forEach(content => content.classList.remove('active'));
-            
-            // Add active to current tab
-            button.classList.add('active');
-            const targetContent = document.getElementById(targetTab);
-            if (targetContent) {
-                targetContent.classList.add('active');
-            }
-        });
+function initReviewsCarousel() {
+    const track = document.getElementById('reviewsTrack');
+    const prev = document.getElementById('reviewPrev');
+    const next = document.getElementById('reviewNext');
+    if (!track || !prev || !next) return;
+
+    let index = 0;
+
+    function getVisible() {
+        return window.innerWidth <= 1024 ? 1 : 2;
+    }
+
+    function getMaxIndex() {
+        const cards = track.children.length;
+        return Math.max(0, cards - getVisible());
+    }
+
+    function update() {
+        const card = track.querySelector('.review-card');
+        if (!card) return;
+        const gap = 24;
+        const offset = index * (card.offsetWidth + gap);
+        track.style.transform = `translateX(-${offset}px)`;
+    }
+
+    prev.addEventListener('click', () => {
+        index = index > 0 ? index - 1 : getMaxIndex();
+        update();
+    });
+
+    next.addEventListener('click', () => {
+        index = index < getMaxIndex() ? index + 1 : 0;
+        update();
+    });
+
+    window.addEventListener('resize', () => {
+        index = Math.min(index, getMaxIndex());
+        update();
     });
 }
 
-// === Service Level Selection ===
-function selectLevel(level) {
-    // Store selected level
-    sessionStorage.setItem('selectedLevel', level);
-    
-    // Scroll to pricing calculator
-    const pricingSection = document.getElementById('pricing');
-    if (pricingSection) {
-        pricingSection.scrollIntoView({ behavior: 'smooth' });
-    }
-    
-    // Update calculator dropdown
-    setTimeout(() => {
-        const calcLevel = document.getElementById('calc-level');
-        if (calcLevel) {
-            if (level === 'undergraduate') {
-                calcLevel.value = 'undergraduate';
-            } else if (level === 'postgraduate') {
-                calcLevel.value = 'postgraduate';
-            } else if (level === 'phd') {
-                calcLevel.value = 'phd-full';
-            }
-            updatePrice();
-        }
-    }, 500);
-}
+function initEnquireForm() {
+    const form = document.getElementById('enquireForm');
+    if (!form) return;
 
-// === Price Calculator ===
-function initPriceCalculator() {
-    // Check if level was pre-selected
-    const selectedLevel = sessionStorage.getItem('selectedLevel');
-    if (selectedLevel) {
-        const calcLevel = document.getElementById('calc-level');
-        if (calcLevel) {
-            if (selectedLevel === 'undergraduate') {
-                calcLevel.value = 'undergraduate';
-            } else if (selectedLevel === 'postgraduate') {
-                calcLevel.value = 'postgraduate';
-            } else if (selectedLevel === 'phd') {
-                calcLevel.value = 'phd-full';
-            }
-        }
-        sessionStorage.removeItem('selectedLevel');
-    }
-    
-    updatePrice();
-}
+    form.addEventListener('submit', e => {
+        e.preventDefault();
 
-function updatePrice() {
-    const level = document.getElementById('calc-level').value;
-    const words = parseInt(document.getElementById('calc-words').value) || 0;
-    const deadline = document.getElementById('calc-deadline').value;
-    
-    // Determine service type for PhD options
-    let serviceType = null;
-    if (level === 'phd-proposal') {
-        serviceType = 'proposal';
-    } else if (level === 'phd-editing') {
-        serviceType = 'editing';
-    } else if (level === 'phd-full') {
-        serviceType = 'full';
-    }
-    
-    // Get level key for config.js
-    let levelKey = level;
-    if (level.startsWith('phd-')) {
-        levelKey = 'phd';
-    }
-    
-    // Get base price per 1000 words
-    let pricePer1000 = getBasePrice(levelKey, serviceType);
-    
-    // Calculate base price: (words / 1000) * price per 1000
-    let basePrice = (words / 1000) * pricePer1000;
-    
-    // Calculate rush fee based on deadline (flat fee per 1000 words)
-    let rushFeePer1000 = getRushFee(deadline);
-    let rushFee = (words / 1000) * rushFeePer1000;
-    
-    // Calculate additional services
-    let addonPrice = 0;
-    
-    // Data Analysis
-    if (safeCheckbox('addon-spss')) addonPrice += getAddonPrice('spss');
-    if (safeCheckbox('addon-stata')) addonPrice += getAddonPrice('stata');
-    if (safeCheckbox('addon-r')) addonPrice += getAddonPrice('r');
-    if (safeCheckbox('addon-python')) addonPrice += getAddonPrice('python');
-    if (safeCheckbox('addon-nvivo')) addonPrice += getAddonPrice('nvivo');
-    if (safeCheckbox('addon-atlas')) addonPrice += getAddonPrice('atlas');
-    if (safeCheckbox('addon-excel')) addonPrice += getAddonPrice('excel');
-    
-    // Charts & Visualization
-    if (safeCheckbox('addon-charts')) {
-        const chartCount = parseInt(document.getElementById('chart-count').value) || 0;
-        addonPrice += chartCount * getAddonPrice('charts');
-    }
-    if (safeCheckbox('addon-infographic')) addonPrice += getAddonPrice('infographic');
-    if (safeCheckbox('addon-visualization')) addonPrice += getAddonPrice('visualization');
-    if (safeCheckbox('addon-presentation')) addonPrice += getAddonPrice('presentation');
-    
-    // Professional Analysis Tools
-    if (safeCheckbox('addon-swot')) addonPrice += getAddonPrice('swot');
-    if (safeCheckbox('addon-pestel')) addonPrice += getAddonPrice('pestel');
-    if (safeCheckbox('addon-porter')) addonPrice += getAddonPrice('porter');
-    if (safeCheckbox('addon-canvas')) addonPrice += getAddonPrice('canvas');
-    if (safeCheckbox('addon-financial')) addonPrice += getAddonPrice('financial');
-    if (safeCheckbox('addon-regression')) addonPrice += getAddonPrice('regression');
-    if (safeCheckbox('addon-factor')) addonPrice += getAddonPrice('factor');
-    if (safeCheckbox('addon-sem')) addonPrice += getAddonPrice('sem');
-    
-    // Literature & Citations
-    if (safeCheckbox('addon-systematic')) addonPrice += getAddonPrice('systematic');
-    if (safeCheckbox('addon-meta')) addonPrice += getAddonPrice('meta');
-    if (safeCheckbox('addon-bibliography')) addonPrice += getAddonPrice('bibliography');
-    if (safeCheckbox('addon-citation')) addonPrice += getAddonPrice('citation');
-    
-    // Editing & Quality Check
-    if (safeCheckbox('addon-plagiarism')) addonPrice += getAddonPrice('plagiarism');
-    if (safeCheckbox('addon-turnitin')) addonPrice += getAddonPrice('turnitin');
-    if (safeCheckbox('addon-abstract')) addonPrice += getAddonPrice('abstract');
-    if (safeCheckbox('addon-executive')) addonPrice += getAddonPrice('executive');
-    
-    // Calculate total
-    const totalPrice = basePrice + rushFee + addonPrice;
-    
-    // Update display
-    document.getElementById('base-price').textContent = formatPrice(basePrice);
-    document.getElementById('rush-fee').textContent = formatPrice(rushFee);
-    document.getElementById('addon-price').textContent = formatPrice(addonPrice);
-    document.getElementById('total-price').textContent = formatPrice(totalPrice);
-}
+        const data = new FormData(form);
+        const firstName = data.get('firstName');
+        const lastName = data.get('lastName');
+        const email = data.get('email');
+        const phone = data.get('phone') || 'Not provided';
+        const goals = [...form.querySelectorAll('input[name="goals"]:checked')].map(i => i.value).join(', ') || 'Not specified';
+        const message = data.get('message') || '';
 
-// Helper function to safely check checkbox
-function safeCheckbox(id) {
-    const element = document.getElementById(id);
-    return element && element.checked;
-}
+        const subject = encodeURIComponent(`Coaching Enquiry from ${firstName} ${lastName}`);
+        const body = encodeURIComponent(
+            `Name: ${firstName} ${lastName}\nEmail: ${email}\nPhone: ${phone}\nGoals: ${goals}\n\nMessage:\n${message}`
+        );
 
-function proceedToOrder() {
-    const level = document.getElementById('calc-level').value;
-    const words = document.getElementById('calc-words').value;
-    const totalPrice = document.getElementById('total-price').textContent;
-    
-    // Store order details
-    sessionStorage.setItem('orderDetails', JSON.stringify({
-        level: level,
-        words: words,
-        totalPrice: totalPrice
-    }));
-    
-    // Redirect to order page
-    window.location.href = 'order.html';
-}
-
-// === Scroll Buttons ===
-function initScrollButtons() {
-    const backToTop = document.getElementById('backToTop');
-    
-    // Back to top button
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            backToTop.classList.add('show');
-        } else {
-            backToTop.classList.remove('show');
-        }
-    });
-    
-    backToTop.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+        window.location.href = `mailto:simon@stacksfit.co.uk?subject=${subject}&body=${body}`;
     });
 }
-
-// === Utility Functions ===
-
-// Debounce function
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Throttle function
-function throttle(func, limit) {
-    let inThrottle;
-    return function(...args) {
-        if (!inThrottle) {
-            func.apply(this, args);
-            inThrottle = true;
-            setTimeout(() => inThrottle = false, limit);
-        }
-    };
-}
-
-// === Console Message ===
-console.log('%cWelcome to Academic Masterpiece Studio!', 'color: #d4af37; font-size: 24px; font-weight: bold;');
-console.log('%cProfessional Academic Writing Services', 'color: #1a2b4a; font-size: 16px;');
-console.log('%cContact: +44 7481 747436', 'color: #6c757d; font-size: 14px;');
