@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""Fetch @coach_kings2 Instagram reels and update data/instagram-videos.json + thumbnails."""
+"""Instagram collector API — fetches @coach_kings2 reels, thumbnails, and storytelling data."""
 
 import json
-import os
 import re
+import time
+import urllib.error
 import urllib.request
+from datetime import datetime, timezone
 from pathlib import Path
 
 USERNAME = 'coach_kings2'
@@ -17,22 +19,40 @@ HEADERS = {
 }
 
 
-def fetch_profile(username: str) -> dict:
+def fetch_profile(username: str, retries: int = 3) -> dict:
     url = f'https://www.instagram.com/api/v1/users/web_profile_info/?username={username}'
-    req = urllib.request.Request(url, headers=HEADERS)
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        data = json.load(resp)
-    if data.get('status') != 'ok':
-        raise RuntimeError(data.get('message', 'Instagram API error'))
-    return data['data']['user']
+    for attempt in range(retries):
+        try:
+            req = urllib.request.Request(url, headers=HEADERS)
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                data = json.load(resp)
+            if data.get('status') != 'ok':
+                raise RuntimeError(data.get('message', 'Instagram API error'))
+            return data['data']['user']
+        except urllib.error.HTTPError as exc:
+            if attempt < retries - 1:
+                time.sleep(30 * (attempt + 1))
+                continue
+            raise exc
+    raise RuntimeError('Instagram API unreachable')
 
 
-def title_from_caption(caption: str) -> str:
-    title = caption.split('.')[0].strip()
-    return (title[:67] + '...') if len(title) > 70 else title or 'Training Reel'
+def hashtags(caption: str) -> list[str]:
+    return re.findall(r'#(\w+)', caption)
 
 
-def tag_from_caption(caption: str) -> str:
+def story_text(caption: str) -> str:
+    text = re.sub(r'#\w+', '', caption)
+    text = re.sub(r'\s*\.\s*', '. ', text)
+    return ' '.join(text.split()).strip(' .')
+
+
+def title_from(caption: str) -> str:
+    first = re.split(r'[.!?\n]', caption)[0].strip()
+    return (first[:70] + '...') if len(first) > 73 else first or 'Training Reel'
+
+
+def tag_from(caption: str) -> str:
     c = caption.lower()
     if 'pad' in c or 'mitt' in c:
         return 'Pad Work'
@@ -78,25 +98,38 @@ def main() -> None:
         if thumb_url:
             download(thumb_url, thumb_path)
 
+        ts = node.get('taken_at_timestamp')
+        posted = datetime.fromtimestamp(ts, tz=timezone.utc).strftime('%d %b %Y') if ts else ''
+        duration = node.get('video_duration')
+        likes = node.get('edge_liked_by', {}).get('count')
+
         videos.append({
             'shortcode': shortcode,
-            'title': title_from_caption(caption),
-            'description': caption[:160] + ('...' if len(caption) > 160 else ''),
+            'title': title_from(caption),
+            'story': story_text(caption),
+            'caption': caption,
+            'hashtags': hashtags(caption),
             'thumbnail': f'images/instagram/{shortcode}.jpg',
             'url': f'https://www.instagram.com/reel/{shortcode}/',
-            'tag': tag_from_caption(caption),
+            'embedUrl': f'https://www.instagram.com/reel/{shortcode}/embed',
+            'tag': tag_from(caption),
+            'postedAt': posted,
+            'duration': f'0:{int(duration):02d}' if duration else None,
+            'likes': likes,
         })
 
     payload = {
+        'fetchedAt': datetime.now(timezone.utc).isoformat(),
         'username': user['username'],
         'fullName': user['full_name'],
         'bio': user['biography'],
         'profileUrl': f'https://www.instagram.com/{USERNAME}/',
+        'videoCount': len(videos),
         'videos': videos,
     }
 
     DATA_FILE.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
-    print(f'Updated {len(videos)} videos -> {DATA_FILE}')
+    print(f'Collected {len(videos)} Instagram reels -> {DATA_FILE}')
 
 
 if __name__ == '__main__':

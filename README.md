@@ -22,17 +22,28 @@ python3 -m http.server 8080
 
 Then visit `http://localhost:8080`
 
-## Instagram Videos
+## Instagram API & Storytelling
 
-The site automatically loads reels from [@coach_kings2](https://www.instagram.com/coach_kings2/) via `data/instagram-videos.json`.
+Reels are collected from [@coach_kings2](https://www.instagram.com/coach_kings2/) via Instagram's public profile API and saved to `data/instagram-videos.json`.
 
-To refresh videos and thumbnails from Instagram:
+Each reel includes:
+- **Embedded Instagram player** (playable on-site)
+- **Story narrative** (full caption text)
+- **Hashtags, category tag, and post date**
+
+### Refresh videos manually
 
 ```bash
 python3 scripts/fetch-instagram.py
 ```
 
-This fetches the latest reels, downloads thumbnails to `images/instagram/`, and updates the JSON catalog.
+### Automatic weekly sync
+
+GitHub Actions runs every Monday (`.github/workflows/update-instagram.yml`) to pull new reels automatically.
+
+### Frontend API
+
+`js/instagram-api.js` loads `data/instagram-videos.json` and renders the story feed with Instagram embed.js.
 
 ## Coach Details
 
