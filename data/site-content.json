@@ -1,4 +1,9 @@
 {
+  "primaryLocation": {
+    "name": "Bronx LDN",
+    "address": "166 Benhill Rd, London SE5 7LL",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=166+Benhill+Rd,+London+SE5+7LL"
+  },
   "services": [
     {
       "id": "private-coaching",
@@ -6,9 +11,9 @@
       "summary": "Structured syllabus coaching from stance and guard through combinations, pad work, and controlled sparring.",
       "details": "Every session is built around your level, goals, and timeline. Ideal for beginners learning the Sweet Science, intermediate athletes sharpening technique, and competitors preparing for amateur or white collar bouts.",
       "includes": ["Technical boxing syllabus", "Focus mitt and pad work", "Footwork and ringcraft", "Session planning and progress review"],
-      "locations": ["GYMBOX Victoria", "GYMBOX Farringdon", "GYMBOX Old Street", "GYMBOX Holborn", "GYMBOX Bank", "GYMBOX Elephant and Castle"],
+      "locations": ["Bronx LDN, 166 Benhill Rd SE5 7LL", "GYMBOX Victoria", "GYMBOX Farringdon", "GYMBOX Old Street", "GYMBOX Holborn", "GYMBOX Bank", "GYMBOX Elephant and Castle"],
       "duration": "45 to 60 minutes",
-      "fromPrice": "£50"
+      "fromPrice": "£45"
     },
     {
       "id": "competition-prep",
@@ -16,9 +21,9 @@
       "summary": "Fight camp style coaching for amateur, white collar, and recreational competitors.",
       "details": "Pad rounds at fight pace, technical sparring, conditioning blocks, and fight week planning. Delivered to England Boxing standards with attention to weight management, recovery, and corner strategy.",
       "includes": ["Fight specific pad combinations", "Controlled technical sparring", "Competition conditioning", "White Collar Fight Club pathway"],
-      "locations": ["White Collar Fight Club", "GYMBOX locations", "By arrangement"],
+      "locations": ["Bronx LDN", "White Collar Fight Club", "GYMBOX locations", "By arrangement"],
       "duration": "60 to 120 minutes",
-      "fromPrice": "£50"
+      "fromPrice": "£45"
     },
     {
       "id": "pad-classes",
@@ -26,9 +31,9 @@
       "summary": "Community pad sessions with structured mitt rotations and combination building for all levels.",
       "details": "High energy group coaching focused on hand speed, defensive responsibility, and fitness boxing with real technique. A strong entry point before moving into private coaching.",
       "includes": ["Partner pad rotations", "Combination progressions", "Fitness boxing circuits", "All levels welcome"],
-      "locations": ["Bronx LDN", "GYMBOX group studios"],
+      "locations": ["Bronx LDN, 166 Benhill Rd SE5 7LL", "GYMBOX group studios"],
       "duration": "45 to 60 minutes",
-      "fromPrice": "£22.50"
+      "fromPrice": "£25"
     },
     {
       "id": "strength-conditioning",
@@ -36,9 +41,9 @@
       "summary": "Sports specific gym work that supports punching power, trunk stiffness, and ring endurance.",
       "details": "Accessory drills including anti rotation core work, medicine ball throws, posterior chain development, and leg drive programming. Integrated with your boxing schedule, not generic gym training.",
       "includes": ["Boxing specific S&C programming", "Core and hip power work", "Lower body strength blocks", "Recovery and load management"],
-      "locations": ["GYMBOX locations", "Anytime Fitness Kingston", "Online check ins available"],
+      "locations": ["Bronx LDN", "GYMBOX locations", "Anytime Fitness Kingston", "Online check ins available"],
       "duration": "45 to 60 minutes",
-      "fromPrice": "£50"
+      "fromPrice": "£45"
     },
     {
       "id": "youth-boxing",
@@ -46,9 +51,9 @@
       "summary": "Technical fundamentals for young athletes with stance discipline, guard structure, and controlled pad work.",
       "details": "Coaching for developing amateur boxers with safeguarding, patience, and syllabus based progression. Suitable from age 5 with parent consultation for younger athletes.",
       "includes": ["Fundamental stance and guard", "Controlled pad work", "Movement and coordination", "England Boxing youth standards"],
-      "locations": ["Regenerate LDN", "Putney and Roehampton ABA Boxing Club", "By arrangement"],
+      "locations": ["Bronx LDN", "Regenerate LDN", "Putney and Roehampton ABA Boxing Club", "By arrangement"],
       "duration": "45 to 60 minutes",
-      "fromPrice": "£50"
+      "fromPrice": "£45"
     },
     {
       "id": "online-coaching",
@@ -61,49 +66,39 @@
       "fromPrice": "Enquire"
     }
   ],
-  "pricing": [
-    {
-      "name": "Private Coaching",
-      "price": "£50",
-      "unit": "per hour",
-      "description": "One to one boxing and personal training at GYMBOX and partner gyms across London.",
-      "features": ["Full technical syllabus", "Pad work and sparring prep", "S&C integration available", "All London GYMBOX sites"]
-    },
-    {
-      "name": "Express Pad Session",
-      "price": "£37",
-      "unit": "20 minutes",
-      "description": "Focused pad rounds for busy schedules. Ideal for technique maintenance between full sessions.",
-      "features": ["High intensity pad work", "Combination focus", "GYMBOX Farringdon and Bank", "Book multiple for a block"]
-    },
-    {
-      "name": "Group Pad Class",
-      "price": "£22.50",
-      "unit": "per class",
-      "description": "Community pad sessions including Gymboxing and Counterpunch classes at GYMBOX.",
-      "features": ["All levels welcome", "Mitt rotation format", "Fitness and skill combined", "Bronx LDN and GYMBOX studios"]
-    },
-    {
-      "name": "Sparring Development",
-      "price": "£90",
-      "unit": "2 hours",
-      "description": "Extended technical sparring blocks for athletes building ring confidence and fight pace.",
-      "features": ["Controlled sparring rounds", "Corner coaching", "White Collar Fight Club Victoria", "Competition pathway support"]
-    },
-    {
-      "name": "Free Consultation",
-      "price": "Free",
-      "unit": "60 minutes",
-      "description": "Initial consultation to assess goals, experience, availability, and the right coaching pathway.",
-      "features": ["Goal and level assessment", "Training plan outline", "Location and schedule match", "No obligation to continue"]
-    }
-  ],
+  "pricing": {
+    "brandLine": "Kings Health & Fitness",
+    "tagline": "If you're not having fun, you're not doing it right!",
+    "hourSessions": [
+      { "label": "1 Session", "price": "£45" },
+      { "label": "4 Sessions", "price": "£160" },
+      { "label": "8 Sessions", "price": "£280" },
+      { "label": "12 Sessions", "price": "£360" }
+    ],
+    "halfHourSessions": [
+      { "label": "1 Session", "price": "£25" },
+      { "label": "4 Sessions", "price": "£80", "note": "£20 per session" }
+    ],
+    "includes": [
+      "Fitness building",
+      "Weight loss training",
+      "Basic boxing",
+      "Pad work focused",
+      "Ab training",
+      "Strength and conditioning",
+      "Advanced skill training",
+      "Boxing drills (bag and pad work)",
+      "Ring craft",
+      "Simulated sparring"
+    ],
+    "terms": "Block sessions are based on monthly bookings only. All fees will be paid upfront before the start of the first session."
+  },
   "schedule": [
     {
       "day": "Tuesday",
       "time": "6:00 PM",
       "session": "Group Pad Class",
-      "location": "Bronx LDN",
+      "location": "Bronx LDN, 166 Benhill Rd SE5 7LL",
       "type": "Group",
       "level": "All levels"
     },
@@ -111,7 +106,7 @@
       "day": "Friday",
       "time": "Evening",
       "session": "Pad Class",
-      "location": "Bronx LDN",
+      "location": "Bronx LDN, 166 Benhill Rd SE5 7LL",
       "type": "Group",
       "level": "Regulars and improvers"
     },
@@ -119,7 +114,7 @@
       "day": "Weekly",
       "time": "By appointment",
       "session": "Private One to One",
-      "location": "GYMBOX Victoria, Farringdon, Old Street, Holborn, Bank, Elephant and Castle",
+      "location": "Bronx LDN, GYMBOX Victoria, Farringdon, Old Street, Holborn, Bank, Elephant and Castle",
       "type": "Private",
       "level": "All levels"
     },
@@ -127,7 +122,7 @@
       "day": "Weekly",
       "time": "By appointment",
       "session": "Competition and Sparring Prep",
-      "location": "White Collar Fight Club and GYMBOX",
+      "location": "Bronx LDN, White Collar Fight Club and GYMBOX",
       "type": "Private",
       "level": "Intermediate to advanced"
     },
@@ -135,7 +130,7 @@
       "day": "Weekly",
       "time": "By appointment",
       "session": "Youth Boxing",
-      "location": "Regenerate LDN and partner clubs",
+      "location": "Bronx LDN, Regenerate LDN and partner clubs",
       "type": "Private and group",
       "level": "Ages 5 and up"
     },
