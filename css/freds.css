@@ -374,7 +374,7 @@ button {
 .menu-note {
   margin-top: 3rem;
   padding-top: 2rem;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -384,12 +384,12 @@ button {
 
 .menu-note p {
   max-width: 36rem;
-  color: var(--ink-muted);
+  color: rgba(255, 255, 255, 0.72);
   line-height: 1.5;
 }
 
 .menu-note a {
-  color: var(--blue);
+  color: #9bbcff;
   text-decoration: underline;
   text-underline-offset: 0.15em;
 }
