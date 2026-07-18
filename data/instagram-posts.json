@@ -6,39 +6,11 @@
   },
   "posts": [
     {
-      "id": "pastry-case",
-      "image": "images/freds/instagram/pastry-case.jpg",
-      "url": "https://www.instagram.com/p/DNAdmBModix/",
-      "caption": "Fresh from the case — croissants, muffins, pasteis de nata and homemade cakes.",
-      "tag": "Inside Fred's"
-    },
-    {
-      "id": "sausage-rolls",
-      "image": "images/freds/instagram/sausage-rolls.jpg",
-      "url": "https://www.instagram.com/p/DOYF3XPjDkp/",
-      "caption": "Come and grab a warm Fred's sausage roll.",
-      "tag": "Signature bake"
-    },
-    {
       "id": "matcha-latte",
       "image": "images/freds/instagram/matcha-latte.jpg",
       "url": "https://www.instagram.com/p/DKmKpXxI0YH/",
       "caption": "Our vibrant matcha comes from Good & Proper — come try it for yourself.",
       "tag": "Matcha"
-    },
-    {
-      "id": "lemon-poppy-cake",
-      "image": "images/freds/instagram/lemon-poppy-cake.jpg",
-      "url": "https://www.instagram.com/p/CDBWAT1nHCz/",
-      "caption": "Our vegan lemon poppy seed cake — homemade in Brockley.",
-      "tag": "Vegan bake"
-    },
-    {
-      "id": "grab-and-go",
-      "image": "images/freds/instagram/grab-and-go.jpg",
-      "url": "https://www.instagram.com/p/DJWeGULISVj/",
-      "caption": "Your daily grab-and-go just got better — freshly made.",
-      "tag": "Grab & go"
     },
     {
       "id": "iced-drinks",
@@ -48,6 +20,13 @@
       "tag": "Drinks"
     },
     {
+      "id": "grab-and-go",
+      "image": "images/freds/instagram/grab-and-go.jpg",
+      "url": "https://www.instagram.com/p/DJWeGULISVj/",
+      "caption": "Your daily grab-and-go just got better — freshly made.",
+      "tag": "Grab & go"
+    },
+    {
       "id": "matcha-spritz",
       "image": "images/freds/instagram/matcha-spritz.jpg",
       "url": "https://www.instagram.com/p/DMkeX2NI4_B/",
@@ -55,11 +34,18 @@
       "tag": "Seasonal"
     },
     {
-      "id": "latte-pour",
-      "image": "images/freds/instagram/latte-pour.jpg",
-      "url": "https://www.instagram.com/p/DWnpzhKjBwj/",
-      "caption": "Neighbourhood coffeeshop energy — SE4.",
-      "tag": "Coffee"
+      "id": "lemon-poppy-cake",
+      "image": "images/freds/instagram/lemon-poppy-cake.jpg",
+      "url": "https://www.instagram.com/p/CDBWAT1nHCz/",
+      "caption": "Our vegan lemon poppy seed cake — homemade in Brockley.",
+      "tag": "Vegan bake"
+    },
+    {
+      "id": "barista-matcha",
+      "image": "images/freds/instagram/barista-matcha.jpg",
+      "url": "https://www.instagram.com/p/DLZ5Be7o6Kq/",
+      "caption": "Behind the counter — matcha whisked by hand, every cup.",
+      "tag": "Team"
     }
   ]
 }

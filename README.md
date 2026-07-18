@@ -14,12 +14,13 @@ Open [http://localhost:8080](http://localhost:8080)
 
 ## Contents
 
-- `index.html` — single-page site (hero, about, menu, Instagram, gallery, visit)
+- `index.html` — single-page site (hero, about, menu, **events**, Instagram, visit)
 - `css/freds.css` — layout, colour tokens, motion
-- `js/freds.js` — clock, nav, scroll reveals, Instagram grid
+- `js/freds.js` — clock, nav, scroll reveals, events board, Instagram grid
+- `data/events.json` — community events board (edit dates/titles here)
 - `data/instagram-posts.json` — captions & links from [@fredslondon](https://www.instagram.com/fredslondon/)
 - `images/freds/` — storefront + food photography
-- `images/freds/instagram/` — photos pulled from the cafe Instagram
+- `images/freds/instagram/` — unique Instagram photos (no duplicates across sections)
 
 ## Cafe details
 

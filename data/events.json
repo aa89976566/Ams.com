@@ -1,0 +1,63 @@
+{
+  "note": "Edit this file to update the community events board on the website.",
+  "cta": {
+    "label": "Host an event at Fred's",
+    "href": "https://www.instagram.com/fredslondon/"
+  },
+  "events": [
+    {
+      "id": "garden-brunch",
+      "date": "2026-07-26",
+      "time": "10:00 – 13:00",
+      "title": "Sunday Garden Brunch",
+      "place": "Garden patio",
+      "description": "Neighbourhood brunch in the garden — Allpress coffee, warm sausage rolls, and space to linger.",
+      "tag": "Weekly"
+    },
+    {
+      "id": "kids-craft",
+      "date": "2026-08-02",
+      "time": "11:00 – 12:30",
+      "title": "Little Makers Morning",
+      "place": "Inside Fred's",
+      "description": "Family-friendly craft hour for little neighbours. Free to join — just grab a drink and pull up a chair.",
+      "tag": "Family"
+    },
+    {
+      "id": "matcha-workshop",
+      "date": "2026-08-09",
+      "time": "14:00 – 15:30",
+      "title": "Good & Proper Matcha Tasting",
+      "place": "Counter + garden",
+      "description": "Learn how we whisk our vibrant matcha, then taste latte and spritz styles side by side.",
+      "tag": "Workshop"
+    },
+    {
+      "id": "book-swap",
+      "date": "2026-08-16",
+      "time": "12:00 – 16:00",
+      "title": "SE4 Book Swap",
+      "place": "Garden patio",
+      "description": "Bring a book, take a book. Soft jazz, cake, and community chat in the garden.",
+      "tag": "Community"
+    },
+    {
+      "id": "open-mic",
+      "date": "2026-08-23",
+      "time": "15:00 – 17:00",
+      "title": "Garden Open Mic",
+      "place": "Garden patio",
+      "description": "Acoustic sets and spoken word from Crofton Park & Brockley. Sign up on the day or DM @fredslondon.",
+      "tag": "Music"
+    },
+    {
+      "id": "loyalty-meet",
+      "date": "2026-08-30",
+      "time": "09:00 – 11:00",
+      "title": "Regulars' Morning Meet",
+      "place": "Inside Fred's",
+      "description": "Coffee for the early crew — meet neighbours, share the Wi‑Fi, and start the week together.",
+      "tag": "Social"
+    }
+  ]
+}
