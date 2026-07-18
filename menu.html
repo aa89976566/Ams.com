@@ -11,75 +11,83 @@
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600&family=Fragment+Mono&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/freds.css?v=20260718k">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230558f9' width='100' height='100'/><text x='50' y='62' text-anchor='middle' font-size='48' fill='white' font-family='Georgia'>F</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/freds.css?v=20260718w2t">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle fill='%23e84b7d' cx='50' cy='50' r='50'/><text x='50' y='64' text-anchor='middle' font-size='48' fill='white' font-family='Georgia'>F</text></svg>">
 </head>
 <body>
-  <header class="nav" id="nav">
-    <a href="index.html" class="nav-brand">Fred<span>'</span>s</a>
-    <div class="nav-clock" id="clock" aria-live="polite">00:00:00</div>
-    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html#about">About</a></li>
-      <li><a href="menu.html" aria-current="page">Menu</a></li>
-      <li><a href="index.html#events">Events</a></li>
-      <li><a href="index.html#visit">Visit</a></li>
-    </ul>
+  <header class="site-header" id="nav">
+    <div class="site-header__inner">
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="site-nav__list" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="menu.html" aria-current="page">Menu</a></li>
+          <li><a href="index.html#events">Events</a></li>
+          <li><a href="index.html#visit">Visit</a></li>
+        </ul>
+      </nav>
+
+      <a href="index.html" class="site-logo">Fred<span>'</span>s</a>
+
+      <div class="site-header__actions">
+        <a class="btn btn--ink" href="index.html#visit">Get in touch</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
   </header>
 
   <main id="top">
     <section class="page-hero">
-      <div class="page-hero-inner">
-        <p class="eyebrow">From the counter</p>
-        <h1 class="page-title">Coffee, brunch &amp; bakes.</h1>
-        <p class="section-copy">
-          Pulled from what neighbours order and what @fredslondon posts —
-          banana bread, Swedish flatbreads, croissants, and the BBQ sausage roll
-          regulars call legendary.
+      <div class="page-hero__inner">
+        <p class="eyebrow">Our cafe</p>
+        <h1>Coffee, brunch &amp; bakes</h1>
+        <p>
+          A seasonal counter of Allpress coffee, Good &amp; Proper matcha, eggs, flatbreads,
+          homemade cakes and the BBQ sausage rolls neighbours call legendary.
         </p>
       </div>
     </section>
 
-    <section class="section menu" id="menu">
-      <div class="section-inner">
+    <section class="menu-page">
+      <div class="menu-page__inner">
         <div class="menu-grid">
-          <article class="menu-item reveal">
-            <p class="menu-tag">Drinks</p>
-            <figure>
+          <article class="menu-card reveal">
+            <figure class="menu-card__photo">
               <img src="images/freds/latte-pastry.jpg" alt="Latte with latte art and pastry" width="960" height="946" loading="eager">
             </figure>
+            <p class="menu-card__tag">Drinks</p>
             <h2>Allpress &amp; matcha</h2>
             <p>Flat whites, iced lattes, fresh juices, and Good &amp; Proper matcha whisked to order.</p>
-            <ul class="menu-list">
+            <ul>
               <li>Allpress espresso drinks</li>
               <li>Good &amp; Proper matcha</li>
               <li>Iced lattes &amp; fresh juices</li>
             </ul>
           </article>
-          <article class="menu-item reveal reveal-delay-1">
-            <p class="menu-tag">Brunch</p>
-            <figure>
+          <article class="menu-card reveal">
+            <figure class="menu-card__photo">
               <img src="images/freds/roasted-veg.jpg" alt="Poached eggs with roasted vegetables" width="960" height="956" loading="lazy">
             </figure>
+            <p class="menu-card__tag">Brunch</p>
             <h2>Eggs &amp; flatbreads</h2>
             <p>Poached eggs, falafel salads, toasties, and specialty Swedish flatbread sandwiches.</p>
-            <ul class="menu-list">
+            <ul>
               <li>Poached eggs &amp; brunch plates</li>
               <li>Swedish flatbread sandwiches</li>
               <li>Falafel salads &amp; toasties</li>
             </ul>
           </article>
-          <article class="menu-item reveal reveal-delay-2">
-            <p class="menu-tag">Bakery</p>
-            <figure>
-              <img src="images/freds/maps/yelp-food.jpg" alt="Fred's croissants muffins and cakes on the counter" width="1000" height="750" loading="lazy">
+          <article class="menu-card reveal">
+            <figure class="menu-card__photo">
+              <img src="images/freds/maps/yelp-food.jpg" alt="Fred's croissants muffins and cakes" width="1000" height="750" loading="lazy">
             </figure>
+            <p class="menu-card__tag">Bakery</p>
             <h2>Cakes &amp; croissants</h2>
             <p>Homemade cakes, croissants, banana bread, vegan bakes — and warm Fred's sausage rolls.</p>
-            <ul class="menu-list">
+            <ul>
               <li>Homemade cakes &amp; banana bread</li>
               <li>Croissants &amp; vegan bakes</li>
               <li>Fred's BBQ sausage rolls</li>
@@ -93,16 +101,16 @@
             Ask at the counter for today's specials, or message
             <a href="https://www.instagram.com/fredslondon/" target="_blank" rel="noopener noreferrer">@fredslondon</a>.
           </p>
-          <a class="btn btn-ink" href="index.html#visit">Plan your visit</a>
+          <a class="btn btn--pink" href="index.html#visit">Plan your visit</a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-brand">Fred<span>'</span>s</div>
-      <div class="footer-meta">
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-logo site-logo--footer">Fred<span>'</span>s</div>
+      <div class="site-footer__meta">
         <span>358 Brockley Rd · London SE4 2BY</span>
         <a href="index.html">Home</a>
         <a href="https://www.instagram.com/fredslondon/" target="_blank" rel="noopener noreferrer">Instagram</a>
