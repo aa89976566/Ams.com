@@ -1012,10 +1012,11 @@ button {
   }
 
   .section-title {
-    font-size: clamp(1.65rem, 8vw, 2.25rem);
-    max-width: none;
-    line-height: 1.12;
-    letter-spacing: -0.03em;
+    font-size: clamp(1.55rem, 7.2vw, 2rem);
+    max-width: 100%;
+    width: 100%;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
   }
 
   .nav-toggle {
