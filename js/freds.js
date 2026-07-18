@@ -1,35 +1,41 @@
 (() => {
   const year = document.getElementById("year");
+  const nav = document.getElementById("nav");
   const toggle = document.getElementById("navToggle");
-  const overlay = document.getElementById("siteNavOverlay");
-  const closeBtn = document.getElementById("navClose");
+  const links = document.getElementById("navLinks");
   const eventsBoard = document.getElementById("eventsBoard");
   const eventsCta = document.getElementById("eventsCta");
   const hoursTable = document.getElementById("hoursTable");
-  const footerHours = document.getElementById("footerHours");
   const menuSections = document.getElementById("menuSections");
   const menuSource = document.getElementById("menuSource");
+  const galleryGrid = document.getElementById("galleryGrid");
+  const reviewGrid = document.getElementById("reviewGrid");
+  const amenityChips = document.getElementById("amenityChips");
 
   if (year) year.textContent = String(new Date().getFullYear());
 
-  const setNavOpen = (open) => {
-    if (!overlay || !toggle) return;
-    overlay.classList.toggle("is-open", open);
-    overlay.setAttribute("aria-hidden", open ? "false" : "true");
-    toggle.setAttribute("aria-expanded", open ? "true" : "false");
-    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-    document.body.classList.toggle("nav-open", open);
+  const onScroll = () => {
+    if (!nav || !document.body.classList.contains("home")) return;
+    nav.classList.toggle("is-solid", window.scrollY > 40);
   };
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
 
-  if (toggle && overlay) {
+  if (toggle && links) {
+    const setOpen = (open) => {
+      toggle.classList.toggle("is-open", open);
+      links.classList.toggle("is-open", open);
+      document.body.classList.toggle("nav-open", open);
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    };
+
     toggle.addEventListener("click", () => {
-      setNavOpen(!overlay.classList.contains("is-open"));
+      setOpen(!links.classList.contains("is-open"));
     });
 
-    closeBtn?.addEventListener("click", () => setNavOpen(false));
-
-    overlay.querySelectorAll("a").forEach((a) => {
-      a.addEventListener("click", () => setNavOpen(false));
+    links.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => setOpen(false));
     });
   }
 
@@ -68,18 +74,18 @@
     return { day: String(d.getDate()), month: MONTHS[d.getMonth()] };
   };
 
+  const escapeHtml = (value) =>
+    String(value ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;");
+
   const loadJson = async (path) => {
     const res = await fetch(path, { cache: "no-store" });
     if (!res.ok) throw new Error("bad status");
     return res.json();
   };
-
-  const escapeHtml = (value) =>
-    String(value)
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;");
 
   const renderEvents = (events) => {
     if (!eventsBoard) return;
@@ -110,10 +116,6 @@
         <div class="event-body">
           <h3>${escapeHtml(event.title)}</h3>
           <p>${escapeHtml(event.description)}</p>
-          <div class="event-meta">
-            <span class="tag">${escapeHtml(event.tag)}</span>
-            <span>${escapeHtml(event.place)}</span>
-          </div>
         </div>
         <div class="event-side">${escapeHtml(event.time)}</div>
       </article>`;
@@ -128,70 +130,82 @@
         .join("");
     }
 
-    if (footerHours && place.hours?.length) {
-      footerHours.innerHTML = place.hours
-        .map(
-          (h) =>
-            `<div class="footer-hours-row"><span>${escapeHtml(h.days)}</span><span>${escapeHtml(h.time)}</span></div>`
-        )
+    if (amenityChips && place.amenities?.length) {
+      amenityChips.innerHTML = place.amenities
+        .slice(0, 6)
+        .map((a) => `<span class="chip">${escapeHtml(a)}</span>`)
         .join("");
     }
   };
 
-  const accentClass = (accent) => {
-    if (accent === "blue") return "menu-section--blue";
-    if (accent === "orange") return "menu-section--orange";
-    if (accent === "simple") return "menu-section--simple";
-    return "menu-section--gold";
-  };
-
-  const renderMenuItem = (item) => {
-    const name = escapeHtml(item.name);
-    const image = item.image ? escapeHtml(item.image) : "";
-    return `
-      <article class="menu-item">
-        ${
-          image
-            ? `<div class="menu-img"><img src="${image}" alt="${name}" loading="lazy"></div>`
-            : `<div class="menu-img" aria-hidden="true"></div>`
+  const renderGallery = (data) => {
+    if (!galleryGrid) return;
+    galleryGrid.innerHTML = (data.items || [])
+      .map((item) => {
+        const body = `
+        <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.alt || item.caption)}" loading="lazy">
+        <figcaption>
+          ${escapeHtml(item.caption)}
+          <span class="src">${escapeHtml(item.source || "")}</span>
+        </figcaption>`;
+        if (item.url) {
+          return `<a class="gallery-item reveal" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">${body}</a>`;
         }
-        <div class="menu-name">${name}</div>
-      </article>`;
+        return `<figure class="gallery-item reveal">${body}</figure>`;
+      })
+      .join("");
   };
 
-  const renderMenuList = (items) => `
-    <div class="menu-list">
-      ${(items || [])
-        .map((item) => `<div class="menu-row"><span>${escapeHtml(item.name)}</span></div>`)
-        .join("")}
-    </div>`;
+  const renderReviews = (data) => {
+    if (!reviewGrid) return;
+    reviewGrid.innerHTML = (data.reviews || [])
+      .slice(0, 6)
+      .map(
+        (r) => `
+      <article class="review reveal">
+        <p>“${escapeHtml(r.quote)}”</p>
+        <footer>${escapeHtml(r.author)} · ${escapeHtml(r.source)}</footer>
+      </article>`
+      )
+      .join("");
+  };
+
+  const toneClass = (tone) => {
+    if (tone === "lime") return "menu-section--lime";
+    if (tone === "sky") return "menu-section--sky";
+    return "menu-section--yellow";
+  };
 
   const renderMenu = (data) => {
     if (!menuSections) return;
-    if (menuSource && data.sourceNote) {
-      menuSource.textContent = data.sourceNote;
-    }
+    if (menuSource && data.sourceNote) menuSource.textContent = data.sourceNote;
 
     menuSections.innerHTML = (data.categories || [])
       .map((cat) => {
-        const accent = accentClass(cat.accent);
         const layout = cat.layout || "grid";
         let body = "";
 
-        if (layout === "list" || cat.accent === "simple") {
-          body = renderMenuList(cat.items);
-        } else if (layout === "featured") {
+        if (layout === "list") {
           const featured = cat.featuredImage
-            ? `<div class="menu-featured-img"><img src="${escapeHtml(cat.featuredImage)}" alt="${escapeHtml(cat.title)}" loading="lazy"></div>`
+            ? `<div class="menu-featured"><img src="${escapeHtml(cat.featuredImage)}" alt="${escapeHtml(cat.title)}" loading="lazy"></div>`
             : "";
-          body = `${featured}${renderMenuList(cat.items)}`;
+          body = `${featured}<div class="menu-list">${(cat.items || [])
+            .map((item) => `<div class="menu-row">${escapeHtml(item.name)}</div>`)
+            .join("")}</div>`;
         } else {
-          body = `<div class="menu-grid">${(cat.items || []).map(renderMenuItem).join("")}</div>`;
+          body = `<div class="menu-grid">${(cat.items || [])
+            .map((item) => {
+              const img = item.image
+                ? `<div class="menu-img"><img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.name)}" loading="lazy"></div>`
+                : `<div class="menu-img" aria-hidden="true"></div>`;
+              return `<article class="menu-item">${img}<div class="menu-name">${escapeHtml(item.name)}</div></article>`;
+            })
+            .join("")}</div>`;
         }
 
         return `
-      <section class="menu-section ${accent} ${layout === "featured" ? "menu-section--featured" : ""} reveal" id="menu-${escapeHtml(cat.id)}">
-        <h2 class="menu-section-title">${escapeHtml(cat.title)}</h2>
+      <section class="menu-section ${toneClass(cat.tone)} reveal" id="menu-${escapeHtml(cat.id)}">
+        <h2>${escapeHtml(cat.title)}</h2>
         ${body}
       </section>`;
       })
@@ -203,7 +217,21 @@
       const place = await loadJson("data/place.json");
       applyPlace(place);
     } catch {
-      /* keep HTML defaults */
+      /* keep defaults */
+    }
+
+    try {
+      const gallery = await loadJson("data/gallery.json");
+      renderGallery(gallery);
+    } catch {
+      /* optional */
+    }
+
+    try {
+      const reviews = await loadJson("data/reviews.json");
+      renderReviews(reviews);
+    } catch {
+      /* optional */
     }
 
     try {
