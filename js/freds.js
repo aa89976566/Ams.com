@@ -11,6 +11,10 @@
   const galleryGrid = document.getElementById("galleryGrid");
   const reviewGrid = document.getElementById("reviewGrid");
   const amenityChips = document.getElementById("amenityChips");
+  const crewGrid = document.getElementById("crewGrid");
+  const crewHeading = document.getElementById("crewHeading");
+  const crewLead = document.getElementById("crewLead");
+  const crewNote = document.getElementById("crewNote");
 
   if (year) year.textContent = String(new Date().getFullYear());
 
@@ -173,6 +177,43 @@
       .join("");
   };
 
+  const initials = (name) => {
+    const parts = String(name || "")
+      .split(/\s+/)
+      .filter(Boolean);
+    if (!parts.length) return "F";
+    if (parts[0].toLowerCase() === "the") return parts[1]?.slice(0, 1).toUpperCase() || "B";
+    return parts
+      .slice(0, 2)
+      .map((p) => p[0]?.toUpperCase() || "")
+      .join("");
+  };
+
+  const renderCrew = (data) => {
+    if (!crewGrid) return;
+    if (crewHeading && data.heading) crewHeading.textContent = data.heading;
+    if (crewLead && data.lead) crewLead.textContent = data.lead;
+    if (crewNote) {
+      crewNote.textContent = data.note || "";
+      crewNote.hidden = !data.note;
+    }
+
+    crewGrid.innerHTML = (data.members || [])
+      .map((m) => {
+        const tone = m.tone === "lime" || m.tone === "sky" ? m.tone : "yellow";
+        return `
+      <article class="crew-card reveal">
+        <div class="crew-avatar crew-avatar--${tone}" aria-hidden="true">${escapeHtml(initials(m.name))}</div>
+        <div>
+          <h3>${escapeHtml(m.name)}</h3>
+          <p class="crew-role">${escapeHtml(m.role)}</p>
+          <p>${escapeHtml(m.bio)}</p>
+        </div>
+      </article>`;
+      })
+      .join("");
+  };
+
   const toneClass = (tone) => {
     if (tone === "lime") return "menu-section--lime";
     if (tone === "sky") return "menu-section--sky";
@@ -221,6 +262,13 @@
       applyPlace(place);
     } catch {
       /* keep defaults */
+    }
+
+    try {
+      const crew = await loadJson("data/crew.json");
+      renderCrew(crew);
+    } catch {
+      /* optional */
     }
 
     try {

@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono&family=Sora:wght@400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/freds.css?v=20260718t">
+  <link rel="stylesheet" href="css/freds.css?v=20260718u">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23b8d170' width='100' height='100' rx='22'/><text x='50' y='66' text-anchor='middle' font-size='52' fill='%23171417' font-family='Georgia' font-weight='700'>F</text></svg>">
 </head>
 <body class="home">
@@ -22,6 +22,7 @@
       <nav class="site-nav" id="navLinks" aria-label="Primary">
         <a href="#top" aria-current="page">Home</a>
         <a href="#about">About</a>
+        <a href="#crew">Crew</a>
         <a href="menu.html">Menu</a>
         <a href="#gallery">Gallery</a>
         <a href="#events">Events</a>
@@ -47,31 +48,35 @@
       <div class="hero__shade" aria-hidden="true"></div>
       <div class="hero__inner">
         <p class="hero__brand">Fred<span>'</span>s</p>
-        <h1 class="hero__title">Coffee, cake &amp; community on Brockley Road</h1>
+        <h1 class="hero__title">A community cafe for Crofton Park</h1>
         <p class="hero__lead">
-          Allpress espresso, homemade bakes and a suntrap garden patio opposite Crofton Park station.
+          Named after Gregg's father, Fred. Allpress coffee, homemade bakes and a suntrap garden opposite the station.
         </p>
         <div class="hero__cta">
-          <a class="btn btn--orange" href="#visit">Visit the cafe</a>
-          <a class="btn btn--ghost" href="menu.html">See the menu</a>
+          <a class="btn btn--orange" href="#crew">Meet the crew</a>
+          <a class="btn btn--ghost" href="#events">What's on</a>
         </div>
       </div>
     </section>
 
-    <section class="band band--white" aria-label="What we are about">
+    <section class="band band--white" aria-label="Community pathways">
       <div class="band__inner">
+        <header class="band__head">
+          <p class="eyebrow">Community first</p>
+          <h2>Built for neighbours, not just coffee runs</h2>
+        </header>
         <div class="palette-row reveal">
           <article>
-            <h3>Coffee</h3>
-            <p>Allpress espresso drinks, iced lattes, and Good &amp; Proper matcha.</p>
+            <h3>Neighbours</h3>
+            <p>A family-friendly hub for SE4 locals, laptop workers, buggies and station dashers alike.</p>
           </article>
           <article>
-            <h3>Cake</h3>
-            <p>Homemade cakes, croissants, sausage rolls and daily grab-and-go.</p>
+            <h3>Gatherings</h3>
+            <p>Brunches, workshops and catch-ups. Message us if you want to host something at Fred's.</p>
           </article>
           <article>
             <h3>Garden</h3>
-            <p>A suntrap patio out back for brunch, buggies and slow SE4 mornings.</p>
+            <p>Our suntrap patio out back is where community slows down over cake and conversation.</p>
           </article>
         </div>
       </div>
@@ -81,22 +86,34 @@
       <div class="band__inner">
         <header class="band__head">
           <p class="eyebrow">About Fred's</p>
-          <h2>A family-friendly cafe for Crofton Park neighbours</h2>
+          <h2>A neighbourhood cafe with community at the heart</h2>
         </header>
         <div class="split">
           <figure class="split__photo reveal">
             <img src="images/freds/gallery/maps-03.jpg" alt="Inside Fred's looking toward the garden door" width="1200" height="900" loading="lazy">
           </figure>
           <div class="split__copy reveal">
-            <h3>Fresh cakes, flatbreads, salads and a warm welcome opposite the station.</h3>
+            <h3>Named after Gregg's father, opened for Crofton Park.</h3>
             <p>
-              Fred's sits at 358 Brockley Road. Neighbours come for Allpress coffee,
-              Swedish flatbread sandwiches, vegan bakes and free Wi-Fi, then stay for the garden suntrap.
+              Fred's sits at 358 Brockley Road opposite the station. Founders Gregg Boxall and Alain Haddad
+              built a place for Allpress coffee, Swedish flatbreads, vegan bakes, free Wi-Fi and the garden suntrap.
             </p>
             <div class="chip-row" id="amenityChips"></div>
-            <a class="btn btn--navy" href="menu.html">Explore the menu</a>
+            <a class="btn btn--navy" href="#crew">Meet the crew</a>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="band band--yellow" id="crew">
+      <div class="band__inner">
+        <header class="band__head">
+          <p class="eyebrow">People</p>
+          <h2 id="crewHeading">The crew</h2>
+          <p class="band__lead" id="crewLead">The people behind Fred's, from founders to the baristas neighbours love.</p>
+        </header>
+        <div class="crew-grid" id="crewGrid"></div>
+        <p class="crew-note" id="crewNote"></p>
       </div>
     </section>
 

@@ -46,7 +46,17 @@
     "Opposite Crofton Park station",
     "Seasonal iced specials"
   ],
-  "story": "Fred's is a family-friendly coffee shop on Brockley Road offering fresh cakes, in-house baked goods, homemade flatbread sandwiches and salads, with a suntrap garden out back.",
+  "story": "Fred's is a family-friendly community cafe on Brockley Road, named after founder Gregg Boxall's father. Neighbours come for fresh cakes, in-house bakes, flatbread sandwiches, salads and a suntrap garden out back.",
+  "founding": {
+    "namedAfter": "Gregg Boxall's father, Fred",
+    "founders": ["Gregg Boxall", "Alain Haddad"],
+    "source": "https://thecheffoundation.com/the-birth-of-freds/",
+    "company": {
+      "name": "Fred's London Limited",
+      "number": "09878698",
+      "url": "https://find-and-update.company-information.service.gov.uk/company/09878698"
+    }
+  },
   "ratings": [
     {
       "source": "Yelp",

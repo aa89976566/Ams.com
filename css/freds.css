@@ -401,12 +401,88 @@ body:not(.home) .nav-toggle span {
 }
 
 .palette-row article {
-  min-height: 150px;
+  min-height: 170px;
   border-radius: var(--radius);
   padding: 1.2rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+}
+
+/* Crew */
+.crew-grid {
+  display: grid;
+  gap: 0.85rem;
+}
+
+@media (min-width: 800px) {
+  .crew-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.crew-card {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 1rem;
+  padding: 1.15rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(23, 23, 23, 0.08);
+}
+
+.crew-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: "Syne", sans-serif;
+  font-weight: 800;
+  font-size: 1.35rem;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+
+.crew-avatar--yellow {
+  background: #fff6b8;
+}
+
+.crew-avatar--lime {
+  background: #d4e99a;
+}
+
+.crew-avatar--sky {
+  background: #b7e0e8;
+}
+
+.crew-card h3 {
+  margin: 0;
+  font-family: "Syne", sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: -0.03em;
+}
+
+.crew-role {
+  margin: 0.2rem 0 0.45rem;
+  font-family: "Fragment Mono", monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+
+.crew-card p {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.crew-note {
+  margin: 1.1rem 0 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+  max-width: 52ch;
 }
 
 .palette-row h3 {
