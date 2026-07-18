@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Fred's — Community Cafe in Crofton Park, London</title>
-  <meta name="description" content="Fred's cafe at 358 Brockley Road, Crofton Park. Allpress coffee, Good &amp; Proper matcha, homemade cakes, Swedish flatbreads, suntrap garden patio, free Wi‑Fi. Opposite Crofton Park station. 4.3 on Yelp.">
+  <meta name="description" content="Fred's cafe at 358 Brockley Road, Crofton Park. Allpress coffee, Good &amp; Proper matcha, homemade cakes, Swedish flatbreads, suntrap garden patio, free Wi‑Fi. Opposite Crofton Park station.">
   <meta property="og:title" content="Fred's — Community Cafe in Crofton Park">
   <meta property="og:description" content="Allpress coffee, homemade cakes, suntrap garden and neighbourhood events opposite Crofton Park station.">
   <meta property="og:image" content="images/freds/storefront-cover.jpg">
@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600&family=Fragment+Mono&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/freds.css?v=20260718j">
+  <link rel="stylesheet" href="css/freds.css?v=20260718k">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%230558f9' width='100' height='100'/><text x='50' y='62' text-anchor='middle' font-size='48' fill='white' font-family='Georgia'>F</text></svg>">
 </head>
 <body>
@@ -24,10 +24,8 @@
     </button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
-      <li><a href="#menu">Menu</a></li>
+      <li><a href="menu.html">Menu</a></li>
       <li><a href="#events">Events</a></li>
-      <li><a href="#reviews">Reviews</a></li>
-      <li><a href="#instagram">Instagram</a></li>
       <li><a href="#visit">Visit</a></li>
     </ul>
   </header>
@@ -35,116 +33,85 @@
   <main id="top">
     <section class="hero" aria-label="Fred's cafe">
       <div class="hero-copy">
-        <h1 class="hero-title">Fred<span class="apos">'</span>s is a community cafe on Brockley Road in Crofton Park.</h1>
-        <p class="hero-line">Allpress coffee, homemade cakes, a suntrap garden patio, and neighbourhood gatherings — opposite Crofton Park station.</p>
-        <div class="hero-cta">
-          <a class="btn btn-solid" href="#events">See what's on</a>
-          <a class="btn btn-ghost-dark" href="#visit">Visit us</a>
+        <h1 class="hero-title">Fred<span class="apos">'</span>s is a community cafe and neighbourhood hub on Brockley Road in Crofton Park.</h1>
+        <p class="hero-line">
+          Your local spot opposite Crofton Park station — Allpress coffee, homemade cakes,
+          a suntrap garden patio, and gatherings for the SE4 community.
+        </p>
+        <div class="hero-meta-grid">
+          <div class="hero-meta-block">
+            <h2 class="hero-meta-label">Visit</h2>
+            <p>358 Brockley Road<br>London SE4 2BY</p>
+            <p>
+              <a href="https://maps.app.goo.gl/69mfUyRDchGWMNWY8" target="_blank" rel="noopener noreferrer">Google Maps</a>
+              ·
+              <a href="tel:+442038023166">020 3802 3166</a>
+            </p>
+          </div>
+          <div class="hero-meta-block">
+            <h2 class="hero-meta-label">Hours</h2>
+            <p>Mon–Fri 8:00 – 16:00<br>Sat–Sun 8:30 – 16:00</p>
+            <p>
+              <a href="menu.html">See the menu</a>
+              ·
+              <a href="https://www.instagram.com/fredslondon/" target="_blank" rel="noopener noreferrer">@fredslondon</a>
+            </p>
+          </div>
         </div>
-        <dl class="hero-meta">
-          <div>
-            <dt>Address</dt>
-            <dd>358 Brockley Road, SE4 2BY</dd>
-          </div>
-          <div>
-            <dt>Hours</dt>
-            <dd>Mon–Fri 8–4 · Sat–Sun 8:30–4</dd>
-          </div>
-          <div>
-            <dt>Phone</dt>
-            <dd><a href="tel:+442038023166">020 3802 3166</a></dd>
-          </div>
-        </dl>
       </div>
-      <figure class="hero-cover">
-        <img
-          src="images/freds/storefront-cover.jpg"
-          alt="Fred's green script fascia sign above the awning at 358 Brockley Road"
-          width="1600"
-          height="1372"
-          fetchpriority="high"
-        >
-      </figure>
+
+      <div class="hero-gallery" aria-label="Fred's photos">
+        <figure class="hero-shot hero-shot--cover">
+          <img
+            src="images/freds/storefront-cover.jpg"
+            alt="Fred's green script fascia sign above the awning at 358 Brockley Road"
+            width="1600"
+            height="1372"
+            fetchpriority="high"
+          >
+        </figure>
+        <figure class="hero-shot">
+          <img
+            src="images/freds/maps/yelp-interior-1.jpg"
+            alt="Fred's suntrap garden patio with picnic tables"
+            width="1000"
+            height="678"
+            loading="lazy"
+          >
+        </figure>
+        <figure class="hero-shot">
+          <img
+            src="images/freds/latte-pastry.jpg"
+            alt="Latte with latte art and pastry at Fred's"
+            width="960"
+            height="946"
+            loading="lazy"
+          >
+        </figure>
+      </div>
     </section>
 
     <section class="section intro" id="about">
       <div class="section-inner intro-grid">
         <div class="reveal">
-          <p class="eyebrow">Google Maps · Crofton Park SE4</p>
-          <h2 class="section-title">More than coffee.<br>Your SE4 living room.</h2>
+          <p class="eyebrow">Community cafe · SE4</p>
+          <h2 class="section-title">More than coffee.</h2>
           <p class="section-copy">
-            Fred's sits at 358 Brockley Road, right opposite Crofton Park station.
-            Neighbours come for Allpress espresso, Good &amp; Proper matcha, Swedish flatbreads,
-            legendary BBQ sausage rolls, and homemade cakes — then stay for free Wi‑Fi and the
-            garden suntrap out back.
+            Neighbours come for Allpress espresso and Good &amp; Proper matcha, stay for free Wi‑Fi,
+            homemade cakes, and the garden suntrap out back.
           </p>
           <ul class="amenity-list" id="amenityList">
             <li>Free Wi‑Fi</li>
             <li>Garden patio</li>
             <li>Family &amp; buggy friendly</li>
             <li>Vegan options</li>
-            <li>Loyalty card</li>
           </ul>
-          <dl class="intro-meta">
-            <div>
-              <dt>Coffee</dt>
-              <dd>Allpress Espresso</dd>
-            </div>
-            <div>
-              <dt>Matcha</dt>
-              <dd>Good &amp; Proper</dd>
-            </div>
-            <div>
-              <dt>Yelp</dt>
-              <dd>4.3 · 6 reviews</dd>
-            </div>
-          </dl>
+          <a class="text-link" href="menu.html">Browse coffee, brunch &amp; bakes →</a>
         </div>
         <figure class="intro-figure reveal reveal-delay-2">
-          <img src="images/freds/maps/yelp-interior-1.jpg" alt="Fred's suntrap garden patio with picnic tables and green brick wall" width="1000" height="678" loading="lazy">
-          <figcaption class="intro-caption">Garden · suntrap patio</figcaption>
+          <img src="images/freds/maps/yelp-interior-2.jpg" alt="Fred's script logo on the painted brick wall inside the cafe" width="640" height="428" loading="lazy">
+          <figcaption class="intro-caption">Inside · Fred's wall</figcaption>
         </figure>
-      </div>
-    </section>
-
-    <section class="section menu" id="menu">
-      <div class="section-inner">
-        <div class="section-head">
-          <div class="reveal">
-            <p class="eyebrow">From the counter</p>
-            <h2 class="section-title">Coffee, brunch &amp; bakes.</h2>
-          </div>
-          <p class="section-copy reveal reveal-delay-1">
-            Pulled from Google reviews and @fredslondon — banana bread, flatbreads,
-            croissants, and the BBQ sausage roll regulars call legendary.
-          </p>
-        </div>
-        <div class="menu-grid">
-          <article class="menu-item reveal">
-            <p class="menu-tag">Drinks</p>
-            <figure>
-              <img src="images/freds/latte-pastry.jpg" alt="Latte with latte art and pastry" width="960" height="946" loading="lazy">
-            </figure>
-            <h3>Allpress &amp; matcha</h3>
-            <p>Flat whites, iced lattes, fresh juices, and Good &amp; Proper matcha whisked to order.</p>
-          </article>
-          <article class="menu-item reveal reveal-delay-1">
-            <p class="menu-tag">Brunch</p>
-            <figure>
-              <img src="images/freds/roasted-veg.jpg" alt="Poached eggs with roasted vegetables" width="960" height="956" loading="lazy">
-            </figure>
-            <h3>Eggs &amp; flatbreads</h3>
-            <p>Poached eggs, falafel salads, toasties, and specialty Swedish flatbread sandwiches.</p>
-          </article>
-          <article class="menu-item reveal reveal-delay-2">
-            <p class="menu-tag">Bakery</p>
-            <figure>
-              <img src="images/freds/maps/yelp-food.jpg" alt="Fred's croissants muffins and cakes on the counter" width="1000" height="750" loading="lazy">
-            </figure>
-            <h3>Cakes &amp; croissants</h3>
-            <p>Homemade cakes, croissants, banana bread, vegan bakes — and warm Fred's sausage rolls.</p>
-          </article>
-        </div>
       </div>
     </section>
 
@@ -156,8 +123,7 @@
             <h2 class="section-title">What's on at Fred's.</h2>
           </div>
           <p class="section-copy reveal reveal-delay-1">
-            Garden brunches, family mornings and tastings in the suntrap patio
-            Google reviewers call a real asset to the community.
+            Garden brunches, family mornings and tastings in the suntrap patio.
           </p>
         </div>
         <div class="events-board" id="eventsBoard" aria-live="polite"></div>
@@ -170,43 +136,13 @@
       </div>
     </section>
 
-    <section class="section reviews" id="reviews">
-      <div class="section-inner">
-        <div class="section-head">
-          <div class="reveal">
-            <p class="eyebrow">Google Maps &amp; Yelp</p>
-            <h2 class="section-title">What neighbours say.</h2>
-          </div>
-          <p class="section-copy reveal reveal-delay-1" id="reviewsNote">
-            Real guest quotes about coffee, cakes, the garden, and the welcome.
-          </p>
-        </div>
-        <div class="reviews-grid" id="reviewsGrid"></div>
-      </div>
-    </section>
-
-    <section class="section instagram" id="instagram">
-      <div class="section-inner">
-        <div class="section-head">
-          <div class="reveal">
-            <p class="eyebrow">@fredslondon</p>
-            <h2 class="section-title">Latest from Instagram.</h2>
-          </div>
-          <a class="btn btn-outline-ink reveal reveal-delay-1" href="https://www.instagram.com/fredslondon/" target="_blank" rel="noopener noreferrer">
-            Follow
-          </a>
-        </div>
-        <div class="ig-grid" id="igGrid"></div>
-      </div>
-    </section>
-
     <section class="section visit" id="visit">
       <div class="section-inner visit-grid">
         <div class="reveal">
           <p class="eyebrow">Find us · Google Maps</p>
           <h2 class="section-title">358 Brockley Road, SE4 2BY.</h2>
           <p class="section-copy">
-            Opposite Crofton Park station — grab-and-go for the train, or a slow sit in the garden suntrap.
+            Opposite Crofton Park station — grab-and-go for the train, or a slow sit in the garden.
           </p>
           <table class="hours-table" id="hoursTable">
             <tbody>
@@ -220,16 +156,16 @@
         </div>
         <aside class="visit-panel reveal reveal-delay-2">
           <figure class="visit-photo">
-            <img src="images/freds/maps/yelp-interior-2.jpg" alt="Fred's script logo on the painted brick wall inside the cafe" width="640" height="428" loading="lazy">
+            <img src="images/freds/maps/yelp-food.jpg" alt="Fred's croissants muffins and cakes on the counter" width="1000" height="750" loading="lazy">
           </figure>
           <h3>Come say hi</h3>
           <p>
             Free Wi‑Fi · loyalty card · card payments.
-            Call the shop or DM @fredslondon for events and catering.
+            Call the shop or DM @fredslondon for events.
           </p>
           <div class="visit-actions">
             <a class="btn btn-ink" href="tel:+442038023166">020 3802 3166</a>
-            <a class="btn btn-outline-ink" href="https://www.instagram.com/fredslondon/" target="_blank" rel="noopener noreferrer">@fredslondon</a>
+            <a class="btn btn-outline-ink" href="menu.html">View menu</a>
           </div>
         </aside>
       </div>
@@ -241,6 +177,7 @@
       <div class="footer-brand">Fred<span>'</span>s</div>
       <div class="footer-meta">
         <span>358 Brockley Rd · London SE4 2BY</span>
+        <a href="menu.html">Menu</a>
         <a href="https://www.facebook.com/FredsSe4" target="_blank" rel="noopener noreferrer">Facebook</a>
         <a href="https://www.instagram.com/fredslondon/" target="_blank" rel="noopener noreferrer">Instagram</a>
         <a href="https://maps.app.goo.gl/69mfUyRDchGWMNWY8" target="_blank" rel="noopener noreferrer">Google Maps</a>
