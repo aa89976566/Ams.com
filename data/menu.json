@@ -1,201 +1,73 @@
 {
-  "sourceNote": "Guest-reported prices from public reviews (Yelp / Citymaps). Fred's does not publish a full price list online. Confirm today's board at the counter.",
-  "priceNote": "Individual coffee and brunch prices are not listed publicly. Combos below are what guests reported paying.",
-  "sources": [
-    "https://www.yelp.co.uk/biz/freds-london-3",
-    "https://citymaps.uk/bakery/london/fred-s/",
-    "https://freds.menu-world.com/menu",
-    "https://nextdoor.co.uk/pages/freds-2/",
-    "https://www.instagram.com/fredslondon/"
-  ],
-  "reportedPrices": [
-    {
-      "label": "Flat white + croissant",
-      "price": "£4.50",
-      "source": "Guest review (Citymaps)"
-    },
-    {
-      "label": "Coffee + cake",
-      "price": "£6.40",
-      "source": "Guest review (Citymaps)"
-    },
-    {
-      "label": "Slice of cake",
-      "price": "about £5",
-      "source": "Guest review (Yelp)"
-    }
-  ],
+  "sourceNote": "A selection of what we serve at Fred's. Daily bakes and specials change, so ask at the counter for today's board.",
   "categories": [
     {
       "id": "breakfast",
       "title": "Breakfast",
       "items": [
-        {
-          "name": "Sourdough toast with scrambled eggs",
-          "price": "",
-          "note": "Ask at counter"
-        },
-        {
-          "name": "Sourdough with poached eggs",
-          "price": "",
-          "note": "Beans as extra"
-        },
-        {
-          "name": "Greek yogurt with granola",
-          "price": "",
-          "note": "Ask at counter"
-        },
-        {
-          "name": "Beans on toast",
-          "price": "",
-          "note": "Ask at counter"
-        },
-        {
-          "name": "Avo on toast",
-          "price": "",
-          "note": "Ask at counter"
-        },
-        {
-          "name": "Fred's banana bread",
-          "price": "",
-          "note": "Ask at counter"
-        }
+        { "name": "Sourdough toast with scrambled eggs" },
+        { "name": "Sourdough with poached eggs" },
+        { "name": "Greek yogurt with granola" },
+        { "name": "Beans on toast" },
+        { "name": "Avo on toast" },
+        { "name": "Fred's banana bread" }
       ]
     },
     {
       "id": "brunch",
       "title": "Brunch & lunch",
       "items": [
-        {
-          "name": "Roasted veg bowl",
-          "price": "",
-          "note": "Ask at counter"
-        },
-        {
-          "name": "Warm falafel salad",
-          "price": "",
-          "note": "Ask at counter"
-        },
-        {
-          "name": "Swedish flatbread sandwiches",
-          "price": "",
-          "note": "House speciality"
-        },
-        {
-          "name": "Toasties & bagels",
-          "price": "",
-          "note": "Ask at counter"
-        },
-        {
-          "name": "BBQ sausage roll",
-          "price": "",
-          "note": "Homemade"
-        }
+        { "name": "Roasted veg bowl" },
+        { "name": "Warm falafel salad" },
+        { "name": "Swedish flatbread sandwiches" },
+        { "name": "Toasties & bagels" },
+        { "name": "BBQ sausage roll" }
       ]
     },
     {
       "id": "bakery",
       "title": "Cakes & bakery",
       "items": [
-        {
-          "name": "Homemade cakes (daily selection)",
-          "price": "about £5",
-          "note": "Guest-reported (Yelp)"
-        },
-        {
-          "name": "Vegan cakes & bakes",
-          "price": "about £5",
-          "note": "Guest-reported range"
-        },
-        {
-          "name": "Croissants & pastries",
-          "price": "",
-          "note": "Flat white + croissant reported at £4.50"
-        },
-        {
-          "name": "Banana & Nutella blondie",
-          "price": "",
-          "note": "Ask at counter"
-        }
+        { "name": "Homemade cakes" },
+        { "name": "Vegan cakes & bakes" },
+        { "name": "Croissants & pastries" },
+        { "name": "Banana & Nutella blondie" }
       ]
     },
     {
       "id": "coffee",
       "title": "Coffee",
       "items": [
-        {
-          "name": "Allpress espresso drinks",
-          "price": "",
-          "note": "Flat white, latte, americano, cappuccino, iced latte"
-        },
-        {
-          "name": "Flat white + croissant",
-          "price": "£4.50",
-          "note": "Guest-reported combo (Citymaps)"
-        },
-        {
-          "name": "Coffee + cake",
-          "price": "£6.40",
-          "note": "Guest-reported combo (Citymaps)"
-        },
-        {
-          "name": "Alternative milks",
-          "price": "extra",
-          "note": "Some guests note a surcharge"
-        }
+        { "name": "Allpress espresso drinks" },
+        { "name": "Flat white, latte, americano & cappuccino" },
+        { "name": "Iced latte" },
+        { "name": "Alternative milks available" }
       ]
     },
     {
       "id": "hot-drinks",
       "title": "Hot drinks",
       "items": [
-        {
-          "name": "Good & Proper matcha",
-          "price": "",
-          "note": "Ask at counter"
-        },
-        {
-          "name": "Chai latte & hot chocolate",
-          "price": "",
-          "note": "Ask at counter"
-        },
-        {
-          "name": "Tea",
-          "price": "",
-          "note": "Ask at counter"
-        }
+        { "name": "Good & Proper matcha" },
+        { "name": "Chai latte" },
+        { "name": "Hot chocolate" },
+        { "name": "Tea" }
       ]
     },
     {
       "id": "cold-drinks",
       "title": "Cold drinks",
       "items": [
-        {
-          "name": "Fresh juices",
-          "price": "",
-          "note": "Orange; orange, carrot & ginger"
-        },
-        {
-          "name": "San Pellegrino",
-          "price": "",
-          "note": "Ask at counter"
-        },
-        {
-          "name": "Cawston Press sparkling elderflower",
-          "price": "",
-          "note": "Ask at counter"
-        }
+        { "name": "Fresh juices" },
+        { "name": "San Pellegrino" },
+        { "name": "Cawston Press sparkling elderflower" }
       ]
     },
     {
       "id": "kids",
       "title": "Kids",
       "items": [
-        {
-          "name": "Kids menu",
-          "price": "",
-          "note": "Ask at counter"
-        }
+        { "name": "Kids menu available" }
       ]
     }
   ]

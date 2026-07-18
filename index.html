@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/freds.css?v=20260718p">
+  <link rel="stylesheet" href="css/freds.css?v=20260718q">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle fill='%23e84b7d' cx='50' cy='50' r='50'/><text x='50' y='64' text-anchor='middle' font-size='48' fill='white' font-family='Georgia'>F</text></svg>">
 </head>
 <body>
@@ -28,7 +28,9 @@
         </ul>
       </nav>
 
-      <a href="#top" class="site-logo">Fred<span>'</span>s</a>
+      <a href="#top" class="site-logo" aria-label="Fred's home">
+        <span class="site-logo__mark">Fred<span>'</span>s</span>
+      </a>
 
       <div class="site-header__actions">
         <a class="btn btn--ink" href="#visit">Get in touch</a>
@@ -43,24 +45,27 @@
     <section class="hero">
       <div class="hero__inner">
         <div class="hero__copy">
-          <h1>Community cafe on Brockley Road using great coffee &amp; homemade bakes</h1>
+          <p class="hero__brand">Fred<span>'</span>s</p>
+          <h1>Neighbourhood cafe &amp; community hub on Brockley Road</h1>
           <p>
-            Providing a warm welcome through our Crofton Park cafe, Allpress coffee,
-            cakes, a suntrap garden patio, and neighbourhood gatherings opposite the station.
+            Affordable coffee, homemade cakes and a suntrap garden patio opposite Crofton Park station,
+            with a warm welcome for SE4 neighbours and travellers alike.
           </p>
           <div class="hero__cta">
             <a class="btn btn--pink" href="#visit">Visit our cafe</a>
-            <a class="btn btn--ink" href="menu.html">See the menu</a>
+            <a class="btn btn--ink" href="menu.html">Explore the menu</a>
           </div>
         </div>
         <figure class="hero__visual">
-          <img
-            src="images/freds/storefront-cover.jpg"
-            alt="Fred's green script fascia sign above the awning at 358 Brockley Road"
-            width="1600"
-            height="1372"
-            fetchpriority="high"
-          >
+          <div class="hero__frame">
+            <img
+              src="images/freds/storefront-cover.jpg"
+              alt="Fred's green script fascia sign above the awning at 358 Brockley Road"
+              width="1600"
+              height="1372"
+              fetchpriority="high"
+            >
+          </div>
         </figure>
       </div>
     </section>

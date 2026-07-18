@@ -129,34 +129,13 @@
 
   const renderMenu = (data) => {
     if (!menuSections) return;
-    if (menuSource) {
-      const bits = [data.sourceNote, data.priceNote].filter(Boolean);
-      menuSource.textContent = bits.join(" ");
+    if (menuSource && data.sourceNote) {
+      menuSource.textContent = data.sourceNote;
     }
 
-    const reported = (data.reportedPrices || [])
+    menuSections.innerHTML = (data.categories || [])
       .map(
-        (row) => `
-      <li>
-        <div class="menu-items__name">${row.label}</div>
-        ${row.source ? `<p class="menu-items__note">${row.source}</p>` : ""}
-        <span class="menu-items__price">${row.price}</span>
-      </li>`
-      )
-      .join("");
-
-    const reportedBlock = reported
-      ? `<section class="menu-section menu-section--prices reveal" id="menu-prices">
-        <h2>Guest-reported prices</h2>
-        <ul class="menu-items">${reported}</ul>
-      </section>`
-      : "";
-
-    menuSections.innerHTML =
-      reportedBlock +
-      (data.categories || [])
-        .map(
-          (cat) => `
+        (cat) => `
       <section class="menu-section reveal" id="menu-${cat.id}">
         <h2>${cat.title}</h2>
         <ul class="menu-items">
@@ -165,15 +144,13 @@
               (item) => `
             <li>
               <div class="menu-items__name">${item.name}</div>
-              ${item.note ? `<p class="menu-items__note">${item.note}</p>` : ""}
-              ${item.price ? `<span class="menu-items__price">${item.price}</span>` : `<span class="menu-items__price menu-items__price--muted">ask</span>`}
             </li>`
             )
             .join("")}
         </ul>
       </section>`
-        )
-        .join("");
+      )
+      .join("");
   };
 
   const boot = async () => {
