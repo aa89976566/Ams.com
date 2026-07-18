@@ -1,10 +1,29 @@
 {
-  "sourceNote": "Compiled from public listings for Fred's, 358 Brockley Road, SE4 2BY. Primary aggregator categories from freds.menu-world.com (indexed); dishes cross-checked with Google/Yelp/Nextdoor/Instagram reviews. Full current prices are not published online — ask at the counter. Cakes often around £5 per guest reports.",
+  "sourceNote": "Guest-reported prices from public reviews (Yelp / Citymaps). Fred's does not publish a full price list online. Confirm today's board at the counter.",
+  "priceNote": "Individual coffee and brunch prices are not listed publicly. Combos below are what guests reported paying.",
   "sources": [
-    "https://freds.menu-world.com/menu",
     "https://www.yelp.co.uk/biz/freds-london-3",
+    "https://citymaps.uk/bakery/london/fred-s/",
+    "https://freds.menu-world.com/menu",
     "https://nextdoor.co.uk/pages/freds-2/",
     "https://www.instagram.com/fredslondon/"
+  ],
+  "reportedPrices": [
+    {
+      "label": "Flat white + croissant",
+      "price": "£4.50",
+      "source": "Guest review (Citymaps)"
+    },
+    {
+      "label": "Coffee + cake",
+      "price": "£6.40",
+      "source": "Guest review (Citymaps)"
+    },
+    {
+      "label": "Slice of cake",
+      "price": "about £5",
+      "source": "Guest review (Yelp)"
+    }
   ],
   "categories": [
     {
@@ -13,27 +32,33 @@
       "items": [
         {
           "name": "Sourdough toast with scrambled eggs",
-          "note": "Listed on Fred's Menu World breakfast section"
+          "price": "",
+          "note": "Ask at counter"
         },
         {
           "name": "Sourdough with poached eggs",
-          "note": "Popular dish (beans as extra) — Sluurpy / guest reports"
+          "price": "",
+          "note": "Beans as extra"
         },
         {
           "name": "Greek yogurt with granola",
-          "note": "Listed on Fred's Menu World"
+          "price": "",
+          "note": "Ask at counter"
         },
         {
           "name": "Beans on toast",
-          "note": "Listed on Fred's Menu World"
+          "price": "",
+          "note": "Ask at counter"
         },
         {
           "name": "Avo on toast",
-          "note": "Confirmed in Yelp guest reviews"
+          "price": "",
+          "note": "Ask at counter"
         },
         {
           "name": "Fred's banana bread",
-          "note": "Listed on Fred's Menu World; frequently praised in reviews"
+          "price": "",
+          "note": "Ask at counter"
         }
       ]
     },
@@ -43,23 +68,28 @@
       "items": [
         {
           "name": "Roasted veg bowl",
-          "note": "Listed on Fred's Menu World"
+          "price": "",
+          "note": "Ask at counter"
         },
         {
           "name": "Warm falafel salad",
-          "note": "Listed on Fred's Menu World; also mentioned by guests"
+          "price": "",
+          "note": "Ask at counter"
         },
         {
           "name": "Swedish flatbread sandwiches",
-          "note": "House speciality — Nextdoor / guest reviews"
+          "price": "",
+          "note": "House speciality"
         },
         {
           "name": "Toasties & bagels",
-          "note": "Mozzarella toastie, bagels — guest reviews"
+          "price": "",
+          "note": "Ask at counter"
         },
         {
           "name": "BBQ sausage roll",
-          "note": "Homemade; Yelp guests call it legendary"
+          "price": "",
+          "note": "Homemade"
         }
       ]
     },
@@ -69,19 +99,23 @@
       "items": [
         {
           "name": "Homemade cakes (daily selection)",
-          "note": "Carrot, red velvet, Guinness, GF chocolate among guest favourites; ~£5 reported"
+          "price": "about £5",
+          "note": "Guest-reported (Yelp)"
         },
         {
           "name": "Vegan cakes & bakes",
-          "note": "Confirmed on Yelp"
+          "price": "about £5",
+          "note": "Guest-reported range"
         },
         {
           "name": "Croissants & pastries",
-          "note": "Counter bakery selection"
+          "price": "",
+          "note": "Flat white + croissant reported at £4.50"
         },
         {
           "name": "Banana & Nutella blondie",
-          "note": "Popular dish listing — Sluurpy"
+          "price": "",
+          "note": "Ask at counter"
         }
       ]
     },
@@ -91,11 +125,23 @@
       "items": [
         {
           "name": "Allpress espresso drinks",
+          "price": "",
           "note": "Flat white, latte, americano, cappuccino, iced latte"
         },
         {
+          "name": "Flat white + croissant",
+          "price": "£4.50",
+          "note": "Guest-reported combo (Citymaps)"
+        },
+        {
+          "name": "Coffee + cake",
+          "price": "£6.40",
+          "note": "Guest-reported combo (Citymaps)"
+        },
+        {
           "name": "Alternative milks",
-          "note": "Available; some guests note a surcharge"
+          "price": "extra",
+          "note": "Some guests note a surcharge"
         }
       ]
     },
@@ -105,15 +151,18 @@
       "items": [
         {
           "name": "Good & Proper matcha",
-          "note": "From @fredslondon / counter"
+          "price": "",
+          "note": "Ask at counter"
         },
         {
           "name": "Chai latte & hot chocolate",
-          "note": "Guest reports (incl. Marks dark hot chocolate)"
+          "price": "",
+          "note": "Ask at counter"
         },
         {
           "name": "Tea",
-          "note": "Own Menu World category"
+          "price": "",
+          "note": "Ask at counter"
         }
       ]
     },
@@ -123,15 +172,18 @@
       "items": [
         {
           "name": "Fresh juices",
-          "note": "Freshly squeezed orange; orange–carrot–ginger mentioned by guests"
+          "price": "",
+          "note": "Orange; orange, carrot & ginger"
         },
         {
           "name": "San Pellegrino",
-          "note": "Listed on Fred's Menu World"
+          "price": "",
+          "note": "Ask at counter"
         },
         {
           "name": "Cawston Press sparkling elderflower",
-          "note": "Listed on Fred's Menu World"
+          "price": "",
+          "note": "Ask at counter"
         }
       ]
     },
@@ -141,7 +193,8 @@
       "items": [
         {
           "name": "Kids menu",
-          "note": "Own category on Fred's Menu World; buggy-friendly cafe"
+          "price": "",
+          "note": "Ask at counter"
         }
       ]
     }

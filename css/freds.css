@@ -1,4 +1,4 @@
-/* Fred's — styled after Waste2Taste structure & visual language */
+/* Fred's - styled after Waste2Taste structure & visual language */
 
 :root {
   --cream: #f7eeee;
@@ -64,7 +64,7 @@ ul {
   list-style: none;
 }
 
-/* —— Header —— */
+/* -- Header -- */
 .site-header {
   position: sticky;
   top: 0;
@@ -154,7 +154,7 @@ ul {
   transform: translateY(-0.22rem) rotate(-45deg);
 }
 
-/* —— Buttons —— */
+/* -- Buttons -- */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -205,7 +205,7 @@ ul {
   color: var(--pink);
 }
 
-/* —— Shared section bits —— */
+/* -- Shared section bits -- */
 .section-kicker,
 .section-heading {
   font-family: var(--font-display);
@@ -276,7 +276,7 @@ ul {
   fill: var(--cream);
 }
 
-/* —— Hero —— */
+/* -- Hero -- */
 .hero {
   padding: clamp(1.5rem, 4vw, 2.5rem) var(--pad) 0;
 }
@@ -331,7 +331,7 @@ ul {
   object-position: center 8%;
 }
 
-/* —— Pathways —— */
+/* -- Pathways -- */
 .pathways {
   background: var(--olive);
   color: var(--white);
@@ -399,7 +399,7 @@ ul {
   color: var(--ink);
 }
 
-/* —— Welcome —— */
+/* -- Welcome -- */
 .welcome {
   background: var(--cream);
   padding: clamp(2.5rem, 7vw, 4.5rem) var(--pad);
@@ -448,7 +448,7 @@ ul {
   max-width: 36rem;
 }
 
-/* —— Highlights —— */
+/* -- Highlights -- */
 .highlights {
   background: var(--olive);
   color: var(--white);
@@ -482,7 +482,7 @@ ul {
   color: rgba(255, 255, 255, 0.92);
 }
 
-/* —— Events —— */
+/* -- Events -- */
 .events {
   background: var(--cream);
   padding: clamp(2.5rem, 7vw, 4.5rem) var(--pad);
@@ -585,7 +585,7 @@ ul {
   color: var(--ink-soft);
 }
 
-/* —— Visit —— */
+/* -- Visit -- */
 .visit {
   background: var(--paper);
   padding: clamp(2.5rem, 7vw, 4.5rem) var(--pad);
@@ -675,7 +675,7 @@ ul {
   margin-bottom: 0.35rem;
 }
 
-/* —— Join —— */
+/* -- Join -- */
 .join {
   background: var(--cream);
   padding: 0 var(--pad) clamp(3rem, 8vw, 5rem);
@@ -691,7 +691,7 @@ ul {
   margin-top: 0.5rem;
 }
 
-/* —— Menu page —— */
+/* -- Menu page -- */
 .page-hero {
   padding: clamp(2rem, 6vw, 3.5rem) var(--pad) 0.5rem;
 }
@@ -801,6 +801,16 @@ ul {
   white-space: nowrap;
 }
 
+.menu-items__price--muted {
+  color: var(--ink-soft);
+  font-weight: 500;
+  text-transform: lowercase;
+}
+
+.menu-section--prices {
+  background: rgba(196, 202, 112, 0.22);
+}
+
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -908,7 +918,7 @@ ul {
   text-underline-offset: 0.15em;
 }
 
-/* —— Footer —— */
+/* -- Footer -- */
 .site-footer {
   background: var(--ink);
   color: rgba(255, 255, 255, 0.82);
@@ -941,7 +951,7 @@ ul {
   color: var(--olive);
 }
 
-/* —— Reveal —— */
+/* -- Reveal -- */
 .reveal {
   opacity: 0;
   transform: translateY(18px);
@@ -953,7 +963,7 @@ ul {
   transform: none;
 }
 
-/* —— Responsive —— */
+/* -- Responsive -- */
 @media (max-width: 960px) {
   .hero__inner,
   .welcome__grid,

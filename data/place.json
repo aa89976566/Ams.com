@@ -14,11 +14,11 @@
   "instagram": "https://www.instagram.com/fredslondon/",
   "facebook": "https://www.facebook.com/FredsSe4",
   "hours": [
-    { "days": "Monday – Friday", "time": "8:00 – 16:00" },
-    { "days": "Saturday – Sunday", "time": "8:30 – 16:00" }
+    { "days": "Monday to Friday", "time": "8:00 to 16:00" },
+    { "days": "Saturday to Sunday", "time": "8:30 to 16:00" }
   ],
   "amenities": [
-    "Free Wi‑Fi",
+    "Free Wi-Fi",
     "Garden patio / suntrap",
     "Family & buggy friendly",
     "Vegan options",
