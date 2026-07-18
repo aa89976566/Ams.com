@@ -524,6 +524,98 @@ button {
   color: var(--blue-soft);
 }
 
+/* Instagram */
+.instagram {
+  background:
+    radial-gradient(800px 400px at 90% 10%, rgba(5, 88, 249, 0.07), transparent 55%),
+    #fff;
+}
+
+.ig-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: end;
+  gap: 1.25rem;
+  margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+.ig-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+.ig-card {
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+  min-height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--mist);
+  transition: transform 0.4s var(--ease), border-color 0.35s var(--ease);
+}
+
+.ig-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(5, 88, 249, 0.45);
+}
+
+.ig-card figure {
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: #e8ecf5;
+}
+
+.ig-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s var(--ease);
+}
+
+.ig-card:hover img {
+  transform: scale(1.05);
+}
+
+.ig-body {
+  padding: 0.95rem 1rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  flex: 1;
+  background: #fff;
+}
+
+.ig-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--blue);
+}
+
+.ig-body p {
+  font-size: 0.92rem;
+  color: var(--ink-muted);
+  line-height: 1.45;
+}
+
+.ig-link {
+  margin-top: auto;
+  padding-top: 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+}
+
+.ig-card:hover .ig-link {
+  color: var(--blue);
+}
+
 /* Gallery */
 .gallery-head {
   margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
@@ -677,6 +769,12 @@ button {
 }
 
 /* Mobile */
+@media (max-width: 1100px) {
+  .ig-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 900px) {
   .intro-grid,
   .visit-grid {
@@ -750,6 +848,10 @@ button {
 
   .hero-brand {
     font-size: clamp(3.8rem, 22vw, 5.5rem);
+  }
+
+  .ig-grid {
+    grid-template-columns: 1fr;
   }
 }
 

@@ -1,0 +1,65 @@
+{
+  "profile": {
+    "username": "fredslondon",
+    "url": "https://www.instagram.com/fredslondon/",
+    "label": "Fred's on Instagram"
+  },
+  "posts": [
+    {
+      "id": "pastry-case",
+      "image": "images/freds/instagram/pastry-case.jpg",
+      "url": "https://www.instagram.com/p/DNAdmBModix/",
+      "caption": "Fresh from the case — croissants, muffins, pasteis de nata and homemade cakes.",
+      "tag": "Inside Fred's"
+    },
+    {
+      "id": "sausage-rolls",
+      "image": "images/freds/instagram/sausage-rolls.jpg",
+      "url": "https://www.instagram.com/p/DOYF3XPjDkp/",
+      "caption": "Come and grab a warm Fred's sausage roll.",
+      "tag": "Signature bake"
+    },
+    {
+      "id": "matcha-latte",
+      "image": "images/freds/instagram/matcha-latte.jpg",
+      "url": "https://www.instagram.com/p/DKmKpXxI0YH/",
+      "caption": "Our vibrant matcha comes from Good & Proper — come try it for yourself.",
+      "tag": "Matcha"
+    },
+    {
+      "id": "lemon-poppy-cake",
+      "image": "images/freds/instagram/lemon-poppy-cake.jpg",
+      "url": "https://www.instagram.com/p/CDBWAT1nHCz/",
+      "caption": "Our vegan lemon poppy seed cake — homemade in Brockley.",
+      "tag": "Vegan bake"
+    },
+    {
+      "id": "grab-and-go",
+      "image": "images/freds/instagram/grab-and-go.jpg",
+      "url": "https://www.instagram.com/p/DJWeGULISVj/",
+      "caption": "Your daily grab-and-go just got better — freshly made.",
+      "tag": "Grab & go"
+    },
+    {
+      "id": "iced-drinks",
+      "image": "images/freds/instagram/iced-drinks.jpg",
+      "url": "https://www.instagram.com/p/DaplIBJNhMP/",
+      "caption": "Iced coffees, fresh juice, and neighbourhood SE4 vibes.",
+      "tag": "Drinks"
+    },
+    {
+      "id": "matcha-spritz",
+      "image": "images/freds/instagram/matcha-spritz.jpg",
+      "url": "https://www.instagram.com/p/DMkeX2NI4_B/",
+      "caption": "Matcha Spritz — iced, bright, and made to sip in the garden.",
+      "tag": "Seasonal"
+    },
+    {
+      "id": "latte-pour",
+      "image": "images/freds/instagram/latte-pour.jpg",
+      "url": "https://www.instagram.com/p/DWnpzhKjBwj/",
+      "caption": "Neighbourhood coffeeshop energy — SE4.",
+      "tag": "Coffee"
+    }
+  ]
+}

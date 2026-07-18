@@ -14,10 +14,12 @@ Open [http://localhost:8080](http://localhost:8080)
 
 ## Contents
 
-- `index.html` — single-page site (hero, about, menu, gallery, visit)
+- `index.html` — single-page site (hero, about, menu, Instagram, gallery, visit)
 - `css/freds.css` — layout, colour tokens, motion
-- `js/freds.js` — clock, nav, scroll reveals
-- `images/freds/` — storefront, interior, and food photography
+- `js/freds.js` — clock, nav, scroll reveals, Instagram grid
+- `data/instagram-posts.json` — captions & links from [@fredslondon](https://www.instagram.com/fredslondon/)
+- `images/freds/` — storefront + food photography
+- `images/freds/instagram/` — photos pulled from the cafe Instagram
 
 ## Cafe details
 
@@ -27,6 +29,7 @@ Open [http://localhost:8080](http://localhost:8080)
 | Phone | [020 3802 3166](tel:+442038023166) |
 | Hours | Mon–Fri 8:00–16:00 · Sat–Sun 8:30–16:00 |
 | Coffee | Allpress |
+| Matcha | Good & Proper |
 | Instagram | [@fredslondon](https://www.instagram.com/fredslondon/) |
 | Facebook | [FredsSe4](https://www.facebook.com/FredsSe4) |
 | Maps | [Google Maps](https://maps.app.goo.gl/69mfUyRDchGWMNWY8) |
