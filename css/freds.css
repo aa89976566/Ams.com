@@ -83,7 +83,12 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 var(--pad);
+  gap: 0.75rem;
+  padding:
+    0
+    max(var(--pad), env(safe-area-inset-right, 0px))
+    0
+    max(var(--pad), env(safe-area-inset-left, 0px));
   background: rgba(255, 255, 255, 0.72);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid transparent;
@@ -389,11 +394,14 @@ button {
 .section-title {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(2.2rem, 6vw, 4.25rem);
-  line-height: 0.98;
-  letter-spacing: -0.04em;
-  max-width: 14ch;
+  font-size: clamp(2rem, 5.5vw, 3.75rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  max-width: 16ch;
   margin-bottom: 1.25rem;
+  overflow-wrap: break-word;
+  word-break: normal;
+  hyphens: manual;
 }
 
 .section-copy {
@@ -1004,7 +1012,17 @@ button {
   }
 
   .section-title {
-    font-size: clamp(1.85rem, 9vw, 2.6rem);
+    font-size: clamp(1.65rem, 8vw, 2.25rem);
+    max-width: none;
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+  }
+
+  .nav-toggle {
+    flex: 0 0 auto;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 0;
   }
 
   .footer-meta { text-align: left; }
