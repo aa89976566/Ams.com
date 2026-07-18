@@ -2,7 +2,7 @@
 
 Neighbourhood cafe site for **Fred's**, 358 Brockley Road, London SE4 2BY — opposite Crofton Park station.
 
-Visual language (typography, electric blue accent, live clock, scroll reveals) is inspired by [Studio Andrel — SIP](https://studioandrel.com/sip).
+Structure and visual language (cream/olive palette, pill buttons, wavy section breaks, pathway circles) are inspired by [Waste2Taste](https://www.waste2taste.co.uk).
 
 ## Quick start
 
@@ -14,16 +14,14 @@ Open [http://localhost:8080](http://localhost:8080)
 
 ## Contents
 
-- `index.html` — single-page site (hero, about, menu, **events**, Instagram, visit)
+- `index.html` — landing (hero, pathways, about, highlights, events, visit)
+- `menu.html` — coffee, brunch & bakery menu page
 - `css/freds.css` — layout, colour tokens, motion
-- `js/freds.js` — clock, nav, scroll reveals, events board, Instagram grid
+- `js/freds.js` — nav, scroll reveals, events board, hours
 - `data/place.json` — address, hours, amenities from Google Maps / Yelp
-- `data/reviews.json` — real guest quotes from Google Maps & Yelp
 - `data/events.json` — community events board (edit dates/titles here)
-- `data/instagram-posts.json` — captions & links from [@fredslondon](https://www.instagram.com/fredslondon/)
 - `images/freds/` — storefront + food photography
 - `images/freds/maps/` — Google Maps / Yelp photos (garden, counter, interior)
-- `images/freds/instagram/` — unique Instagram photos (no duplicates across sections)
 
 ## Cafe details
 
