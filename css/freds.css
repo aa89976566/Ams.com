@@ -347,6 +347,7 @@ button {
 /* —— Sections —— */
 .section {
   padding: clamp(4rem, 10vw, 7.5rem) var(--pad);
+  scroll-margin-top: calc(var(--nav-h) + 0.5rem);
 }
 
 .section-inner {
