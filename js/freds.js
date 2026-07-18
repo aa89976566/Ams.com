@@ -58,9 +58,12 @@
             }
           });
         },
-        { rootMargin: "0px 0px -8% 0px", threshold: 0.12 }
+        { rootMargin: "0px 0px -4% 0px", threshold: 0.05 }
       );
       reveals.forEach((el) => io.observe(el));
+      window.setTimeout(() => {
+        document.querySelectorAll(".reveal:not(.is-in)").forEach((el) => el.classList.add("is-in"));
+      }, 1200);
     } else {
       reveals.forEach((el) => el.classList.add("is-in"));
     }

@@ -263,9 +263,9 @@ body:not(.home) .nav-toggle span {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.28) 0%, rgba(0, 0, 0, 0.18) 40%, rgba(0, 0, 0, 0.62) 100%),
-    radial-gradient(circle at 20% 20%, rgba(242, 237, 155, 0.22), transparent 40%),
-    radial-gradient(circle at 80% 30%, rgba(134, 197, 211, 0.2), transparent 42%);
+    linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.22) 38%, rgba(0, 0, 0, 0.72) 100%),
+    radial-gradient(circle at 18% 18%, rgba(242, 237, 155, 0.2), transparent 42%),
+    radial-gradient(circle at 82% 28%, rgba(134, 197, 211, 0.18), transparent 44%);
 }
 
 .hero__inner {
