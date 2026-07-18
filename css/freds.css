@@ -424,8 +424,27 @@ button {
   align-items: end;
 }
 
+.amenity-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 1.35rem 0 0;
+}
+
+.amenity-list li {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--blue);
+  border: 1px solid rgba(5, 88, 249, 0.28);
+  background: rgba(5, 88, 249, 0.05);
+  padding: 0.4rem 0.65rem;
+}
+
 .intro-meta {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   display: grid;
   gap: 0.85rem;
   font-family: var(--font-mono);
@@ -673,6 +692,67 @@ button {
   color: var(--ink-muted);
 }
 
+/* Reviews */
+.reviews {
+  background: #111;
+  color: #fff;
+}
+
+.reviews .eyebrow { color: #8eb4ff; }
+.reviews .section-copy { color: rgba(255, 255, 255, 0.7); }
+.reviews .section-title { color: #fff; }
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.85rem;
+}
+
+.review-card {
+  background: #1a1a1a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.25rem 1.2rem 1.35rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  min-height: 100%;
+  transition: border-color 0.3s var(--ease), background 0.3s var(--ease);
+}
+
+.review-card:hover {
+  border-color: rgba(5, 88, 249, 0.5);
+  background: #1c2230;
+}
+
+.review-stars {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--blue-soft);
+}
+
+.review-card blockquote {
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.88);
+  flex: 1;
+}
+
+.review-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.review-meta .source {
+  color: var(--blue-soft);
+}
+
 /* Instagram */
 .instagram {
   background:
@@ -794,7 +874,21 @@ button {
 .visit-panel {
   background: #fff;
   border: 1px solid var(--line);
-  padding: clamp(1.5rem, 3vw, 2rem);
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  overflow: hidden;
+}
+
+.visit-photo {
+  margin: -1.25rem -1.25rem 1.15rem;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--mist);
+}
+
+.visit-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .visit-panel h3 {
@@ -876,7 +970,8 @@ button {
 
 /* Mobile */
 @media (max-width: 1100px) {
-  .ig-grid {
+  .ig-grid,
+  .reviews-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -1028,7 +1123,8 @@ button {
 
   .footer-meta { text-align: left; }
 
-  .ig-grid {
+  .ig-grid,
+  .reviews-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1039,6 +1135,10 @@ button {
 
   .events-foot .btn {
     width: 100%;
+  }
+
+  .visit-photo {
+    margin: -1.25rem -1.15rem 1.15rem;
   }
 }
 

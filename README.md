@@ -17,9 +17,12 @@ Open [http://localhost:8080](http://localhost:8080)
 - `index.html` — single-page site (hero, about, menu, **events**, Instagram, visit)
 - `css/freds.css` — layout, colour tokens, motion
 - `js/freds.js` — clock, nav, scroll reveals, events board, Instagram grid
+- `data/place.json` — address, hours, amenities from Google Maps / Yelp
+- `data/reviews.json` — real guest quotes from Google Maps & Yelp
 - `data/events.json` — community events board (edit dates/titles here)
 - `data/instagram-posts.json` — captions & links from [@fredslondon](https://www.instagram.com/fredslondon/)
 - `images/freds/` — storefront + food photography
+- `images/freds/maps/` — Google Maps / Yelp photos (garden, counter, interior)
 - `images/freds/instagram/` — unique Instagram photos (no duplicates across sections)
 
 ## Cafe details

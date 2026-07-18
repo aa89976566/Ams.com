@@ -13,6 +13,27 @@
       "tag": "Matcha"
     },
     {
+      "id": "grab-and-go",
+      "image": "images/freds/instagram/grab-and-go.jpg",
+      "url": "https://www.instagram.com/p/DJWeGULISVj/",
+      "caption": "Your daily grab-n-go just got better #coffeeshop #freshlymade",
+      "tag": "Grab & go"
+    },
+    {
+      "id": "sausage-rolls",
+      "image": "images/freds/instagram/sausage-rolls.jpg",
+      "url": "https://www.instagram.com/p/DOYF3XPjDkp/",
+      "caption": "Come and grab a warm Fred's sausage roll.",
+      "tag": "Signature"
+    },
+    {
+      "id": "lemon-poppy-cake",
+      "image": "images/freds/instagram/lemon-poppy-cake.jpg",
+      "url": "https://www.instagram.com/p/CDBWAT1nHCz/",
+      "caption": "Our new vegan lemon poppy seed cake — homemade in Brockley.",
+      "tag": "Vegan bake"
+    },
+    {
       "id": "iced-drinks",
       "image": "images/freds/instagram/iced-drinks.jpg",
       "url": "https://www.instagram.com/p/DaplIBJNhMP/",
@@ -20,32 +41,11 @@
       "tag": "Drinks"
     },
     {
-      "id": "grab-and-go",
-      "image": "images/freds/instagram/grab-and-go.jpg",
-      "url": "https://www.instagram.com/p/DJWeGULISVj/",
-      "caption": "Your daily grab-and-go just got better — freshly made.",
-      "tag": "Grab & go"
-    },
-    {
       "id": "matcha-spritz",
       "image": "images/freds/instagram/matcha-spritz.jpg",
       "url": "https://www.instagram.com/p/DMkeX2NI4_B/",
-      "caption": "Matcha Spritz — iced, bright, and made to sip in the garden.",
+      "caption": "Matcha Spritz — iced, bright, made for the garden.",
       "tag": "Seasonal"
-    },
-    {
-      "id": "lemon-poppy-cake",
-      "image": "images/freds/instagram/lemon-poppy-cake.jpg",
-      "url": "https://www.instagram.com/p/CDBWAT1nHCz/",
-      "caption": "Our vegan lemon poppy seed cake — homemade in Brockley.",
-      "tag": "Vegan bake"
-    },
-    {
-      "id": "barista-matcha",
-      "image": "images/freds/instagram/barista-matcha.jpg",
-      "url": "https://www.instagram.com/p/DLZ5Be7o6Kq/",
-      "caption": "Behind the counter — matcha whisked by hand, every cup.",
-      "tag": "Team"
     }
   ]
 }

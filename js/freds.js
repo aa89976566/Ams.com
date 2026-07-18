@@ -7,6 +7,10 @@
   const igGrid = document.getElementById("igGrid");
   const eventsBoard = document.getElementById("eventsBoard");
   const eventsCta = document.getElementById("eventsCta");
+  const reviewsGrid = document.getElementById("reviewsGrid");
+  const reviewsNote = document.getElementById("reviewsNote");
+  const hoursTable = document.getElementById("hoursTable");
+  const amenityList = document.getElementById("amenityList");
 
   const pad = (n) => String(n).padStart(2, "0");
 
@@ -80,56 +84,11 @@
     return { day: String(d.getDate()), month: MONTHS[d.getMonth()] };
   };
 
-  const fallbackEvents = [
-    {
-      date: "2026-07-26",
-      time: "10:00 – 13:00",
-      title: "Sunday Garden Brunch",
-      place: "Garden patio",
-      description: "Neighbourhood brunch in the garden — Allpress coffee, warm sausage rolls, and space to linger.",
-      tag: "Weekly",
-    },
-    {
-      date: "2026-08-02",
-      time: "11:00 – 12:30",
-      title: "Little Makers Morning",
-      place: "Inside Fred's",
-      description: "Family-friendly craft hour for little neighbours. Free to join — just grab a drink and pull up a chair.",
-      tag: "Family",
-    },
-    {
-      date: "2026-08-09",
-      time: "14:00 – 15:30",
-      title: "Good & Proper Matcha Tasting",
-      place: "Counter + garden",
-      description: "Learn how we whisk our vibrant matcha, then taste latte and spritz styles side by side.",
-      tag: "Workshop",
-    },
-    {
-      date: "2026-08-16",
-      time: "12:00 – 16:00",
-      title: "SE4 Book Swap",
-      place: "Garden patio",
-      description: "Bring a book, take a book. Soft jazz, cake, and community chat in the garden.",
-      tag: "Community",
-    },
-    {
-      date: "2026-08-23",
-      time: "15:00 – 17:00",
-      title: "Garden Open Mic",
-      place: "Garden patio",
-      description: "Acoustic sets and spoken word from Crofton Park & Brockley. Sign up on the day or DM @fredslondon.",
-      tag: "Music",
-    },
-    {
-      date: "2026-08-30",
-      time: "09:00 – 11:00",
-      title: "Regulars' Morning Meet",
-      place: "Inside Fred's",
-      description: "Coffee for the early crew — meet neighbours, share the Wi‑Fi, and start the week together.",
-      tag: "Social",
-    },
-  ];
+  const loadJson = async (path) => {
+    const res = await fetch(path, { cache: "no-store" });
+    if (!res.ok) throw new Error("bad status");
+    return res.json();
+  };
 
   const renderEvents = (events) => {
     if (!eventsBoard) return;
@@ -169,47 +128,27 @@
       </article>`;
       })
       .join("");
-    observeReveals();
   };
 
-  const fallbackPosts = [
-    {
-      image: "images/freds/instagram/matcha-latte.jpg",
-      url: "https://www.instagram.com/p/DKmKpXxI0YH/",
-      caption: "Our vibrant matcha comes from Good & Proper — come try it for yourself.",
-      tag: "Matcha",
-    },
-    {
-      image: "images/freds/instagram/iced-drinks.jpg",
-      url: "https://www.instagram.com/p/DaplIBJNhMP/",
-      caption: "Iced coffees, fresh juice, and neighbourhood SE4 vibes.",
-      tag: "Drinks",
-    },
-    {
-      image: "images/freds/instagram/grab-and-go.jpg",
-      url: "https://www.instagram.com/p/DJWeGULISVj/",
-      caption: "Your daily grab-and-go just got better — freshly made.",
-      tag: "Grab & go",
-    },
-    {
-      image: "images/freds/instagram/matcha-spritz.jpg",
-      url: "https://www.instagram.com/p/DMkeX2NI4_B/",
-      caption: "Matcha Spritz — iced, bright, and made to sip in the garden.",
-      tag: "Seasonal",
-    },
-    {
-      image: "images/freds/instagram/lemon-poppy-cake.jpg",
-      url: "https://www.instagram.com/p/CDBWAT1nHCz/",
-      caption: "Our vegan lemon poppy seed cake — homemade in Brockley.",
-      tag: "Vegan bake",
-    },
-    {
-      image: "images/freds/instagram/barista-matcha.jpg",
-      url: "https://www.instagram.com/p/DLZ5Be7o6Kq/",
-      caption: "Behind the counter — matcha whisked by hand, every cup.",
-      tag: "Team",
-    },
-  ];
+  const renderReviews = (data) => {
+    if (!reviewsGrid) return;
+    if (reviewsNote && data.sourcesNote) reviewsNote.textContent = data.sourcesNote;
+    const list = (data.reviews || []).slice(0, 6);
+    reviewsGrid.innerHTML = list
+      .map((review, i) => {
+        const stars = "★".repeat(review.stars || 5);
+        return `
+      <article class="review-card reveal${i % 3 === 1 ? " reveal-delay-1" : i % 3 === 2 ? " reveal-delay-2" : ""}">
+        <div class="review-stars" aria-label="${review.stars || 5} stars">${stars}</div>
+        <blockquote>“${review.quote}”</blockquote>
+        <div class="review-meta">
+          <span>${review.author}</span>
+          <span class="source">${review.source}</span>
+        </div>
+      </article>`;
+      })
+      .join("");
+  };
 
   const renderIg = (posts) => {
     if (!igGrid) return;
@@ -228,32 +167,54 @@
       </a>`
       )
       .join("");
-    observeReveals();
   };
 
-  const loadJson = async (path) => {
-    const res = await fetch(path, { cache: "no-store" });
-    if (!res.ok) throw new Error("bad status");
-    return res.json();
+  const applyPlace = (place) => {
+    if (hoursTable && place.hours?.length) {
+      hoursTable.querySelector("tbody").innerHTML = place.hours
+        .map((h) => `<tr><td>${h.days}</td><td>${h.time}</td></tr>`)
+        .join("");
+    }
+    if (amenityList && place.amenities?.length) {
+      amenityList.innerHTML = place.amenities.map((a) => `<li>${a}</li>`).join("");
+    }
   };
 
   const boot = async () => {
     try {
+      const place = await loadJson("data/place.json");
+      applyPlace(place);
+    } catch {
+      /* keep HTML defaults */
+    }
+
+    try {
       const eventsData = await loadJson("data/events.json");
-      renderEvents(eventsData.events || fallbackEvents);
+      renderEvents(eventsData.events || []);
       if (eventsCta && eventsData.cta?.href) {
         eventsCta.href = eventsData.cta.href;
         if (eventsData.cta.label) eventsCta.textContent = eventsData.cta.label;
       }
     } catch {
-      renderEvents(fallbackEvents);
+      if (eventsBoard) {
+        eventsBoard.innerHTML = `<p class="event-empty">Follow @fredslondon for upcoming community events.</p>`;
+      }
+    }
+
+    try {
+      const reviewsData = await loadJson("data/reviews.json");
+      renderReviews(reviewsData);
+    } catch {
+      if (reviewsGrid) {
+        reviewsGrid.innerHTML = `<p class="event-empty">See reviews on Google Maps and Yelp.</p>`;
+      }
     }
 
     try {
       const igData = await loadJson("data/instagram-posts.json");
-      renderIg(igData.posts || fallbackPosts);
+      renderIg(igData.posts || []);
     } catch {
-      renderIg(fallbackPosts);
+      if (igGrid) igGrid.innerHTML = "";
     }
 
     observeReveals();

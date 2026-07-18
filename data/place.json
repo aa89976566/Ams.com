@@ -1,0 +1,40 @@
+{
+  "name": "Fred's",
+  "address": {
+    "line1": "358 Brockley Road",
+    "area": "Crofton Park",
+    "city": "London",
+    "postcode": "SE4 2BY",
+    "full": "358 Brockley Road, Crofton Park, London SE4 2BY"
+  },
+  "geo": { "lat": 51.455104, "lng": -0.03736 },
+  "phone": "020 3802 3166",
+  "phoneHref": "tel:+442038023166",
+  "mapsUrl": "https://maps.app.goo.gl/69mfUyRDchGWMNWY8",
+  "instagram": "https://www.instagram.com/fredslondon/",
+  "facebook": "https://www.facebook.com/FredsSe4",
+  "hours": [
+    { "days": "Monday – Friday", "time": "8:00 – 16:00" },
+    { "days": "Saturday – Sunday", "time": "8:30 – 16:00" }
+  ],
+  "amenities": [
+    "Free Wi‑Fi",
+    "Garden patio / suntrap",
+    "Family & buggy friendly",
+    "Vegan options",
+    "Loyalty card",
+    "Card payments"
+  ],
+  "highlights": [
+    "Allpress coffee",
+    "Good & Proper matcha",
+    "Homemade cakes & croissants",
+    "Swedish flatbread sandwiches",
+    "BBQ sausage rolls",
+    "Opposite Crofton Park station"
+  ],
+  "ratings": [
+    { "source": "Yelp", "score": 4.3, "count": 6, "url": "https://www.yelp.co.uk/biz/freds-london-3" }
+  ],
+  "sources": ["Google Maps", "Yelp", "Instagram @fredslondon"]
+}
