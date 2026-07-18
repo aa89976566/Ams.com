@@ -939,17 +939,16 @@ button {
   .hero {
     display: flex;
     flex-direction: column;
-    min-height: 100svh;
-    min-height: 100dvh;
+    min-height: 0;
     align-items: stretch;
   }
 
   .hero-media {
     position: relative;
-    flex: 1 1 0;
-    min-height: 0;
-    height: auto;
-    max-height: 48svh;
+    flex: 0 0 auto;
+    height: 42svh;
+    min-height: 220px;
+    max-height: 360px;
     inset: auto;
   }
 
@@ -960,21 +959,18 @@ button {
   }
 
   .hero-shade {
-    background: linear-gradient(180deg, rgba(5, 16, 40, 0.12) 0%, transparent 55%, rgba(10, 18, 36, 0.25) 100%);
+    background: linear-gradient(180deg, rgba(5, 16, 40, 0.1) 0%, transparent 60%, rgba(10, 18, 36, 0.2) 100%);
   }
 
   .hero-content {
-    flex: 1 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    flex: 0 0 auto;
     width: 100%;
     margin: 0;
     background: #0a1224;
     padding:
-      1.5rem
+      1.4rem
       var(--pad)
-      max(1.5rem, env(safe-area-inset-bottom, 0px) + 1.35rem);
+      max(1.4rem, env(safe-area-inset-bottom, 0px) + 1.25rem);
   }
 
   .hero-brand {
