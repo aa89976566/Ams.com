@@ -964,14 +964,17 @@ button {
   }
 
   .hero-content {
-    flex: 0 0 auto;
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
     width: 100%;
     margin: 0;
     background: #0a1224;
     padding:
-      1.35rem
+      1.5rem
       var(--pad)
-      max(1.35rem, env(safe-area-inset-bottom, 0px) + 1.2rem);
+      max(1.5rem, env(safe-area-inset-bottom, 0px) + 1.35rem);
   }
 
   .hero-brand {
