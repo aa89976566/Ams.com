@@ -1,40 +1,35 @@
 (() => {
   const year = document.getElementById("year");
-  const nav = document.getElementById("nav");
   const toggle = document.getElementById("navToggle");
-  const links = document.getElementById("navLinks");
-  const siteNav = document.querySelector(".site-nav");
+  const overlay = document.getElementById("siteNavOverlay");
+  const closeBtn = document.getElementById("navClose");
   const eventsBoard = document.getElementById("eventsBoard");
   const eventsCta = document.getElementById("eventsCta");
   const hoursTable = document.getElementById("hoursTable");
+  const footerHours = document.getElementById("footerHours");
   const menuSections = document.getElementById("menuSections");
   const menuSource = document.getElementById("menuSource");
 
   if (year) year.textContent = String(new Date().getFullYear());
 
-  const onScroll = () => {
-    if (!nav) return;
-    nav.classList.toggle("is-scrolled", window.scrollY > 12);
+  const setNavOpen = (open) => {
+    if (!overlay || !toggle) return;
+    overlay.classList.toggle("is-open", open);
+    overlay.setAttribute("aria-hidden", open ? "false" : "true");
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    document.body.classList.toggle("nav-open", open);
   };
-  onScroll();
-  window.addEventListener("scroll", onScroll, { passive: true });
 
-  if (toggle && links) {
-    const panel = siteNav || links;
-    const setOpen = (open) => {
-      toggle.classList.toggle("is-open", open);
-      panel.classList.toggle("is-open", open);
-      links.classList.toggle("is-open", open);
-      toggle.setAttribute("aria-expanded", open ? "true" : "false");
-      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-    };
-
+  if (toggle && overlay) {
     toggle.addEventListener("click", () => {
-      setOpen(!panel.classList.contains("is-open"));
+      setNavOpen(!overlay.classList.contains("is-open"));
     });
 
-    links.querySelectorAll("a").forEach((a) => {
-      a.addEventListener("click", () => setOpen(false));
+    closeBtn?.addEventListener("click", () => setNavOpen(false));
+
+    overlay.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => setNavOpen(false));
     });
   }
 
@@ -79,6 +74,13 @@
     return res.json();
   };
 
+  const escapeHtml = (value) =>
+    String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;");
+
   const renderEvents = (events) => {
     if (!eventsBoard) return;
     const today = new Date();
@@ -106,14 +108,14 @@
           <span class="month">${month}</span>
         </div>
         <div class="event-body">
-          <h3>${event.title}</h3>
-          <p>${event.description}</p>
+          <h3>${escapeHtml(event.title)}</h3>
+          <p>${escapeHtml(event.description)}</p>
           <div class="event-meta">
-            <span class="tag">${event.tag}</span>
-            <span>${event.place}</span>
+            <span class="tag">${escapeHtml(event.tag)}</span>
+            <span>${escapeHtml(event.place)}</span>
           </div>
         </div>
-        <div class="event-side">${event.time}</div>
+        <div class="event-side">${escapeHtml(event.time)}</div>
       </article>`;
       })
       .join("");
@@ -122,10 +124,47 @@
   const applyPlace = (place) => {
     if (hoursTable && place.hours?.length) {
       hoursTable.querySelector("tbody").innerHTML = place.hours
-        .map((h) => `<tr><td>${h.days}</td><td>${h.time}</td></tr>`)
+        .map((h) => `<tr><td>${escapeHtml(h.days)}</td><td>${escapeHtml(h.time)}</td></tr>`)
+        .join("");
+    }
+
+    if (footerHours && place.hours?.length) {
+      footerHours.innerHTML = place.hours
+        .map(
+          (h) =>
+            `<div class="footer-hours-row"><span>${escapeHtml(h.days)}</span><span>${escapeHtml(h.time)}</span></div>`
+        )
         .join("");
     }
   };
+
+  const accentClass = (accent) => {
+    if (accent === "blue") return "menu-section--blue";
+    if (accent === "orange") return "menu-section--orange";
+    if (accent === "simple") return "menu-section--simple";
+    return "menu-section--gold";
+  };
+
+  const renderMenuItem = (item) => {
+    const name = escapeHtml(item.name);
+    const image = item.image ? escapeHtml(item.image) : "";
+    return `
+      <article class="menu-item">
+        ${
+          image
+            ? `<div class="menu-img"><img src="${image}" alt="${name}" loading="lazy"></div>`
+            : `<div class="menu-img" aria-hidden="true"></div>`
+        }
+        <div class="menu-name">${name}</div>
+      </article>`;
+  };
+
+  const renderMenuList = (items) => `
+    <div class="menu-list">
+      ${(items || [])
+        .map((item) => `<div class="menu-row"><span>${escapeHtml(item.name)}</span></div>`)
+        .join("")}
+    </div>`;
 
   const renderMenu = (data) => {
     if (!menuSections) return;
@@ -134,22 +173,28 @@
     }
 
     menuSections.innerHTML = (data.categories || [])
-      .map(
-        (cat) => `
-      <section class="menu-section reveal" id="menu-${cat.id}">
-        <h2>${cat.title}</h2>
-        <ul class="menu-items">
-          ${(cat.items || [])
-            .map(
-              (item) => `
-            <li>
-              <div class="menu-items__name">${item.name}</div>
-            </li>`
-            )
-            .join("")}
-        </ul>
-      </section>`
-      )
+      .map((cat) => {
+        const accent = accentClass(cat.accent);
+        const layout = cat.layout || "grid";
+        let body = "";
+
+        if (layout === "list" || cat.accent === "simple") {
+          body = renderMenuList(cat.items);
+        } else if (layout === "featured") {
+          const featured = cat.featuredImage
+            ? `<div class="menu-featured-img"><img src="${escapeHtml(cat.featuredImage)}" alt="${escapeHtml(cat.title)}" loading="lazy"></div>`
+            : "";
+          body = `${featured}${renderMenuList(cat.items)}`;
+        } else {
+          body = `<div class="menu-grid">${(cat.items || []).map(renderMenuItem).join("")}</div>`;
+        }
+
+        return `
+      <section class="menu-section ${accent} ${layout === "featured" ? "menu-section--featured" : ""} reveal" id="menu-${escapeHtml(cat.id)}">
+        <h2 class="menu-section-title">${escapeHtml(cat.title)}</h2>
+        ${body}
+      </section>`;
+      })
       .join("");
   };
 

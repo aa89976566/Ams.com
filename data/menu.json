@@ -4,59 +4,67 @@
     {
       "id": "breakfast",
       "title": "Breakfast",
+      "accent": "gold",
       "items": [
-        { "name": "Sourdough toast with scrambled eggs" },
-        { "name": "Sourdough with poached eggs" },
-        { "name": "Greek yogurt with granola" },
-        { "name": "Beans on toast" },
-        { "name": "Avo on toast" },
-        { "name": "Fred's banana bread" }
+        { "name": "Sourdough toast with scrambled eggs", "image": "images/freds/maps/yelp-food.jpg" },
+        { "name": "Sourdough with poached eggs", "image": "images/freds/latte-pastry.jpg" },
+        { "name": "Greek yogurt with granola", "image": "images/freds/menu/grab-and-go.jpg" },
+        { "name": "Beans on toast", "image": "images/freds/maps/yelp-interior-2.jpg" },
+        { "name": "Avo on toast", "image": "images/freds/roasted-veg.jpg" },
+        { "name": "Fred's banana bread", "image": "images/freds/menu/lemon-poppy-cake.jpg" }
       ]
     },
     {
       "id": "brunch",
       "title": "Brunch & lunch",
+      "accent": "blue",
       "items": [
-        { "name": "Roasted veg bowl" },
-        { "name": "Warm falafel salad" },
-        { "name": "Swedish flatbread sandwiches" },
-        { "name": "Toasties & bagels" },
-        { "name": "BBQ sausage roll" }
+        { "name": "Roasted veg bowl", "image": "images/freds/roasted-veg.jpg" },
+        { "name": "Warm falafel salad", "image": "images/freds/maps/yelp-food.jpg" },
+        { "name": "Swedish flatbread sandwiches", "image": "images/freds/menu/grab-and-go.jpg" },
+        { "name": "Toasties & bagels", "image": "images/freds/latte-pastry.jpg" },
+        { "name": "BBQ sausage roll", "image": "images/freds/menu/sausage-rolls.jpg" }
       ]
     },
     {
       "id": "bakery",
       "title": "Cakes & bakery",
+      "accent": "orange",
       "items": [
-        { "name": "Homemade cakes" },
-        { "name": "Vegan cakes & bakes" },
-        { "name": "Croissants & pastries" },
-        { "name": "Banana & Nutella blondie" }
+        { "name": "Homemade cakes", "image": "images/freds/menu/lemon-poppy-cake.jpg" },
+        { "name": "Vegan cakes & bakes", "image": "images/freds/maps/yelp-food.jpg" },
+        { "name": "Croissants & pastries", "image": "images/freds/latte-pastry.jpg" },
+        { "name": "Banana & Nutella blondie", "image": "images/freds/menu/grab-and-go.jpg" }
       ]
     },
     {
       "id": "coffee",
       "title": "Coffee",
+      "accent": "gold",
       "items": [
-        { "name": "Allpress espresso drinks" },
-        { "name": "Flat white, latte, americano & cappuccino" },
-        { "name": "Iced latte" },
-        { "name": "Alternative milks available" }
+        { "name": "Allpress espresso drinks", "image": "images/freds/latte-pastry.jpg" },
+        { "name": "Flat white, latte, americano & cappuccino", "image": "images/freds/menu/matcha-latte.jpg" },
+        { "name": "Iced latte", "image": "images/freds/menu/iced-drinks.jpg" },
+        { "name": "Alternative milks available", "image": "images/freds/menu/matcha-spritz.jpg" }
       ]
     },
     {
       "id": "hot-drinks",
       "title": "Hot drinks",
+      "accent": "blue",
       "items": [
-        { "name": "Good & Proper matcha" },
-        { "name": "Chai latte" },
-        { "name": "Hot chocolate" },
-        { "name": "Tea" }
+        { "name": "Good & Proper matcha", "image": "images/freds/menu/matcha-latte.jpg" },
+        { "name": "Chai latte", "image": "images/freds/latte-pastry.jpg" },
+        { "name": "Hot chocolate", "image": "images/freds/menu/matcha-spritz.jpg" },
+        { "name": "Tea", "image": "images/freds/maps/yelp-interior-2.jpg" }
       ]
     },
     {
       "id": "cold-drinks",
       "title": "Cold drinks",
+      "accent": "orange",
+      "layout": "featured",
+      "featuredImage": "images/freds/menu/iced-drinks.jpg",
       "items": [
         { "name": "Fresh juices" },
         { "name": "San Pellegrino" },
@@ -66,6 +74,8 @@
     {
       "id": "kids",
       "title": "Kids",
+      "accent": "simple",
+      "layout": "list",
       "items": [
         { "name": "Kids menu available" }
       ]
