@@ -313,10 +313,6 @@ ul {
   color: var(--ink);
 }
 
-.hero__brand span {
-  color: var(--pink);
-}
-
 .hero__copy h1 {
   font-family: var(--font-display);
   font-weight: 800;
