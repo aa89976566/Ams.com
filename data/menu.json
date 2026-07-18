@@ -1,0 +1,149 @@
+{
+  "sourceNote": "Compiled from public listings for Fred's, 358 Brockley Road, SE4 2BY. Primary aggregator categories from freds.menu-world.com (indexed); dishes cross-checked with Google/Yelp/Nextdoor/Instagram reviews. Full current prices are not published online — ask at the counter. Cakes often around £5 per guest reports.",
+  "sources": [
+    "https://freds.menu-world.com/menu",
+    "https://www.yelp.co.uk/biz/freds-london-3",
+    "https://nextdoor.co.uk/pages/freds-2/",
+    "https://www.instagram.com/fredslondon/"
+  ],
+  "categories": [
+    {
+      "id": "breakfast",
+      "title": "Breakfast",
+      "items": [
+        {
+          "name": "Sourdough toast with scrambled eggs",
+          "note": "Listed on Fred's Menu World breakfast section"
+        },
+        {
+          "name": "Sourdough with poached eggs",
+          "note": "Popular dish (beans as extra) — Sluurpy / guest reports"
+        },
+        {
+          "name": "Greek yogurt with granola",
+          "note": "Listed on Fred's Menu World"
+        },
+        {
+          "name": "Beans on toast",
+          "note": "Listed on Fred's Menu World"
+        },
+        {
+          "name": "Avo on toast",
+          "note": "Confirmed in Yelp guest reviews"
+        },
+        {
+          "name": "Fred's banana bread",
+          "note": "Listed on Fred's Menu World; frequently praised in reviews"
+        }
+      ]
+    },
+    {
+      "id": "brunch",
+      "title": "Brunch & lunch",
+      "items": [
+        {
+          "name": "Roasted veg bowl",
+          "note": "Listed on Fred's Menu World"
+        },
+        {
+          "name": "Warm falafel salad",
+          "note": "Listed on Fred's Menu World; also mentioned by guests"
+        },
+        {
+          "name": "Swedish flatbread sandwiches",
+          "note": "House speciality — Nextdoor / guest reviews"
+        },
+        {
+          "name": "Toasties & bagels",
+          "note": "Mozzarella toastie, bagels — guest reviews"
+        },
+        {
+          "name": "BBQ sausage roll",
+          "note": "Homemade; Yelp guests call it legendary"
+        }
+      ]
+    },
+    {
+      "id": "bakery",
+      "title": "Cakes & bakery",
+      "items": [
+        {
+          "name": "Homemade cakes (daily selection)",
+          "note": "Carrot, red velvet, Guinness, GF chocolate among guest favourites; ~£5 reported"
+        },
+        {
+          "name": "Vegan cakes & bakes",
+          "note": "Confirmed on Yelp"
+        },
+        {
+          "name": "Croissants & pastries",
+          "note": "Counter bakery selection"
+        },
+        {
+          "name": "Banana & Nutella blondie",
+          "note": "Popular dish listing — Sluurpy"
+        }
+      ]
+    },
+    {
+      "id": "coffee",
+      "title": "Coffee",
+      "items": [
+        {
+          "name": "Allpress espresso drinks",
+          "note": "Flat white, latte, americano, cappuccino, iced latte"
+        },
+        {
+          "name": "Alternative milks",
+          "note": "Available; some guests note a surcharge"
+        }
+      ]
+    },
+    {
+      "id": "hot-drinks",
+      "title": "Hot drinks",
+      "items": [
+        {
+          "name": "Good & Proper matcha",
+          "note": "From @fredslondon / counter"
+        },
+        {
+          "name": "Chai latte & hot chocolate",
+          "note": "Guest reports (incl. Marks dark hot chocolate)"
+        },
+        {
+          "name": "Tea",
+          "note": "Own Menu World category"
+        }
+      ]
+    },
+    {
+      "id": "cold-drinks",
+      "title": "Cold drinks",
+      "items": [
+        {
+          "name": "Fresh juices",
+          "note": "Freshly squeezed orange; orange–carrot–ginger mentioned by guests"
+        },
+        {
+          "name": "San Pellegrino",
+          "note": "Listed on Fred's Menu World"
+        },
+        {
+          "name": "Cawston Press sparkling elderflower",
+          "note": "Listed on Fred's Menu World"
+        }
+      ]
+    },
+    {
+      "id": "kids",
+      "title": "Kids",
+      "items": [
+        {
+          "name": "Kids menu",
+          "note": "Own category on Fred's Menu World; buggy-friendly cafe"
+        }
+      ]
+    }
+  ]
+}

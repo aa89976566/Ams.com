@@ -7,6 +7,8 @@
   const eventsBoard = document.getElementById("eventsBoard");
   const eventsCta = document.getElementById("eventsCta");
   const hoursTable = document.getElementById("hoursTable");
+  const menuSections = document.getElementById("menuSections");
+  const menuSource = document.getElementById("menuSource");
 
   if (year) year.textContent = String(new Date().getFullYear());
 
@@ -125,6 +127,34 @@
     }
   };
 
+  const renderMenu = (data) => {
+    if (!menuSections) return;
+    if (menuSource && data.sourceNote) {
+      menuSource.textContent = data.sourceNote;
+    }
+
+    menuSections.innerHTML = (data.categories || [])
+      .map(
+        (cat) => `
+      <section class="menu-section reveal" id="menu-${cat.id}">
+        <h2>${cat.title}</h2>
+        <ul class="menu-items">
+          ${(cat.items || [])
+            .map(
+              (item) => `
+            <li>
+              <div class="menu-items__name">${item.name}</div>
+              ${item.note ? `<p class="menu-items__note">${item.note}</p>` : ""}
+              ${item.price ? `<span class="menu-items__price">${item.price}</span>` : ""}
+            </li>`
+            )
+            .join("")}
+        </ul>
+      </section>`
+      )
+      .join("");
+  };
+
   const boot = async () => {
     try {
       const place = await loadJson("data/place.json");
@@ -143,6 +173,15 @@
     } catch {
       if (eventsBoard) {
         eventsBoard.innerHTML = `<p class="event-empty">Follow @fredslondon for upcoming community events.</p>`;
+      }
+    }
+
+    try {
+      const menuData = await loadJson("data/menu.json");
+      renderMenu(menuData);
+    } catch {
+      if (menuSections) {
+        menuSections.innerHTML = `<p class="event-empty">Menu details coming soon — ask at the counter or DM @fredslondon.</p>`;
       }
     }
 
