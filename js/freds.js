@@ -149,16 +149,14 @@
     if (!galleryGrid) return;
     galleryGrid.innerHTML = (data.items || [])
       .map((item) => {
-        const body = `
-        <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.alt || item.caption)}" loading="lazy">
-        <figcaption>
-          ${escapeHtml(item.caption)}
-          <span class="src">${escapeHtml(item.source || "")}</span>
-        </figcaption>`;
-        if (item.url) {
-          return `<a class="gallery-item reveal" href="${escapeHtml(item.url)}" target="_blank" rel="noopener noreferrer">${body}</a>`;
-        }
-        return `<figure class="gallery-item reveal">${body}</figure>`;
+        const caption = item.caption
+          ? `<figcaption>${escapeHtml(item.caption)}</figcaption>`
+          : "";
+        return `
+      <figure class="gallery-item reveal">
+        <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.alt || item.caption || "")}" loading="lazy">
+        ${caption}
+      </figure>`;
       })
       .join("");
   };
