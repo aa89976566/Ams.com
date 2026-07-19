@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono&family=Sora:wght@400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/freds.css?v=20260718v">
+  <link rel="stylesheet" href="css/freds.css?v=20260718w">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect fill='%23b8d170' width='100' height='100' rx='22'/><text x='50' y='66' text-anchor='middle' font-size='52' fill='%23171417' font-family='Georgia' font-weight='700'>F</text></svg>">
 </head>
 <body class="home">
@@ -205,6 +205,23 @@
       </div>
     </div>
   </footer>
+
+  <div class="announce" id="announceModal" hidden>
+    <div class="announce__backdrop" data-announce-close tabindex="-1"></div>
+    <div class="announce__panel" role="dialog" aria-modal="true" aria-labelledby="announceTitle">
+      <button class="announce__close" type="button" data-announce-close aria-label="Close announcement">✕</button>
+      <div class="announce__media" id="announceMedia"></div>
+      <div class="announce__copy">
+        <p class="announce__eyebrow" id="announceEyebrow"></p>
+        <h2 class="announce__title" id="announceTitle"></h2>
+        <p class="announce__body" id="announceBody"></p>
+        <div class="announce__actions">
+          <a class="btn btn--orange" id="announceCta" href="#visit">Come see it IRL</a>
+          <button class="btn btn--ghost announce__later" type="button" data-announce-close id="announceLater">Maybe later</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="js/freds.js"></script>
 </body>

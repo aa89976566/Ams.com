@@ -15,6 +15,13 @@
   const crewHeading = document.getElementById("crewHeading");
   const crewLead = document.getElementById("crewLead");
   const crewNote = document.getElementById("crewNote");
+  const announceModal = document.getElementById("announceModal");
+  const announceMedia = document.getElementById("announceMedia");
+  const announceEyebrow = document.getElementById("announceEyebrow");
+  const announceTitle = document.getElementById("announceTitle");
+  const announceBody = document.getElementById("announceBody");
+  const announceCta = document.getElementById("announceCta");
+  const announceLater = document.getElementById("announceLater");
 
   if (year) year.textContent = String(new Date().getFullYear());
 
@@ -218,6 +225,80 @@
     return "menu-section--yellow";
   };
 
+  const closeAnnounce = () => {
+    if (!announceModal) return;
+    announceModal.hidden = true;
+    document.body.classList.remove("announce-open");
+  };
+
+  const openAnnounce = (data) => {
+    if (!announceModal || !data?.enabled) return;
+    const storageKey = `freds-announce-dismissed:${data.id || "default"}`;
+    try {
+      if (sessionStorage.getItem(storageKey) === "1") return;
+    } catch {
+      /* private mode */
+    }
+
+    if (announceEyebrow) announceEyebrow.textContent = data.eyebrow || "New";
+    if (announceTitle) announceTitle.textContent = data.title || "What's new";
+    if (announceBody) announceBody.textContent = data.body || "";
+    if (announceCta) {
+      announceCta.textContent = data.ctaLabel || "Visit us";
+      announceCta.href = data.ctaHref || "#visit";
+    }
+    if (announceLater) announceLater.textContent = data.secondaryLabel || "Maybe later";
+
+    if (announceMedia) {
+      announceMedia.innerHTML = (data.images || [])
+        .slice(0, 2)
+        .map(
+          (img) => `
+        <figure>
+          <img src="${escapeHtml(img.src)}" alt="${escapeHtml(img.alt || "")}" loading="eager">
+        </figure>`
+        )
+        .join("");
+    }
+
+    announceModal.hidden = false;
+    document.body.classList.add("announce-open");
+
+    const dismiss = () => {
+      try {
+        sessionStorage.setItem(storageKey, "1");
+      } catch {
+        /* ignore */
+      }
+      closeAnnounce();
+    };
+
+    announceModal.querySelectorAll("[data-announce-close]").forEach((el) => {
+      el.addEventListener("click", dismiss, { once: true });
+    });
+
+    announceCta?.addEventListener(
+      "click",
+      () => {
+        try {
+          sessionStorage.setItem(storageKey, "1");
+        } catch {
+          /* ignore */
+        }
+        closeAnnounce();
+      },
+      { once: true }
+    );
+
+    const onKey = (e) => {
+      if (e.key === "Escape") {
+        dismiss();
+        window.removeEventListener("keydown", onKey);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+  };
+
   const renderMenu = (data) => {
     if (!menuSections) return;
     if (menuSource && data.sourceNote) menuSource.textContent = data.sourceNote;
@@ -302,6 +383,15 @@
     } catch {
       if (menuSections) {
         menuSections.innerHTML = `<p class="event-empty">Menu details coming soon. Ask at the counter or DM @fredslondon.</p>`;
+      }
+    }
+
+    if (document.body.classList.contains("home")) {
+      try {
+        const announcement = await loadJson("data/announcement.json");
+        window.setTimeout(() => openAnnounce(announcement), 700);
+      } catch {
+        /* optional */
       }
     }
 

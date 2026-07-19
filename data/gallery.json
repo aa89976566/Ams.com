@@ -3,6 +3,16 @@
   "lead": "A look at Fred's coffee, cakes, garden and Brockley Road home.",
   "items": [
     {
+      "image": "images/freds/mural/mural-fox-bear.jpg",
+      "alt": "New garden mural with a fox and bear",
+      "caption": "New garden mural"
+    },
+    {
+      "image": "images/freds/mural/mural-bears.jpg",
+      "alt": "New garden mural with three coffee bears",
+      "caption": "Patio mural vibes"
+    },
+    {
       "image": "images/freds/instagram/matcha-latte.jpg",
       "alt": "Good & Proper matcha latte at Fred's",
       "caption": "Good & Proper matcha",
