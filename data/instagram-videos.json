@@ -1,0 +1,196 @@
+{
+  "fetchedAt": "2026-07-07T21:19:47.497735+00:00",
+  "username": "coach_kings2",
+  "fullName": "Simon \"Kingsley\" Bent",
+  "bio": "England Boxing certified coach. Structured syllabus from fundamentals through to competition preparation.",
+  "profileUrl": "https://www.instagram.com/coach_kings2/",
+  "videoCount": 12,
+  "methodPillars": [
+    {
+      "id": "technique",
+      "icon": "fa-fist-raised",
+      "title": "Precision Boxing Technique",
+      "intro": "From the film room: progressive focus mitt combinations, pad rounds at fight pace, defensive rolling off the line, and controlled technical sparring. Every session builds ringcraft through layered combinations, head movement, and reactive footwork.",
+      "videos": ["DaYnaKtsocf", "DaAPU-YopXN", "DZ5uF8VMrZq", "DZeyixEMiJE"]
+    },
+    {
+      "id": "conditioning",
+      "icon": "fa-dumbbell",
+      "title": "Strength and Conditioning",
+      "intro": "Boxing specific strength built in the gym: anti rotation core holds, medicine ball rotational throws, goblet squat leg drive, and posterior chain work at 120 kilograms. Accessory drills that transfer hip power and trunk stiffness directly into punching force.",
+      "videos": ["DaXkCnZsFMo", "DaGatO2sSzG", "DZf6G8YsXIt", "DZKVe73MRlm"]
+    },
+    {
+      "id": "coaching",
+      "icon": "fa-user-check",
+      "title": "Expert Coaching and Accountability",
+      "intro": "One to one technical sessions, group pad classes at Bronx LDN, youth development at Regenerate, and unstable surface mitt work that builds balance under fatigue. Coaching that meets you at your level and raises the standard every week.",
+      "videos": ["DaQlEZdMI5J", "DZZ6SDPskkS", "DZ2aFJXMwxg"]
+    },
+    {
+      "id": "progress",
+      "icon": "fa-chart-line",
+      "title": "Data Driven Progress",
+      "intro": "Structured syllabus with measurable milestones. Film every phase from technical one to one work to competition pace pad rounds and sparring progression. Progress you can review, repeat, and build on session after session.",
+      "videos": ["DZvMQc5Mr9I", "DaAPU-YopXN", "DZeyixEMiJE"]
+    }
+  ],
+  "videos": [
+    {
+      "shortcode": "DZKVe73MRlm",
+      "title": "Lower Body Strength: 120kg Personal Record",
+      "story": "Posterior chain and leg drive work at 120 kilograms. Building the foundation for punching power, ring endurance, and explosive hip extension.",
+      "caption": "Not gonna make a habit of recycling content from my old page. But tbh i needed to pin this 120kg PB for my own motivation 😅.  . . #gym #fitness #boxing #motivation #fyp",
+      "hashtags": [],
+      "thumbnail": "images/instagram/DZKVe73MRlm.jpg",
+      "url": "https://www.instagram.com/reel/DZKVe73MRlm/",
+      "embedUrl": "https://www.instagram.com/reel/DZKVe73MRlm/embed",
+      "tag": "Strength",
+      "postedAt": "04 Jun 2026",
+      "video": "videos/instagram/DZKVe73MRlm.mp4"
+    },
+    {
+      "shortcode": "DaYnaKtsocf",
+      "title": "Progressive Pad Combinations",
+      "story": "Advanced focus mitt work for returning athletes. Layered combinations, sharp hand speed, and reactive footwork. Friday pad classes at Bronx LDN.",
+      "caption": "I love when i start getting regulars and can do harder combos 😜. But at the rate they are improving imma have to do something crazy soon 😂 well done gang.  . If you wanna take part, my pad class is every Friday at @bronxldn 😎👍🏾. . . #boxing #motivation #fitness #gym #fyp",
+      "hashtags": [],
+      "thumbnail": "images/instagram/DaYnaKtsocf.jpg",
+      "url": "https://www.instagram.com/reel/DaYnaKtsocf/",
+      "embedUrl": "https://www.instagram.com/reel/DaYnaKtsocf/embed",
+      "tag": "Pad Work",
+      "postedAt": "04 Jul 2026",
+      "video": "videos/instagram/DaYnaKtsocf.mp4"
+    },
+    {
+      "shortcode": "DaXkCnZsFMo",
+      "title": "Anti Rotation Core Stability",
+      "story": "Isometric trunk holds with resistance band and weight plate. Trains core stiffness under load, critical for balance when throwing power shots and absorbing body punches.",
+      "caption": "Using a band and weight disc this iso hold are way harder on the core than they look 👀😅 save the vid, give them a go and let me know what you think 😎👍🏾. . . #boxing #gym #fitness #motivation #fyp",
+      "hashtags": [],
+      "thumbnail": "images/instagram/DaXkCnZsFMo.jpg",
+      "url": "https://www.instagram.com/reel/DaXkCnZsFMo/",
+      "embedUrl": "https://www.instagram.com/reel/DaXkCnZsFMo/embed",
+      "tag": "Conditioning",
+      "postedAt": "04 Jul 2026",
+      "video": "videos/instagram/DaXkCnZsFMo.mp4"
+    },
+    {
+      "shortcode": "DaQlEZdMI5J",
+      "title": "Youth Boxing Development",
+      "story": "Technical fundamentals with the next generation at Regenerate LDN. Stance discipline, guard structure, and controlled pad work for developing amateur boxers.",
+      "caption": "Loving my work with the youth at @regenerate_ldn 😎 they are gonna be pros in no time 😜👍🏾. . . #boxing #gym #fitness #motivation #fyp",
+      "hashtags": [],
+      "thumbnail": "images/instagram/DaQlEZdMI5J.jpg",
+      "url": "https://www.instagram.com/reel/DaQlEZdMI5J/",
+      "embedUrl": "https://www.instagram.com/reel/DaQlEZdMI5J/embed",
+      "tag": "Youth",
+      "postedAt": "01 Jul 2026",
+      "video": "videos/instagram/DaQlEZdMI5J.mp4"
+    },
+    {
+      "shortcode": "DaGatO2sSzG",
+      "title": "Medicine Ball Rotational Throws",
+      "story": "Explosive rotational throws for core transfer and hip power. One of the most effective accessory drills for generating force through the kinetic chain.",
+      "caption": "These medball throws will forever be one of my fav ab exercises 😎👍🏾. . . #fitness #gym #motivation #fyp #coachkings",
+      "hashtags": [],
+      "thumbnail": "images/instagram/DaGatO2sSzG.jpg",
+      "url": "https://www.instagram.com/reel/DaGatO2sSzG/",
+      "embedUrl": "https://www.instagram.com/reel/DaGatO2sSzG/embed",
+      "tag": "Conditioning",
+      "postedAt": "27 Jun 2026",
+      "video": "videos/instagram/DaGatO2sSzG.mp4"
+    },
+    {
+      "shortcode": "DaAPU-YopXN",
+      "title": "High Intensity Focus Mitt Session",
+      "story": "Sustained mitt work under cardiovascular load. Sharp combinations, defensive responsibility, and fight pace conditioning at competition intensity.",
+      "caption": "Good to have @officialgiagrayy back on pads. Even if we were melting the whole time 😅🥊. . . #boxing #fitness #motivation #fyp #coachkings",
+      "hashtags": [],
+      "thumbnail": "images/instagram/DaAPU-YopXN.jpg",
+      "url": "https://www.instagram.com/reel/DaAPU-YopXN/",
+      "embedUrl": "https://www.instagram.com/reel/DaAPU-YopXN/embed",
+      "tag": "Pad Work",
+      "postedAt": "25 Jun 2026",
+      "video": "videos/instagram/DaAPU-YopXN.mp4"
+    },
+    {
+      "shortcode": "DZ5uF8VMrZq",
+      "title": "Defensive Roll Under Resistance",
+      "story": "Rolling drills with resistance band assistance. Trains head movement patterns, slip recovery, and reactive movement off the line of attack.",
+      "caption": "Roll training using a resistance band with @maxfulconis 😎👍🏾 like, share and follow for boxing and fitness drills like this 🥊. . . #boxing #fitness #gym #motivation #fyp",
+      "hashtags": [],
+      "thumbnail": "images/instagram/DZ5uF8VMrZq.jpg",
+      "url": "https://www.instagram.com/reel/DZ5uF8VMrZq/",
+      "embedUrl": "https://www.instagram.com/reel/DZ5uF8VMrZq/embed",
+      "tag": "Defence",
+      "postedAt": "22 Jun 2026",
+      "video": "videos/instagram/DZ5uF8VMrZq.mp4"
+    },
+    {
+      "shortcode": "DZ2aFJXMwxg",
+      "title": "Unstable Surface Pad Work",
+      "story": "Focus mitt drills performed on a tyre for instability. Develops balance, leg conditioning, and weight distribution for punching on the move.",
+      "caption": "Improved balance, stability and leg conditioning. All from doing out pads on the tire 😎👍🏾 great work @wduong8531 🥊. . . #gym #fitness #boxing #motivation #fyp",
+      "hashtags": [],
+      "thumbnail": "images/instagram/DZ2aFJXMwxg.jpg",
+      "url": "https://www.instagram.com/reel/DZ2aFJXMwxg/",
+      "embedUrl": "https://www.instagram.com/reel/DZ2aFJXMwxg/embed",
+      "tag": "Pad Work",
+      "postedAt": "21 Jun 2026",
+      "video": "videos/instagram/DZ2aFJXMwxg.mp4"
+    },
+    {
+      "shortcode": "DZvMQc5Mr9I",
+      "title": "Technical Session Highlights",
+      "story": "Training footage from Anytime Fitness Kingston. Technical work and conditioning in a focused one to one coaching environment.",
+      "caption": "With the hang at @anytimefitness_kingston 😎🥊. . . #gym #boxing #fitness #motivation #fyp",
+      "hashtags": [],
+      "thumbnail": "images/instagram/DZvMQc5Mr9I.jpg",
+      "url": "https://www.instagram.com/reel/DZvMQc5Mr9I/",
+      "embedUrl": "https://www.instagram.com/reel/DZvMQc5Mr9I/embed",
+      "tag": "Technique",
+      "postedAt": "18 Jun 2026",
+      "video": "videos/instagram/DZvMQc5Mr9I.mp4"
+    },
+    {
+      "shortcode": "DZf6G8YsXIt",
+      "title": "Goblet Squat Lower Body Session",
+      "story": "Goblet squats as the primary lower body movement on push leg day. Quad and glute development supporting explosive drive from stance and ring movement.",
+      "caption": "Its goblet squats for push leg day. I can still feel my hamstrings from last time but the show must go on lol. . . #gym #fitness #motivation #fyp #boxing",
+      "hashtags": [],
+      "thumbnail": "images/instagram/DZf6G8YsXIt.jpg",
+      "url": "https://www.instagram.com/reel/DZf6G8YsXIt/",
+      "embedUrl": "https://www.instagram.com/reel/DZf6G8YsXIt/embed",
+      "tag": "Strength",
+      "postedAt": "12 Jun 2026",
+      "video": "videos/instagram/DZf6G8YsXIt.mp4"
+    },
+    {
+      "shortcode": "DZeyixEMiJE",
+      "title": "Controlled Technical Sparring",
+      "story": "Light technical sparring focused on footwork, cutting off the ring, and maintaining defensive structure while applying controlled pressure.",
+      "caption": "Light sparring with @luisacrosbiepainting this week. Mainly working on conditioning, chasing a moving target while keeping defensively sound 😎👍🏾.  . Great work champ. . . #boxing #fitness #gym #motivation #fyp",
+      "hashtags": [],
+      "thumbnail": "images/instagram/DZeyixEMiJE.jpg",
+      "url": "https://www.instagram.com/reel/DZeyixEMiJE/",
+      "embedUrl": "https://www.instagram.com/reel/DZeyixEMiJE/embed",
+      "tag": "Sparring",
+      "postedAt": "12 Jun 2026",
+      "video": "videos/instagram/DZeyixEMiJE.mp4"
+    },
+    {
+      "shortcode": "DZZ6SDPskkS",
+      "title": "Group Pad Class",
+      "story": "Community pad session every Tuesday at 6pm, Bronx LDN. Structured mitt rotations, combination building, and fitness boxing for all levels.",
+      "caption": "Pads with the gang at @bronxldn every Tuesday 6pm 😎🥊 follow the page for more content and info on classes 👍🏾. . . #gym #fitness #boxing #motivation #fyp",
+      "hashtags": [],
+      "thumbnail": "images/instagram/DZZ6SDPskkS.jpg",
+      "url": "https://www.instagram.com/reel/DZZ6SDPskkS/",
+      "embedUrl": "https://www.instagram.com/reel/DZZ6SDPskkS/embed",
+      "tag": "Pad Work",
+      "postedAt": "10 Jun 2026",
+      "video": "videos/instagram/DZZ6SDPskkS.mp4"
+    }
+  ]
+}

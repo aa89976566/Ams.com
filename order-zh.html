@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>立即下單 | 學術傑作工作室</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&family=Noto+Serif+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/order.css">
+    
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("YOUR_PUBLIC_KEY"); // 替換為您的 EmailJS 公鑰
+        })();
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Noto Serif TC', Georgia, serif;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 導航欄 -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <img src="images/ams-logo.png" alt="AMS Logo">
+                    <div class="logo-text">
+                        <span class="logo-full">學術傑作工作室</span>
+                        <span class="logo-abbr">AMS</span>
+                    </div>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index-zh.html" class="nav-link">← 返回首頁</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 訂單表單區域 -->
+    <section class="order-form-section">
+        <div class="container">
+            <div class="order-header">
+                <h1>立即下單</h1>
+                <p class="tagline">自2009年起，將學術壓力轉化為成功故事</p>
+                <p>完成下面的表單，我們將在24小時內回覆您詳細的報價</p>
+            </div>
+
+            <!-- 進度指示器 -->
+            <div class="progress-indicator">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="progress-steps">
+                    <div class="step active" data-step="1">
+                        <div class="step-circle">1</div>
+                        <span>基本資訊</span>
+                    </div>
+                    <div class="step" data-step="2">
+                        <div class="step-circle">2</div>
+                        <span>學術背景</span>
+                    </div>
+                    <div class="step" data-step="3">
+                        <div class="step-circle">3</div>
+                        <span>項目要求</span>
+                    </div>
+                    <div class="step" data-step="4">
+                        <div class="step-circle">4</div>
+                        <span>上傳文件</span>
+                    </div>
+                    <div class="step" data-step="5">
+                        <div class="step-circle">5</div>
+                        <span>學習日誌</span>
+                    </div>
+                    <div class="step" data-step="6">
+                        <div class="step-circle">6</div>
+                        <span>預算</span>
+                    </div>
+                    <div class="step" data-step="7">
+                        <div class="step-circle">7</div>
+                        <span>審核</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 表單 -->
+            <form id="orderForm" class="order-form">
+                
+                <!-- 步驟 1：基本資訊 -->
+                <div class="form-step active" id="step1">
+                    <h2>步驟 1：基本資訊</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>全名 *</label>
+                            <input type="text" name="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>電子郵件地址 *</label>
+                            <input type="email" name="email" required>
+                            <small>我們將向此地址發送報價和更新</small>
+                        </div>
+                        <div class="form-group">
+                            <label>電話號碼（含國際區號）*</label>
+                            <input type="tel" name="phone" required placeholder="+44 7481 747436">
+                        </div>
+                        <div class="form-group">
+                            <label>國家/地區 *</label>
+                            <select name="country" required>
+                                <option value="">選擇...</option>
+                                <option value="CN">中國</option>
+                                <option value="UK">英國</option>
+                                <option value="US">美國</option>
+                                <option value="CA">加拿大</option>
+                                <option value="AU">澳大利亞</option>
+                                <option value="HK">香港</option>
+                                <option value="TW">台灣</option>
+                                <option value="SG">新加坡</option>
+                                <option value="Other">其他</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">下一步 →</button>
+                    </div>
+                </div>
+
+                <!-- 步驟 2：學術背景 -->
+                <div class="form-step" id="step2">
+                    <h2>步驟 2：學術背景</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>學術級別 *</label>
+                            <select name="academicLevel" required onchange="updateServiceOptions()">
+                                <option value="">選擇...</option>
+                                <option value="undergraduate">本科</option>
+                                <option value="postgraduate">研究生/碩士</option>
+                                <option value="phd">博士</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>大學/機構 *</label>
+                            <input type="text" name="university" required>
+                        </div>
+                        <div class="form-group">
+                            <label>學術領域 *</label>
+                            <select name="academicField" required>
+                                <option value="">選擇...</option>
+                                <optgroup label="科學與工程">
+                                    <option value="biomedical-engineering">生物醫學工程</option>
+                                    <option value="aerospace-engineering">航空航天工程</option>
+                                    <option value="chemical-engineering">化學工程</option>
+                                    <option value="civil-engineering">土木工程</option>
+                                    <option value="electrical-engineering">電機工程</option>
+                                    <option value="mechanical-engineering">機械工程</option>
+                                    <option value="computer-science">計算機科學</option>
+                                    <option value="mathematics">數學與統計學</option>
+                                    <option value="physics">物理學</option>
+                                    <option value="chemistry">化學</option>
+                                    <option value="biology">生物學</option>
+                                </optgroup>
+                                <optgroup label="社會科學與商業">
+                                    <option value="education">教育學</option>
+                                    <option value="psychology">心理學</option>
+                                    <option value="sociology">社會學</option>
+                                    <option value="business">工商管理</option>
+                                    <option value="economics">經濟學</option>
+                                    <option value="criminology">犯罪學</option>
+                                </optgroup>
+                                <optgroup label="健康科學">
+                                    <option value="nursing">護理學</option>
+                                    <option value="public-health">公共衛生</option>
+                                    <option value="medicine">醫學</option>
+                                    <option value="pharmacy">藥學</option>
+                                </optgroup>
+                                <optgroup label="人文學科">
+                                    <option value="literature">文學</option>
+                                    <option value="history">歷史</option>
+                                    <option value="philosophy">哲學</option>
+                                    <option value="linguistics">語言學</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>具體領域/專業方向</label>
+                            <input type="text" name="specialization" placeholder="例如：認知心理學、可再生能源">
+                        </div>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep()">← 上一步</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">下一步 →</button>
+                    </div>
+                </div>
+
+                <!-- 步驟 3：項目要求 -->
+                <div class="form-step" id="step3">
+                    <h2>步驟 3：詳細要求</h2>
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label>服務類型 *</label>
+                            <select name="serviceType" required id="serviceType">
+                                <option value="">選擇...</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>項目標題/研究主題 *</label>
+                            <input type="text" name="projectTitle" required>
+                        </div>
+                        <div class="form-group">
+                            <label>當前進度 *</label>
+                            <select name="currentProgress" required>
+                                <option value="">選擇...</option>
+                                <option value="0">尚未開始 (0%)</option>
+                                <option value="25">完成 25%</option>
+                                <option value="50">完成 50%</option>
+                                <option value="75">完成 75%</option>
+                                <option value="90">接近完成 (90%)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>目標字數 *</label>
+                            <select name="wordCount" required>
+                                <option value="">選擇...</option>
+                                <option value="1000-2000">1,000 - 2,000 字</option>
+                                <option value="2000-5000">2,000 - 5,000 字</option>
+                                <option value="5000-10000">5,000 - 10,000 字</option>
+                                <option value="10000-20000">10,000 - 20,000 字</option>
+                                <option value="20000-30000">20,000 - 30,000 字</option>
+                                <option value="30000-50000">30,000 - 50,000 字</option>
+                                <option value="50000+">50,000+ 字</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>截止日期 *</label>
+                            <input type="date" name="deadline" required>
+                        </div>
+                        <div class="form-group">
+                            <label>引用格式 *</label>
+                            <select name="citationFormat" required>
+                                <option value="">選擇...</option>
+                                <option value="APA">APA 第7版</option>
+                                <option value="MLA">MLA 第9版</option>
+                                <option value="Chicago">Chicago</option>
+                                <option value="Harvard">Harvard</option>
+                                <option value="Vancouver">Vancouver</option>
+                                <option value="IEEE">IEEE</option>
+                                <option value="Other">其他</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>研究方法</label>
+                            <select name="methodology">
+                                <option value="">選擇...</option>
+                                <option value="Quantitative">量化研究</option>
+                                <option value="Qualitative">質性研究</option>
+                                <option value="Mixed Methods">混合研究方法</option>
+                                <option value="Not Applicable">不適用</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>詳細要求描述 *</label>
+                            <textarea name="requirements" rows="6" required placeholder="請描述您的項目要求、導師的具體指示、需要的章節等。"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep()">← 上一步</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">下一步 →</button>
+                    </div>
+                </div>
+
+                <!-- 步驟 4：上傳文件 -->
+                <div class="form-step" id="step4">
+                    <h2>步驟 4：上傳文件（可選）</h2>
+                    <p class="step-description">上傳任何相關文檔以幫助我們更好地了解您的要求</p>
+                    
+                    <div class="upload-area">
+                        <div class="upload-box" id="uploadBox">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <h3>將文件拖放到此處</h3>
+                            <p>或點擊瀏覽</p>
+                            <input type="file" id="fileInput" multiple accept=".pdf,.doc,.docx,.txt,.xls,.xlsx,.ppt,.pptx">
+                            <small>最多10個文件，每個5MB | PDF、Word、Excel、PowerPoint、文本</small>
+                        </div>
+                        <div id="fileList" class="file-list"></div>
+                    </div>
+
+                    <div class="file-examples">
+                        <h4>您可以上傳：</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> 當前草稿或進行中的工作</li>
+                            <li><i class="fas fa-check"></i> 作業簡報/指南</li>
+                            <li><i class="fas fa-check"></i> 參考資料</li>
+                            <li><i class="fas fa-check"></i> 研究數據或數據集</li>
+                            <li><i class="fas fa-check"></i> 導師反饋或評論</li>
+                            <li><i class="fas fa-check"></i> 以前的相關工作</li>
+                        </ul>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep()">← 上一步</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">下一步 →</button>
+                    </div>
+                </div>
+
+                <!-- 步驟 5：學習日誌與具體需求 -->
+                <div class="form-step" id="step5">
+                    <h2>步驟 5：學習進度與具體挑戰</h2>
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label>學習進度日誌</label>
+                            <textarea name="learningJournal" rows="4" placeholder="告訴我們您到目前為止的學習歷程、您已完成的工作以及您現在所處的位置..."></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>您面臨的具體困難</label>
+                            <textarea name="difficulties" rows="4" placeholder="您遇到哪些具體挑戰？（例如：方法設計、文獻綜述、數據分析、寫作結構...）"></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>導師/輔導老師反饋</label>
+                            <textarea name="supervisorFeedback" rows="4" placeholder="導師有任何我們應該了解的反饋或評論嗎？"></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>您的研究目標</label>
+                            <textarea name="researchGoals" rows="4" placeholder="您希望通過這項研究實現什麼？您的學術和職業目標是什麼？"></textarea>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>特殊要求或指示</label>
+                            <textarea name="specialRequirements" rows="4" placeholder="我們還應該了解的其他具體要求、偏好或指示？"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep()">← 上一步</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">下一步 →</button>
+                    </div>
+                </div>
+
+                <!-- 步驟 6：預算與時間表 -->
+                <div class="form-step" id="step6">
+                    <h2>步驟 6：預算與時間表</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>預算範圍 *</label>
+                            <select name="budget" required>
+                                <option value="">選擇...</option>
+                                <option value="under-500">£500 以下</option>
+                                <option value="500-1000">£500 - £1,000</option>
+                                <option value="1000-2000">£1,000 - £2,000</option>
+                                <option value="2000-5000">£2,000 - £5,000</option>
+                                <option value="5000-10000">£5,000 - £10,000</option>
+                                <option value="over-10000">£10,000 以上</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>加急服務</label>
+                            <select name="rushService">
+                                <option value="no">不需要（標準時間）</option>
+                                <option value="1-hour">1小時內 (+£400)</option>
+                                <option value="3-hours">3小時內 (+£250)</option>
+                                <option value="6-hours">6小時內 (+£180)</option>
+                                <option value="12-hours">12小時內 (+£120)</option>
+                                <option value="24-hours">24小時內 (+£80)</option>
+                                <option value="2-days">2天內 (+£50)</option>
+                                <option value="3-days">3天內 (+£30)</option>
+                                <option value="4-days">4天內 (+£15)</option>
+                            </select>
+                            <small>加急服務需額外收費</small>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>優惠碼（如有）</label>
+                            <input type="text" name="discountCode" placeholder="輸入優惠碼">
+                            <small>新會員自動享有首單30%折扣</small>
+                        </div>
+                    </div>
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep()">← 上一步</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">下一步 →</button>
+                    </div>
+                </div>
+
+                <!-- 步驟 7：審核與確認 -->
+                <div class="form-step" id="step7">
+                    <h2>步驟 7：審核您的訂單</h2>
+                    <div id="orderReview" class="order-review"></div>
+                    
+                    <div class="terms-agreement">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="agreeTerms" required>
+                            <span>我同意<a href="#">服務條款</a>和<a href="#">隱私政策</a></span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="agreeAcademic" required>
+                            <span>我了解此服務僅供學習和參考，我將負責任地使用這些材料</span>
+                        </label>
+                    </div>
+                    
+                    <div class="form-buttons">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep()">← 上一步</button>
+                        <button type="submit" class="btn btn-primary btn-submit">
+                            <i class="fas fa-paper-plane"></i> 提交訂單
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </section>
+
+    <!-- 成功模態框 -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-icon success">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>訂單提交成功！</h2>
+            <p>感謝您選擇學術傑作工作室。</p>
+            <p>我們已收到您的訂單，確認郵件已發送至您的郵箱。</p>
+            <p class="redirect-notice">即將自動跳轉到付款頁面...</p>
+            <div class="modal-buttons">
+                <button onclick="location.href='payment-zh.html'" class="btn btn-primary">
+                    立即付款
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>正在提交您的訂單...</p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>學術傑作工作室 (AMS)</h3>
+                    <p>自2009年起，將學術壓力轉化為成功故事</p>
+                </div>
+                <div class="footer-section">
+                    <h4>快速鏈接</h4>
+                    <a href="index-zh.html">首頁</a>
+                    <a href="index-zh.html#services">服務項目</a>
+                    <a href="diagnostic-zh.html">智能診斷</a>
+                </div>
+                <div class="footer-section">
+                    <h4>聯繫我們</h4>
+                    <p><i class="fab fa-whatsapp"></i> +44 7481 747436</p>
+                    <p><i class="fas fa-envelope"></i> info@academicmasterpiece.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Academic Masterpiece Studio. 版權所有。</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/config.js"></script>
+    <script src="js/order.js"></script>
+
+</body>
+</html>
